@@ -4,4 +4,7 @@ CreepyHouse/Temp/*
 CreepyHouse/Library/EditorInstance.json
 
 *.log
+
 CreepyHouse/Library/shadercompiler-UnityShaderCompiler.exe0.log
+
+CreepyHouse/Library/metadata/*
