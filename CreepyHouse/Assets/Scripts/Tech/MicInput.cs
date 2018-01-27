@@ -47,17 +47,34 @@ public class MicInput : MonoBehaviour
         return levelMax;
     }
 
+    IEnumerator AverageCalculator()
+    {
+        while (enabled)
+        {
+            float currentDecibel = 0;
+            float timer = 0.3f;
+            while ((timer -= Time.deltaTime) > 0)
+            {
+                currentDecibel += MicLoudness;
 
+                MicAverage = (MicAverage + (currentDecibel / (0.3f - timer))) /2;
+
+                yield return null;
+            }
+            MicAverage = currentDecibel / 0.3f;
+            yield return null;
+        }
+    }
 
     void Update()
     {
-        MicAverage = (MicAverage + MicLoudness) / 2;
-        MicAverageTimer += Time.deltaTime;
-        if (MicAverageTimer > 2) // Refresh average every 2 seconds
-        {
-            MicAverage = MicLoudness;
-            MicAverageTimer = 0;
-        }
+        //MicAverage = (MicAverage + MicLoudness) / 2;
+        //MicAverageTimer += Time.deltaTime;
+        //if (MicAverageTimer > 0.2) // Refresh average every 2 seconds
+        //{
+        //    MicAverage = MicLoudness;
+        //    MicAverageTimer = 0;
+        //}
 
         // levelMax equals to the highest normalized value power 2, a small number because < 1
         // pass the value to a static var so we can access it from anywhere
@@ -68,6 +85,7 @@ public class MicInput : MonoBehaviour
     // start mic when scene starts
     void OnEnable()
     {
+        StartCoroutine(AverageCalculator());
         InitMic();
         _isInitialized = true;
     }
@@ -75,6 +93,7 @@ public class MicInput : MonoBehaviour
     //stop mic when loading a new level or quit application
     void OnDisable()
     {
+        StopAllCoroutines();
         StopMicrophone();
     }
 

@@ -28,4 +28,9 @@ public class MicIndicator : MonoBehaviour {
         m_decibelMeter.transform.localScale = scale;
 
 	}
+
+    public float SoundLevel
+    {
+       get { return m_percent; }
+    }
 }
