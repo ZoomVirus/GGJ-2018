@@ -18,16 +18,13 @@ public class TouchControllerInteract : MonoBehaviour
     {
         if (HoldingItem)
         {
-            bool backTrigger = false;
             bool sideTrigger = false;
             if (LeftHand)
             {
-                backTrigger = OVRInput.Get(OVRInput.Button.PrimaryHandTrigger, OVRInput.Controller.LTouch);
                 sideTrigger = OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger, OVRInput.Controller.LTouch);
             }
             else
             {
-                backTrigger = OVRInput.Get(OVRInput.Button.PrimaryHandTrigger, OVRInput.Controller.RTouch);
                 sideTrigger = OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger, OVRInput.Controller.RTouch);
             }
 
@@ -43,9 +40,9 @@ public class TouchControllerInteract : MonoBehaviour
                 {
                     heldItemScript.heldInRight = false;
                 }
+
                 HoldingItem = false;
                 heldItem.transform.parent = null;
-
             }
         }
     }
