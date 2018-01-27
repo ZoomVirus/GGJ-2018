@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 65a41444193955b4d970de58e8d0ea80
 timeCreated: 1517069254
+=======
+guid: 156b059cf0349d440a45ad1ec25dbb3d
+timeCreated: 1517067310
+>>>>>>> a0523cc1e5756cc48f3efa334c9e2b885c41c5ee
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -31,6 +36,13 @@ ModelImporter:
     4300002: object2
     4300004: object3
     4300006: object4
+<<<<<<< HEAD
+=======
+    6400000: object1
+    6400002: object2
+    6400004: object3
+    6400006: object4
+>>>>>>> a0523cc1e5756cc48f3efa334c9e2b885c41c5ee
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -63,7 +75,11 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
+<<<<<<< HEAD
     addColliders: 0
+=======
+    addColliders: 1
+>>>>>>> a0523cc1e5756cc48f3efa334c9e2b885c41c5ee
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
@@ -83,7 +99,11 @@ ModelImporter:
     useFileScale: 1
   tangentSpace:
     normalSmoothAngle: 60
+<<<<<<< HEAD
     normalImportMode: 0
+=======
+    normalImportMode: 1
+>>>>>>> a0523cc1e5756cc48f3efa334c9e2b885c41c5ee
     tangentImportMode: 3
     normalCalculationMode: 4
   importAnimation: 1
