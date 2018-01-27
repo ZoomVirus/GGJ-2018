@@ -61,6 +61,22 @@ public class TouchControllerInteract : MonoBehaviour
                 heldItem.transform.parent = null;
             }
         }
+        else
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                Vector3 fwd = new Vector3(20, 20, 20);
+
+                RaycastHit hit;
+                Debug.Log("before");
+                if (Physics.Raycast(transform.position, fwd, out hit))
+                {
+                    Debug.Log("in");
+                    PickUpItem(hit.collider);
+                }
+                Debug.Log("after");
+            }
+        }
     }
 
     void OnTriggerEnter(Collider other)
