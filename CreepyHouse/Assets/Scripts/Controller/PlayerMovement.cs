@@ -53,6 +53,10 @@ public class PlayerMovement : MonoBehaviour
         Quaternion q = gameObject.transform.rotation;
         q.eulerAngles = new Vector3(q.eulerAngles.x, q.eulerAngles.y, 0);
         gameObject.transform.rotation = q;
+        Vector3 v = gameObject.transform.position;
+        v = new Vector3(v.x, 0, v.z);
+        gameObject.transform.position = v;
+
     }
 }
 
