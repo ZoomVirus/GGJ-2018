@@ -12,7 +12,7 @@ public class TouchControllerInteract : MonoBehaviour
     {
         if (!GlobalSettings.RiftContoller)
         {
-            this.gameObject.GetComponent<Renderer>().enabled = false;
+            //   this.gameObject.GetComponent<Renderer>().enabled = false;           
         }
     }
 
@@ -71,6 +71,7 @@ public class TouchControllerInteract : MonoBehaviour
                 RaycastHit hit;
                 if (Physics.Raycast(transform.position, RayCastValuesForPick, out hit))
                 {
+                    Debug.Log("jhUJ");
                     PickUpItem(hit.collider);
                 }
             }
