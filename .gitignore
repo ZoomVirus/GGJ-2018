@@ -50,3 +50,5 @@ UnityVS.meta
 !Assets/Vendors/InControl/Source/Debug/
 *.assets
 *.assets
+CreepyHouse/CreepyHouse.csproj
+CreepyHouse/CreepyHouse.sln
