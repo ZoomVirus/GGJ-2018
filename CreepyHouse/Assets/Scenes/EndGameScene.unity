@@ -947,7 +947,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1498668070
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1130,7 +1130,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 156.20004, y: 0}
+  m_AnchoredPosition: {x: 230, y: 0}
   m_SizeDelta: {x: 350, y: 175}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1697450694
@@ -1165,8 +1165,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Art:\n  Andy ?\n\nProgramming:\n  Matt Gough\n  Karl Sweeney\n  Nick Dupker
-    \n  Joel ?\n"
+  m_Text: "Art:\n  Andy King\n\nProgramming:\n  Matt Gough\n  Karl Sweeney\n  Nick
+    Dupker \n  Joel ?\n"
 --- !u!222 &1697450695
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1205,7 +1205,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 66.2, y: 0}
+  m_AnchoredPosition: {x: 50, y: 0}
   m_SizeDelta: {x: 350, y: 175}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1705279531
@@ -1240,7 +1240,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Design:\n  Tom ?\n  ? ?\n  ? ?\n\nSound:\n  ? ?\n\n\n"
+  m_Text: "Design:\n  Tom White\n  Aldo Lorenzo Barnardi\n  Martin Catterall\n\nSound:\n
+    \ ? ?\n\n\n"
 --- !u!222 &1705279532
 CanvasRenderer:
   m_ObjectHideFlags: 0

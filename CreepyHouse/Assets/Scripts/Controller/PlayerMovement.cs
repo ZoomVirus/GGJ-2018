@@ -5,8 +5,11 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float translateSpeed;
-    public float rotateSpeed;
-
+    public float rotateHoriSpeed;
+    public float rotateVertSpeed;
+    public bool Contoller;
+    public float controllerToKeyboardRatioTranslation;
+    public float controllerToMouseRatioRotation;
 
     // Use this for initialization
     void Start()
@@ -16,18 +19,32 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 translate = new Vector3(Input.GetAxisRaw("Horizontal") * translateSpeed * Time.deltaTime, 0, Input.GetAxisRaw("Forward") * translateSpeed * Time.deltaTime);
-        Debug.Log(translate.x + "," + translate.y + "," + translate.z);
+        float ratioMultiplyer = 1;
+        if (Contoller)
+        {
+            ratioMultiplyer = controllerToKeyboardRatioTranslation;
+        }
+
+        Vector3 translate = new Vector3(controllerToKeyboardRatioTranslation * Input.GetAxisRaw("Horizontal") * translateSpeed * Time.deltaTime, 0, ratioMultiplyer * Input.GetAxisRaw("Forward") * translateSpeed * Time.deltaTime);
         this.gameObject.transform.Translate(translate);
 
-        this.gameObject.transform.Rotate(Vector3.right, Input.GetAxisRaw("VerticalRotation") * rotateSpeed * Time.deltaTime);
-        this.gameObject.transform.Rotate(Vector3.up, Input.GetAxisRaw("HorizontalRotation") * rotateSpeed * Time.deltaTime);
-
-        //reset to not tilt over
-        if (this.gameObject.transform.rotation.z != 0)
+        if (Contoller)
         {
-            this.gameObject.transform.rotation = new Quaternion(this.gameObject.transform.rotation.x,  this.gameObject.transform.rotation.y, 0, this.gameObject.transform.rotation.w);
+
+            ratioMultiplyer = controllerToMouseRatioRotation;
+            this.gameObject.transform.Rotate(Vector3.right, Input.GetAxisRaw("VerticalRotation") * ratioMultiplyer * rotateVertSpeed * Time.deltaTime);
+            this.gameObject.transform.Rotate(Vector3.up, Input.GetAxisRaw("HorizontalRotation") * ratioMultiplyer * rotateHoriSpeed * Time.deltaTime);
         }
+        else
+        {
+            this.gameObject.transform.Rotate(Vector3.right, Input.GetAxisRaw("Mouse Y") * ratioMultiplyer * rotateVertSpeed * Time.deltaTime);
+            this.gameObject.transform.Rotate(Vector3.up, Input.GetAxisRaw("Mouse X") * ratioMultiplyer * rotateHoriSpeed * Time.deltaTime);
+        }
+
+        Quaternion q = gameObject.transform.rotation;
+        q.eulerAngles = new Vector3(q.eulerAngles.x, q.eulerAngles.y, 0);
+        gameObject.transform.rotation = q;
+
     }
 }
 

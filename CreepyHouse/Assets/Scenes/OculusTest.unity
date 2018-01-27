@@ -682,5 +682,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58a91ad4bba884c419d2652d45d10f46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  translateSpeed: 20
-  rotateSpeed: 10
+  translateSpeed: 0.2
+  rotateHoriSpeed: 0.01
+  rotateVertSpeed: 0.01
+  Contoller: 1
+  controllerToKeyboardRatioTranslation: 50
+  controllerToMouseRatioRotation: 10000
