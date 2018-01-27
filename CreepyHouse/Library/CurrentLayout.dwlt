@@ -108,7 +108,11 @@ MonoBehaviour:
   m_MinSize: {x: 583, y: 492}
   m_MaxSize: {x: 14004, y: 14042}
   vertical: 0
+<<<<<<< HEAD
+  controlID: 1239
+=======
   controlID: 1904
+>>>>>>> fa84a4c6f522cb2542f60713ff54c6819bcd38fb
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -132,7 +136,11 @@ MonoBehaviour:
   m_MinSize: {x: 583, y: 492}
   m_MaxSize: {x: 14004, y: 14042}
   vertical: 1
+<<<<<<< HEAD
+  controlID: 1240
+=======
   controlID: 1905
+>>>>>>> fa84a4c6f522cb2542f60713ff54c6819bcd38fb
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -157,7 +165,11 @@ MonoBehaviour:
   m_MinSize: {x: 583, y: 221}
   m_MaxSize: {x: 12008, y: 4021}
   vertical: 0
+<<<<<<< HEAD
+  controlID: 1241
+=======
   controlID: 1906
+>>>>>>> fa84a4c6f522cb2542f60713ff54c6819bcd38fb
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -258,7 +270,11 @@ MonoBehaviour:
   m_MinSize: {x: 434, y: 271}
   m_MaxSize: {x: 14004, y: 10021}
   vertical: 0
+<<<<<<< HEAD
+  controlID: 1318
+=======
   controlID: 2040
+>>>>>>> fa84a4c6f522cb2542f60713ff54c6819bcd38fb
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -418,9 +434,15 @@ MonoBehaviour:
   m_PersistentViewDataDictionary: {fileID: 0}
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
+<<<<<<< HEAD
+    m_SelectedIDs: 2c280000
+    m_LastClickedID: 0
+    m_ExpandedIDs: deddffffe8ddffff86fbffff00000000
+=======
     m_SelectedIDs: 64280000
     m_LastClickedID: 0
     m_ExpandedIDs: 2af6ffff78fbffff00000000
+>>>>>>> fa84a4c6f522cb2542f60713ff54c6819bcd38fb
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -439,7 +461,11 @@ MonoBehaviour:
       m_ClientGUIView: {fileID: 8}
     m_SearchString: 
   m_ExpandedScenes:
+<<<<<<< HEAD
+  - AITestScene
+=======
   - MouseLookTest
+>>>>>>> fa84a4c6f522cb2542f60713ff54c6819bcd38fb
   m_CurrenRootInstanceID: 0
   m_Locked: 0
   m_CurrentSortingName: TransformSorting
@@ -471,14 +497,20 @@ MonoBehaviour:
     height: 408
   m_PersistentViewDataDictionary: {fileID: 0}
   m_SceneLighting: 1
-  lastFramingTime: 341.56958049210226
+  lastFramingTime: 2695.8284883410133
   m_2DMode: 0
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
+<<<<<<< HEAD
+    m_Target: {x: 246.52348, y: -5.032852, z: -86.07001}
+    speed: 2
+    m_Value: {x: 246.52348, y: -5.032852, z: -86.07001}
+=======
     m_Target: {x: 0.4223542, y: -0.026866913, z: 0.4223541}
     speed: 2
     m_Value: {x: 0.4223542, y: -0.026866913, z: 0.4223541}
+>>>>>>> fa84a4c6f522cb2542f60713ff54c6819bcd38fb
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -502,6 +534,15 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
   m_Rotation:
+<<<<<<< HEAD
+    m_Target: {x: 0.0014030449, y: 0.9933986, z: -0.11405247, w: 0.012220048}
+    speed: 2
+    m_Value: {x: 0.0014030449, y: 0.9933986, z: -0.11405247, w: 0.012220047}
+  m_Size:
+    m_Target: 160.4667
+    speed: 2
+    m_Value: 160.4667
+=======
     m_Target: {x: -0.08773113, y: 0.8992739, z: -0.2118017, w: -0.37249142}
     speed: 2
     m_Value: {x: -0.08773113, y: 0.8992739, z: -0.2118017, w: -0.37249142}
@@ -509,6 +550,7 @@ MonoBehaviour:
     m_Target: 14.333296
     speed: 2
     m_Value: 14.333296
+>>>>>>> fa84a4c6f522cb2542f60713ff54c6819bcd38fb
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -590,7 +632,7 @@ MonoBehaviour:
     width: 554
     height: 408
   m_PersistentViewDataDictionary: {fileID: 0}
-  m_ScrollPosition: {x: 0, y: 0}
+  m_ScrollPosition: {x: 0, y: 53.95508}
   m_InspectorMode: 0
   m_PreviewResizer:
     m_CachedPref: -174
@@ -697,6 +739,21 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
+<<<<<<< HEAD
+    - Assets/Scripts/Debug
+  m_ViewMode: 1
+  m_StartGridSize: 64
+  m_LastFolders:
+  - Assets/Scripts/Debug
+  m_LastFoldersGridSize: -1
+  m_LastProjectPath: C:\Projects\CreepyHouse\GGJ-2018\CreepyHouse
+  m_IsLocked: 1
+  m_FolderTreeState:
+    scrollPos: {x: 0, y: 0}
+    m_SelectedIDs: 28280000
+    m_LastClickedID: 10280
+    m_ExpandedIDs: 000000005e2700000a28000000ca9a3bffffff7f
+=======
     - Assets/Scripts
   m_ViewMode: 1
   m_StartGridSize: 64
@@ -710,6 +767,7 @@ MonoBehaviour:
     m_SelectedIDs: b6270000
     m_LastClickedID: 10166
     m_ExpandedIDs: 000000008827000000ca9a3bffffff7f
+>>>>>>> fa84a4c6f522cb2542f60713ff54c6819bcd38fb
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -737,7 +795,11 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
+<<<<<<< HEAD
+    m_ExpandedIDs: 000000005e2700000a28000000ca9a3bffffff7f
+=======
     m_ExpandedIDs: 000000008827000000ca9a3bffffff7f
+>>>>>>> fa84a4c6f522cb2542f60713ff54c6819bcd38fb
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -814,10 +876,10 @@ MonoBehaviour:
   m_DepthBufferBits: 0
   m_Pos:
     serializedVersion: 2
-    x: 976
-    y: 552
-    width: 560
-    height: 250
+    x: 975
+    y: 521
+    width: 561
+    height: 281
   m_PersistentViewDataDictionary: {fileID: 0}
   m_SearchFilter:
     m_NameFilter: 
@@ -835,15 +897,21 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Prefabs
+  - Assets
   m_LastFoldersGridSize: -1
-  m_LastProjectPath: C:\Users\Matt\OneDrive\Projects\FusRoDah!
+  m_LastProjectPath: C:\Projects\CreepyHouse\GGJ-2018\CreepyHouse
   m_IsLocked: 1
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
+<<<<<<< HEAD
+    m_SelectedIDs: 5e270000
+    m_LastClickedID: 10078
+    m_ExpandedIDs: 000000005e2700000a28000000ca9a3bffffff7f
+=======
     m_SelectedIDs: cc1d0000
     m_LastClickedID: 7628
     m_ExpandedIDs: 000000008827000000ca9a3bffffff7f
+>>>>>>> fa84a4c6f522cb2542f60713ff54c6819bcd38fb
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -871,7 +939,11 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
+<<<<<<< HEAD
+    m_ExpandedIDs: 000000005e2700000a28000000ca9a3bffffff7f
+=======
     m_ExpandedIDs: 000000008827000000ca9a3bffffff7f
+>>>>>>> fa84a4c6f522cb2542f60713ff54c6819bcd38fb
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -896,8 +968,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 
-    m_LastClickedInstanceID: 0
+    m_SelectedInstanceIDs: e8ddffff
+    m_LastClickedInstanceID: -8728
     m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: 621d0000da1d0000
     m_RenameOverlay:
