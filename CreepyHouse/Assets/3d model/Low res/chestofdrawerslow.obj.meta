@@ -1,23 +1,40 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
-guid: b7e169f4e39036848afca8471c8cb177
-timeCreated: 1517058890
-=======
-guid: dd301551fd2d0a645b44bc5d4d11d74d
-timeCreated: 1517060522
->>>>>>> 6f6fbbefb23adeef5f5c3ee5298e438c21248463
+guid: 156b059cf0349d440a45ad1ec25dbb3d
+timeCreated: 1517067310
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: pCube9
-    100002: //RootNode
-    400000: pCube9
-    400002: //RootNode
-    2100000: initialShadingGroup
-    2300000: pCube9
-    3300000: pCube9
-    4300000: pCube9
+    100000: //RootNode
+    100002: object1
+    100004: object2
+    100006: object3
+    100008: object4
+    400000: //RootNode
+    400002: object1
+    400004: object2
+    400006: object3
+    400008: object4
+    2100000: object1Mat
+    2100002: object2Mat
+    2100004: object3Mat
+    2100006: object4Mat
+    2300000: object1
+    2300002: object2
+    2300004: object3
+    2300006: object4
+    3300000: object1
+    3300002: object2
+    3300004: object3
+    3300006: object4
+    4300000: object1
+    4300002: object2
+    4300004: object3
+    4300006: object4
+    6400000: object1
+    6400002: object2
+    6400004: object3
+    6400006: object4
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -50,7 +67,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
@@ -70,7 +87,7 @@ ModelImporter:
     useFileScale: 1
   tangentSpace:
     normalSmoothAngle: 60
-    normalImportMode: 0
+    normalImportMode: 1
     tangentImportMode: 3
     normalCalculationMode: 4
   importAnimation: 1

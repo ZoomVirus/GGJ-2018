@@ -18,17 +18,22 @@ public class TouchControllerInteract : MonoBehaviour
     {
         if (HoldingItem)
         {
-            bool backTrigger = false;
             bool sideTrigger = false;
             if (LeftHand)
             {
-                backTrigger = OVRInput.Get(OVRInput.Button.PrimaryHandTrigger, OVRInput.Controller.LTouch);
                 sideTrigger = OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger, OVRInput.Controller.LTouch);
+                if (!sideTrigger)
+                {
+                    sideTrigger = Input.GetAxis("xboxTriggers") > 0;
+                }
             }
             else
             {
-                backTrigger = OVRInput.Get(OVRInput.Button.PrimaryHandTrigger, OVRInput.Controller.RTouch);
                 sideTrigger = OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger, OVRInput.Controller.RTouch);
+                if (!sideTrigger)
+                {
+                    sideTrigger = Input.GetAxis("xboxTriggers") < 0;
+                }
             }
 
             if (!sideTrigger)
@@ -43,9 +48,9 @@ public class TouchControllerInteract : MonoBehaviour
                 {
                     heldItemScript.heldInRight = false;
                 }
+
                 HoldingItem = false;
                 heldItem.transform.parent = null;
-
             }
         }
     }
@@ -62,36 +67,48 @@ public class TouchControllerInteract : MonoBehaviour
 
     void PickUpItem(Collider other)
     {
-        if (!HoldingItem)
+        var GrabAbleScript = other.gameObject.GetComponent("Grabable");
+        if (GrabAbleScript != null)
         {
-            bool backTrigger = false;
-            bool sideTrigger = false;
-            if (LeftHand)
+            if (!HoldingItem)
             {
-                backTrigger = OVRInput.Get(OVRInput.Button.PrimaryHandTrigger, OVRInput.Controller.LTouch);
-                sideTrigger = OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger, OVRInput.Controller.LTouch);
-            }
-            else
-            {
-                backTrigger = OVRInput.Get(OVRInput.Button.PrimaryHandTrigger, OVRInput.Controller.RTouch);
-                sideTrigger = OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger, OVRInput.Controller.RTouch);
-            }
-            var GrabAbleScript = other.gameObject.GetComponent("Grabable");
-            if (GrabAbleScript != null && sideTrigger)
-            {
-                var holdableItem = GrabAbleScript as Grabable;
-                if (!holdableItem.heldInRight && !holdableItem.heldInLeft)
+                bool sideTrigger = false;
+                if (LeftHand)
                 {
-                    if (LeftHand)
+                    sideTrigger = OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger, OVRInput.Controller.LTouch);
+                    if (!sideTrigger)
                     {
-                        holdableItem.heldInLeft = true;
+                        if (!sideTrigger)
+                        {
+                            sideTrigger = Input.GetAxis("xboxTriggers") > 0;
+                        }
                     }
-                    else
+                }
+                else
+                {
+                    sideTrigger = OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger, OVRInput.Controller.RTouch);
+                    if (!sideTrigger)
                     {
-                        holdableItem.heldInRight = true;
+                        sideTrigger = Input.GetAxis("xboxTriggers") < 0;
                     }
-                    HoldingItem = true;
-                    other.gameObject.transform.SetParent(gameObject.transform);
+                }
+
+                if (sideTrigger)
+                {
+                    var holdableItem = GrabAbleScript as Grabable;
+                    if (!holdableItem.heldInRight && !holdableItem.heldInLeft)
+                    {
+                        if (LeftHand)
+                        {
+                            holdableItem.heldInLeft = true;
+                        }
+                        else
+                        {
+                            holdableItem.heldInRight = true;
+                        }
+                        HoldingItem = true;
+                        other.gameObject.transform.SetParent(gameObject.transform);
+                    }
                 }
             }
         }
