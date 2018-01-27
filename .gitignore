@@ -1,10 +1,51 @@
+# System files
+Thumbs.db
+Thumbs.db.meta
+*.DS_Store
+*.directory
+.vs
+.vscode
 
-CreepyHouse/Temp/*
+# Build files
+*.apk
+*.obb
 
-CreepyHouse/Library/EditorInstance.json
+# Lightmaps
+*.exr
+*.exr.meta
+LightmapSnapshot.asset
+LightmapSnapshot.asset.meta
+LightingData.asset
+LightingData.asset.meta
 
-*.log
+# Visual Studio files
+*.cachefile
+*.csproj
+*.pidb
+*.sln
+*.suo
+*.unityproj
+*.user
+*.userprefs
+*.v11
+*.v12
 
-CreepyHouse/Library/shadercompiler-UnityShaderCompiler.exe0.log
+# Folder to exclude
+[Bb]in
+[Dd]ebug*/
+[Rr]elease*/
+Builds/
+ipch/
+Library/
+obj/
+Temp/
+UWP/
+WindowsStore/
+WS/
+UnityVS/
+UnityVS.meta
 
-CreepyHouse/Library/metadata/*
+# Folders to keep
+!Assets/Vendors/InControl/Source/Debug/
+*.assets
+*.assets
