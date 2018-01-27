@@ -13,29 +13,61 @@ InputManager:
     positiveButton: right
     altNegativeButton: a
     altPositiveButton: d
-    gravity: 3
-    dead: 0.001
-    sensitivity: 3
+    gravity: 0
+    dead: 1
+    sensitivity: 9
     snap: 1
     invert: 0
-    type: 0
+    type: 2
     axis: 0
     joyNum: 0
   - serializedVersion: 3
-    m_Name: Vertical
+    m_Name: HorizontalRotation
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: q
+    positiveButton: e
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 0
+    dead: 1
+    sensitivity: 9
+    snap: 1
+    invert: 0
+    type: 2
+    axis: 3
+    joyNum: 0
+  - serializedVersion: 3
+    m_Name: Forward
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: down
     positiveButton: up
     altNegativeButton: s
     altPositiveButton: w
-    gravity: 3
-    dead: 0.001
-    sensitivity: 3
+    gravity: 0
+    dead: 1
+    sensitivity: 9
     snap: 1
     invert: 0
     type: 0
-    axis: 0
+    axis: 1
+    joyNum: 0
+  - serializedVersion: 3
+    m_Name: VerticalRotation
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: x
+    positiveButton: c
+    altNegativeButton: 
+    altPositiveButton: 
+    gravity: 0
+    dead: 1
+    sensitivity: 9
+    snap: 1
+    invert: 0
+    type: 2
+    axis: 4
     joyNum: 0
   - serializedVersion: 3
     m_Name: Fire1
@@ -77,22 +109,6 @@ InputManager:
     positiveButton: left shift
     altNegativeButton: 
     altPositiveButton: mouse 2
-    gravity: 1000
-    dead: 0.001
-    sensitivity: 1000
-    snap: 0
-    invert: 0
-    type: 0
-    axis: 0
-    joyNum: 0
-  - serializedVersion: 3
-    m_Name: Jump
-    descriptiveName: 
-    descriptiveNegativeName: 
-    negativeButton: 
-    positiveButton: space
-    altNegativeButton: 
-    altPositiveButton: 
     gravity: 1000
     dead: 0.001
     sensitivity: 1000
@@ -166,7 +182,7 @@ InputManager:
     axis: 0
     joyNum: 0
   - serializedVersion: 3
-    m_Name: Vertical
+    m_Name: Forward
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
