@@ -28,7 +28,6 @@ public class PlayerMovement : MonoBehaviour {
 			if (xRot > 180f) {
 				xRot -= 360;
 			}
-			Debug.Log (xRot);
 			float clampedView = Mathf.Clamp (xRot - Input.GetAxisRaw ("Mouse Y") * mouseSensitivity * Time.deltaTime, -90, 90);
 			mainCamera.transform.rotation = Quaternion.Euler (clampedView, this.transform.rotation.eulerAngles.y, 0f);
 		}
