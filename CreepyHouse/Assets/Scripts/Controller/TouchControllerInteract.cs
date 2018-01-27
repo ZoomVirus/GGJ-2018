@@ -10,7 +10,10 @@ public class TouchControllerInteract : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-
+        if (!GlobalSettings.RiftContoller)
+        {
+            this.gameObject.GetComponent<Renderer>().enabled = false;
+        }
     }
 
     // Update is called once per frame
