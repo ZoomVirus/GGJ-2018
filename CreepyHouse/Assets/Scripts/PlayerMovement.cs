@@ -38,7 +38,7 @@ public class PlayerMovement : MonoBehaviour {
 		movementGoal = (new Vector3 (Input.GetAxis ("Horizontal"),0f, Input.GetAxis ("Vertical"))).normalized;
 		movementGoal = Quaternion.Euler (new Vector3 (0f, this.transform.rotation.eulerAngles.y)) * movementGoal;
 		Vector3 tempVelocity = ownRigidBody.velocity;
-		tempVelocity.x = movementGoal.x * maxSpeed;
+		tempVelocity.x = movementGoal.x * maxSpeed; 
 		tempVelocity.z = movementGoal.z * maxSpeed; 
 		ownRigidBody.velocity = tempVelocity;
 	}
