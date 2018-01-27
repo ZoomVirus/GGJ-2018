@@ -25,6 +25,10 @@ public class TouchControllerInteract : MonoBehaviour
                 if (!sideTrigger)
                 {
                     sideTrigger = Input.GetAxis("xboxTriggers") > 0;
+                    if (!sideTrigger)
+                    {
+                        sideTrigger = Input.GetMouseButton(0);
+                    }
                 }
             }
             else
@@ -33,6 +37,10 @@ public class TouchControllerInteract : MonoBehaviour
                 if (!sideTrigger)
                 {
                     sideTrigger = Input.GetAxis("xboxTriggers") < 0;
+                    if (!sideTrigger)
+                    {
+                        sideTrigger = Input.GetMouseButton(1);
+                    }
                 }
             }
 
@@ -78,9 +86,10 @@ public class TouchControllerInteract : MonoBehaviour
                     sideTrigger = OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger, OVRInput.Controller.LTouch);
                     if (!sideTrigger)
                     {
+                        sideTrigger = Input.GetAxis("xboxTriggers") > 0;
                         if (!sideTrigger)
                         {
-                            sideTrigger = Input.GetAxis("xboxTriggers") > 0;
+                            sideTrigger = Input.GetMouseButtonDown(0);
                         }
                     }
                 }
@@ -90,6 +99,10 @@ public class TouchControllerInteract : MonoBehaviour
                     if (!sideTrigger)
                     {
                         sideTrigger = Input.GetAxis("xboxTriggers") < 0;
+                        if (!sideTrigger)
+                        {
+                            sideTrigger = Input.GetMouseButtonDown(1);
+                        }
                     }
                 }
 
