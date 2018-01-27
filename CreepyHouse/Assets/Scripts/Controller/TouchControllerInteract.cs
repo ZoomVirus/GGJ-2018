@@ -22,10 +22,26 @@ public class TouchControllerInteract : MonoBehaviour
             if (LeftHand)
             {
                 sideTrigger = OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger, OVRInput.Controller.LTouch);
+                if (!sideTrigger)
+                {
+                    sideTrigger = Input.GetAxis("xboxTriggers") > 0;
+                    if (!sideTrigger)
+                    {
+                        sideTrigger = Input.GetMouseButton(0);
+                    }
+                }
             }
             else
             {
                 sideTrigger = OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger, OVRInput.Controller.RTouch);
+                if (!sideTrigger)
+                {
+                    sideTrigger = Input.GetAxis("xboxTriggers") < 0;
+                    if (!sideTrigger)
+                    {
+                        sideTrigger = Input.GetMouseButton(1);
+                    }
+                }
             }
 
             if (!sideTrigger)
@@ -45,6 +61,22 @@ public class TouchControllerInteract : MonoBehaviour
                 heldItem.transform.parent = null;
             }
         }
+        else
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                Vector3 fwd = new Vector3(20, 20, 20);
+
+                RaycastHit hit;
+                Debug.Log("before");
+                if (Physics.Raycast(transform.position, fwd, out hit))
+                {
+                    Debug.Log("in");
+                    PickUpItem(hit.collider);
+                }
+                Debug.Log("after");
+            }
+        }
     }
 
     void OnTriggerEnter(Collider other)
@@ -59,36 +91,53 @@ public class TouchControllerInteract : MonoBehaviour
 
     void PickUpItem(Collider other)
     {
-        if (!HoldingItem)
+        var GrabAbleScript = other.gameObject.GetComponent("Grabable");
+        if (GrabAbleScript != null)
         {
-            bool backTrigger = false;
-            bool sideTrigger = false;
-            if (LeftHand)
+            if (!HoldingItem)
             {
-                backTrigger = OVRInput.Get(OVRInput.Button.PrimaryHandTrigger, OVRInput.Controller.LTouch);
-                sideTrigger = OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger, OVRInput.Controller.LTouch);
-            }
-            else
-            {
-                backTrigger = OVRInput.Get(OVRInput.Button.PrimaryHandTrigger, OVRInput.Controller.RTouch);
-                sideTrigger = OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger, OVRInput.Controller.RTouch);
-            }
-            var GrabAbleScript = other.gameObject.GetComponent("Grabable");
-            if (GrabAbleScript != null && sideTrigger)
-            {
-                var holdableItem = GrabAbleScript as Grabable;
-                if (!holdableItem.heldInRight && !holdableItem.heldInLeft)
+                bool sideTrigger = false;
+                if (LeftHand)
                 {
-                    if (LeftHand)
+                    sideTrigger = OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger, OVRInput.Controller.LTouch);
+                    if (!sideTrigger)
                     {
-                        holdableItem.heldInLeft = true;
+                        sideTrigger = Input.GetAxis("xboxTriggers") > 0;
+                        if (!sideTrigger)
+                        {
+                            sideTrigger = Input.GetMouseButtonDown(0);
+                        }
                     }
-                    else
+                }
+                else
+                {
+                    sideTrigger = OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger, OVRInput.Controller.RTouch);
+                    if (!sideTrigger)
                     {
-                        holdableItem.heldInRight = true;
+                        sideTrigger = Input.GetAxis("xboxTriggers") < 0;
+                        if (!sideTrigger)
+                        {
+                            sideTrigger = Input.GetMouseButtonDown(1);
+                        }
                     }
-                    HoldingItem = true;
-                    other.gameObject.transform.SetParent(gameObject.transform);
+                }
+
+                if (sideTrigger)
+                {
+                    var holdableItem = GrabAbleScript as Grabable;
+                    if (!holdableItem.heldInRight && !holdableItem.heldInLeft)
+                    {
+                        if (LeftHand)
+                        {
+                            holdableItem.heldInLeft = true;
+                        }
+                        else
+                        {
+                            holdableItem.heldInRight = true;
+                        }
+                        HoldingItem = true;
+                        other.gameObject.transform.SetParent(gameObject.transform);
+                    }
                 }
             }
         }
