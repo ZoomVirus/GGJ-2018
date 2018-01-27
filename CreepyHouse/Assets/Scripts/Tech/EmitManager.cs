@@ -15,9 +15,26 @@ public class EmitManager : MonoBehaviour
         m_Instance = this;
         Shader.SetGlobalVectorArray("_EmitLocations", m_EmitLocations);
         Shader.SetGlobalVectorArray("_EmitData", m_EmitData);
+        if (m_Auto)
+        {
+            StartCoroutine(AutoEmit(m_Location1));
+            StartCoroutine(AutoEmit(m_Location2));
+            StartCoroutine(AutoEmit(m_Location3));
+        }
+
+    }
+
+    IEnumerator AutoEmit(Transform location)
+    {
+        while(true)
+        {
+            yield return new WaitForSeconds(Random.Range(0f, 3f));
+            Emit(location.position);
+        }
     }
 
     public Transform m_Location1, m_Location2, m_Location3;
+    public bool m_Auto = false;
 
     Vector4[] m_EmitLocations = new Vector4[100];
     Vector4[] m_EmitData = new Vector4[100];
@@ -32,7 +49,7 @@ public class EmitManager : MonoBehaviour
     //location
 
 
-    public void Emit(Vector3 location, float speed = 3, float fallOff = 5, float width = 2)
+    public void Emit(Vector3 location, float speed = 3, float fallOff = 10, float width = 5)
     {
         float lowestTime = float.MaxValue;
         int id = -1;
