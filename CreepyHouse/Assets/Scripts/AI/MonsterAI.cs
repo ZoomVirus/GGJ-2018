@@ -233,11 +233,8 @@ public class MonsterAI : MonoBehaviour
         //Stub. Add kill things code here. check for player/destructable/destroyed/deactivatable
 
         // If a thrown item, this should probably still be the thing to turn it off. Just turn off the pickup element beforehand.
-        if (m_seekingSound)
-        {
-            Destroy(m_seekingSound.gameObject);
-            //Play destruction sound
-        }
+        m_seekingSound.Attacked();
+
         SetIdle();
     }
 

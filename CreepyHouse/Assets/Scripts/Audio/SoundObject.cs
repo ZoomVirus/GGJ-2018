@@ -9,6 +9,7 @@ public class SoundObject : MonoBehaviour {
     [SerializeField] protected float m_pulseSpeed = 0.3f;
     [SerializeField] protected float m_pulseDistance = 0.5f;
     [SerializeField] protected float m_pulseWidth = 0.7f;
+    [SerializeField] private   bool  m_destroyOnAttacked = true;
 
     private AudioSource m_source;
     protected float m_loudness;
@@ -54,6 +55,15 @@ public class SoundObject : MonoBehaviour {
         float width = m_pulseWidth;
 
         EmitManager.Instance.Emit(location, speed, falloff, width);
+    }
+
+    public void Attacked()
+    {
+        if (m_destroyOnAttacked)
+        {
+
+            GameObject.Destroy(gameObject);
+        }
     }
 
     public float GetVolume() { return m_loudness; }
