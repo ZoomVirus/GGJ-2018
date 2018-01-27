@@ -1,7 +1,5 @@
 fileFormatVersion: 2
-guid: 156b059cf0349d440a45ad1ec25dbb3d
-timeCreated: 1517067310
-licenseType: Free
+guid: 5a912aa59fce96b489d2bbe3b50f2980
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
@@ -31,10 +29,7 @@ ModelImporter:
     4300002: object2
     4300004: object3
     4300006: object4
-    6400000: object1
-    6400002: object2
-    6400004: object3
-    6400006: object4
+    9500000: //RootNode
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -67,7 +62,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 1
+    addColliders: 0
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
@@ -87,7 +82,7 @@ ModelImporter:
     useFileScale: 1
   tangentSpace:
     normalSmoothAngle: 60
-    normalImportMode: 1
+    normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
   importAnimation: 1
@@ -109,7 +104,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
