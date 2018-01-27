@@ -50,18 +50,25 @@ public class TouchControllerInteract : MonoBehaviour
             if (!sideTrigger)
             {
                 var heldItem = this.gameObject.transform.GetChild(0).gameObject;
-                var heldItemScript = heldItem.gameObject.GetComponent("Grabable") as Grabable;
-                if (LeftHand)
+                //var heldItemScript = heldItem.gameObject.GetComponent("Grabable") as Interactable;
+                var InteractableItem = heldItem.gameObject.GetComponent("Grabable") as Interactable;
+                InteractableItem.Interact();
+                if (InteractableItem is Grabable)
                 {
-                    heldItemScript.heldInLeft = false;
-                }
-                else
-                {
-                    heldItemScript.heldInRight = false;
+                    var holdableItem = InteractableItem as Grabable;
+                    if (LeftHand)
+                    {
+                        holdableItem.heldInLeft = false;
+                    }
+                    else
+                    {
+                        holdableItem.heldInRight = false;
+                    }
+
+                    HoldingItem = false;
+                    heldItem.transform.parent = null;
                 }
 
-                HoldingItem = false;
-                heldItem.transform.parent = null;
             }
         }
         else
@@ -123,19 +130,25 @@ public class TouchControllerInteract : MonoBehaviour
 
                 if (sideTrigger)
                 {
-                    var holdableItem = GrabAbleScript as Grabable;
-                    if (!holdableItem.heldInRight && !holdableItem.heldInLeft)
+                    //var holdableItem = GrabAbleScript as Interactable;
+                    var InteractableItem = GrabAbleScript as Interactable;
+                    InteractableItem.Interact();
+                    if (InteractableItem is Grabable)
                     {
-                        if (LeftHand)
+                        var holdableItem = InteractableItem as Grabable;
+                        if (!holdableItem.heldInRight && !holdableItem.heldInLeft)
                         {
-                            holdableItem.heldInLeft = true;
+                            if (LeftHand)
+                            {
+                                holdableItem.heldInLeft = true;
+                            }
+                            else
+                            {
+                                holdableItem.heldInRight = true;
+                            }
+                            HoldingItem = true;
+                            other.gameObject.transform.SetParent(gameObject.transform);
                         }
-                        else
-                        {
-                            holdableItem.heldInRight = true;
-                        }
-                        HoldingItem = true;
-                        other.gameObject.transform.SetParent(gameObject.transform);
                     }
                 }
             }
