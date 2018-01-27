@@ -5,10 +5,10 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class SoundObject : MonoBehaviour {
 
-    [SerializeField] protected float m_SecondsPerPing;
-    [SerializeField] protected float m_pulseSpeed;
-    [SerializeField] protected float m_pulseDistance;
-    [SerializeField] protected float m_pulseWidth;
+    [SerializeField] protected float m_SecondsPerPing = 1f;
+    [SerializeField] protected float m_pulseSpeed = 0.3f;
+    [SerializeField] protected float m_pulseDistance = 0.5f;
+    [SerializeField] protected float m_pulseWidth = 0.7f;
 
     private AudioSource m_source;
     protected float m_loudness;
@@ -32,7 +32,10 @@ public class SoundObject : MonoBehaviour {
                     PingRequest();
                     yield return new WaitForSeconds(m_SecondsPerPing);
                 }
-                m_loudness = 0;
+                if (!m_source.loop)
+                {
+                    m_loudness = 0;
+                }
             }
             else
             {
@@ -47,7 +50,7 @@ public class SoundObject : MonoBehaviour {
         // TODO: Get nick to confirm how he wants to set that info.
         Vector3 location = transform.position;
         float speed = m_pulseSpeed;
-        float falloff = m_pulseDistance;
+        float falloff = m_pulseDistance * m_loudness;
         float width = m_pulseWidth;
 
         EmitManager.Instance.Emit(location, speed, falloff, width);
