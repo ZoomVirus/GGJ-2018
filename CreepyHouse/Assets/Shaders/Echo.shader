@@ -34,7 +34,15 @@
 			sampler2D _MainTex;
 			float4 _MainTex_ST;
 			float4 _EmitLocations[100];
-			float _EmitTimes[100];
+			float4 _EmitData[100];
+			//x: Time
+			//y: Speed
+			//z: FallOff
+			//w: Width
+			//float _EmitTimes[100];
+			//float _EmitFallOffs[100];
+			//float _EmitSpeeds[100];
+			//float _EmitWidths[100];
 			
 			v2f vert (appdata v)
 			{
@@ -49,18 +57,19 @@
 			fixed4 frag (v2f i) : SV_Target
 			{
 
-				float speed = 3;
 				float MaxColWidth = 0;
-				float width = 2;
-				float FallOffStartDistance = 0;
-				float FallOffEndDistance = 5;
 
 				
 				float val = 0;
 				float iterator = 0;
 				for(iterator = 0; iterator < 100; iterator++)
 				{
-				
+					if(_EmitData[iterator].x == 0)
+						continue;
+					float width = _EmitData[iterator].w;
+					float speed = _EmitData[iterator].y;
+					float FallOffStartDistance = 0;
+					float FallOffEndDistance = _EmitData[iterator].z;
 					float dis = distance(_EmitLocations[iterator] , i.worldPos);
 
 					float fallOffScale = 1;
@@ -68,7 +77,7 @@
 						fallOffScale = ((FallOffEndDistance - FallOffStartDistance)- (dis - FallOffStartDistance))/
 						(FallOffEndDistance - FallOffStartDistance);
 				
-					float maxdis = ((_Time.y - _EmitTimes[iterator]) * speed);
+					float maxdis = ((_Time.y - _EmitData[iterator].x) * speed);
 					float fademaxdis = maxdis - MaxColWidth;
 					float fademindis = fademaxdis - width;
 				
@@ -79,11 +88,15 @@
 					else if(dis < fademaxdis && dis > fademindis)
 						tempval =  1 - ((width - (dis - fademindis))/width);
 					tempval = tempval * fallOffScale;
+					if(tempval < 0)
+						tempval = 0;
+
 					val = val + tempval;
 				}
 				return float4(val,val,val,val);
 			}
 			ENDCG
 		}
+
 	}
 }
