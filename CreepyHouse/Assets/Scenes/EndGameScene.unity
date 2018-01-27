@@ -1166,7 +1166,7 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "Art:\n  Andy King\n\nProgramming:\n  Matt Gough\n  Karl Sweeney\n  Nick
-    Dupker \n  Joel ?\n"
+    Dupker \n  Joel Stephenson\n"
 --- !u!222 &1697450695
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1241,7 +1241,7 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "Design:\n  Tom White\n  Aldo Lorenzo Barnardi\n  Martin Catterall\n\nSound:\n
-    \ ? ?\n\n\n"
+    \ Paul Gorman\n\n\n"
 --- !u!222 &1705279532
 CanvasRenderer:
   m_ObjectHideFlags: 0
