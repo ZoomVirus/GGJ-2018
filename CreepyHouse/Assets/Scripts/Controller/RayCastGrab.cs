@@ -21,7 +21,6 @@ public class RayCastGrab : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(transform.position, RayCastValuesForPick, out hit))
             {
-                Debug.Log("jhUJ");
                 PickUpItem(hit.collider);
             }
         }

@@ -5,6 +5,7 @@ using UnityEngine.XR;
 
 public class PlayerMovement : MonoBehaviour
 {
+    //with oculus still need all these inouts due to users hardware options
     // Use this for initialization
     void Start()
     {
@@ -23,8 +24,7 @@ public class PlayerMovement : MonoBehaviour
         {
             ratioMultiplyer = GlobalSettings.xboxControllerToKeyboardRatioTranslation;
         }
-        var x = Input.GetAxisRaw("Horizontal");
-        var y = Input.GetAxisRaw("Forward");
+
         Vector3 translate = new Vector3(ratioMultiplyer * Input.GetAxisRaw("Horizontal") * GlobalSettings.translateSpeed * Time.deltaTime, 0, ratioMultiplyer * Input.GetAxisRaw("Forward") * GlobalSettings.translateSpeed * Time.deltaTime);
         this.gameObject.transform.Translate(translate);
 

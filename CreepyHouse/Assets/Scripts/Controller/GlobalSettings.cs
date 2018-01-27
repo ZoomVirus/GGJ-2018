@@ -12,6 +12,7 @@ public class GlobalSettings : MonoBehaviour
     public static float xboxControllerToKeyboardRatioTranslation = 10;
     public static float xboxControllerToMouseRatioRotation = 20;
     public static float riftControllerToKeyboardRatioTranslation = 3;
+    public static float ForceThrowObject = 2;
     // Use this for initialization
     void Start()
     {

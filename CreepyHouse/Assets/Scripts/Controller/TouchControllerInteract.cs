@@ -47,34 +47,36 @@ public class TouchControllerInteract : MonoBehaviour
                 }
             }
 
+
             if (!sideTrigger)
             {
-                var heldItem = this.gameObject.transform.GetChild(0).gameObject;
-                var heldItemScript = heldItem.gameObject.GetComponent("Grabable") as Grabable;
-                if (LeftHand)
-                {
-                    heldItemScript.heldInLeft = false;
-                }
-                else
-                {
-                    heldItemScript.heldInRight = false;
-                }
+                DropItem();
+            }
 
-                HoldingItem = false;
-                heldItem.transform.parent = null;
-            }
-        }
-        else
-        {
-            if (Input.GetMouseButtonDown(0))
+            if (LeftHand)
             {
-                RaycastHit hit;
-                if (Physics.Raycast(transform.position, RayCastValuesForPick, out hit))
+                if (OVRInput.Get(OVRInput.Button.PrimaryHandTrigger, OVRInput.Controller.LTouch))
                 {
-                    Debug.Log("jhUJ");
-                    PickUpItem(hit.collider);
+                    DropItem(true);
+                }
+                else if ((Input.GetKeyDown("q")))
+                {
+                    DropItem(true);
+                }
+                else if (Input.GetAxis("xboxBumper") > 0)
+                {
+                    DropItem(true);
                 }
             }
+            else
+            {
+                if (OVRInput.Get(OVRInput.Button.PrimaryHandTrigger, OVRInput.Controller.RTouch))
+                {
+                    DropItem(true);
+                }
+            }
+
+
         }
     }
 
@@ -135,10 +137,33 @@ public class TouchControllerInteract : MonoBehaviour
                             holdableItem.heldInRight = true;
                         }
                         HoldingItem = true;
+                        holdableItem.GetComponent<Rigidbody>().isKinematic = true;
                         other.gameObject.transform.SetParent(gameObject.transform);
                     }
                 }
             }
+        }
+    }
+
+    void DropItem(bool throwObject = false)
+    {
+        var heldItem = this.gameObject.transform.GetChild(0).gameObject;
+        var heldItemScript = heldItem.gameObject.GetComponent("Grabable") as Grabable;
+        if (LeftHand)
+        {
+            heldItemScript.heldInLeft = false;
+        }
+        else
+        {
+            heldItemScript.heldInRight = false;
+        }
+
+        HoldingItem = false;
+        heldItem.transform.parent = null;
+        heldItem.GetComponent<Rigidbody>().isKinematic = false;
+        if (throwObject)
+        {
+            heldItemScript.ThrowObject();
         }
     }
 }
