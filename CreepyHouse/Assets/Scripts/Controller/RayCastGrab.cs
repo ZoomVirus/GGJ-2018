@@ -6,7 +6,7 @@ public class RayCastGrab : MonoBehaviour
 {
     public bool LeftHand;
     public bool HoldingItem;
-    public Vector3 RayCastValuesForPick;
+    //public Vector3 RayCastValuesForPick;
     // Use this for initialization
     void Start()
     {
@@ -19,7 +19,7 @@ public class RayCastGrab : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             RaycastHit hit;
-            if (Physics.Raycast(transform.position, RayCastValuesForPick, out hit))
+            if (Physics.Raycast(transform.position, transform.forward, out hit))
             {
                 PickUpItem(hit.collider);
             }
@@ -31,8 +31,11 @@ public class RayCastGrab : MonoBehaviour
         var GrabAbleScript = other.gameObject.GetComponent("Grabable");
         if (GrabAbleScript != null)
         {
+
+            Debug.Log("1");
             if (!HoldingItem)
             {
+                Debug.Log("2");
                 bool sideTrigger = false;
                 if (LeftHand)
                 {
@@ -61,19 +64,24 @@ public class RayCastGrab : MonoBehaviour
 
                 if (sideTrigger)
                 {
-                    var holdableItem = GrabAbleScript as Grabable;
-                    if (!holdableItem.heldInRight && !holdableItem.heldInLeft)
+                    var InteractableItem = GrabAbleScript as Interactable;
+                    InteractableItem.Interact();
+                    if (InteractableItem is Grabable)
                     {
-                        if (LeftHand)
+                        var holdableItem = InteractableItem as Grabable;
+                        //if (!holdableItem.heldInRight && !holdableItem.heldInLeft)
                         {
-                            holdableItem.heldInLeft = true;
+                            if (LeftHand)
+                            {
+                                holdableItem.heldInLeft = true;
+                            }
+                            else
+                            {
+                                holdableItem.heldInRight = true;
+                            }
+                            HoldingItem = true;
+                            other.gameObject.transform.SetParent(gameObject.transform);
                         }
-                        else
-                        {
-                            holdableItem.heldInRight = true;
-                        }
-                        HoldingItem = true;
-                        other.gameObject.transform.SetParent(gameObject.transform);
                     }
                 }
             }

@@ -11,10 +11,10 @@ Shader "Custom/Outline"
      SubShader 
      {
      
-         Tags { "Queue"="Geometry" "IgnoreProjector"="True" "RenderType"="Transparent" }
-         Blend SrcAlpha OneMinusSrcAlpha
+         Tags { /*"Queue"="Geometry" "IgnoreProjector"="True"*/ "RenderType"="Opaque" }
+         //Blend SrcAlpha OneMinusSrcAlpha
          Cull Back
-         ZTest always
+         //ZTest always
          Pass
          {
              Stencil {
@@ -207,5 +207,5 @@ Shader "Custom/Outline"
  
          }
      }
-     FallBack "Diffuse"
+     //FallBack "Diffuse"
  }

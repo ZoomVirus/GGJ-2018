@@ -47,36 +47,41 @@ public class TouchControllerInteract : MonoBehaviour
                 }
             }
 
-
             if (!sideTrigger)
             {
-                DropItem();
-            }
+                var heldItem = this.gameObject.transform.GetChild(0).gameObject;
+                //var heldItemScript = heldItem.gameObject.GetComponent("Grabable") as Interactable;
+                var InteractableItem = heldItem.gameObject.GetComponent("Grabable") as Interactable;
+                InteractableItem.Interact();
+                if (InteractableItem is Grabable)
+                {
+                    var holdableItem = InteractableItem as Grabable;
+                    if (LeftHand)
+                    {
+                        holdableItem.heldInLeft = false;
+                    }
+                    else
+                    {
+                        holdableItem.heldInRight = false;
+                    }
 
-            if (LeftHand)
+                    HoldingItem = false;
+                    heldItem.transform.parent = null;
+                }
+
+            }
+        }
+        else
+        {
+            if (Input.GetMouseButtonDown(0))
             {
-                if (OVRInput.Get(OVRInput.Button.PrimaryHandTrigger, OVRInput.Controller.LTouch))
+                RaycastHit hit;
+                if (Physics.Raycast(transform.position, RayCastValuesForPick, out hit))
                 {
-                    DropItem(true);
-                }
-                else if ((Input.GetKeyDown("q")))
-                {
-                    DropItem(true);
-                }
-                else if (Input.GetAxis("xboxBumper") > 0)
-                {
-                    DropItem(true);
+                    Debug.Log("jhUJ");
+                    PickUpItem(hit.collider);
                 }
             }
-            else
-            {
-                if (OVRInput.Get(OVRInput.Button.PrimaryHandTrigger, OVRInput.Controller.RTouch))
-                {
-                    DropItem(true);
-                }
-            }
-
-
         }
     }
 
@@ -125,45 +130,28 @@ public class TouchControllerInteract : MonoBehaviour
 
                 if (sideTrigger)
                 {
-                    var holdableItem = GrabAbleScript as Grabable;
-                    if (!holdableItem.heldInRight && !holdableItem.heldInLeft)
+                    //var holdableItem = GrabAbleScript as Interactable;
+                    var InteractableItem = GrabAbleScript as Interactable;
+                    InteractableItem.Interact();
+                    if (InteractableItem is Grabable)
                     {
-                        if (LeftHand)
+                        var holdableItem = InteractableItem as Grabable;
+                        if (!holdableItem.heldInRight && !holdableItem.heldInLeft)
                         {
-                            holdableItem.heldInLeft = true;
+                            if (LeftHand)
+                            {
+                                holdableItem.heldInLeft = true;
+                            }
+                            else
+                            {
+                                holdableItem.heldInRight = true;
+                            }
+                            HoldingItem = true;
+                            other.gameObject.transform.SetParent(gameObject.transform);
                         }
-                        else
-                        {
-                            holdableItem.heldInRight = true;
-                        }
-                        HoldingItem = true;
-                        holdableItem.GetComponent<Rigidbody>().isKinematic = true;
-                        other.gameObject.transform.SetParent(gameObject.transform);
                     }
                 }
             }
-        }
-    }
-
-    void DropItem(bool throwObject = false)
-    {
-        var heldItem = this.gameObject.transform.GetChild(0).gameObject;
-        var heldItemScript = heldItem.gameObject.GetComponent("Grabable") as Grabable;
-        if (LeftHand)
-        {
-            heldItemScript.heldInLeft = false;
-        }
-        else
-        {
-            heldItemScript.heldInRight = false;
-        }
-
-        HoldingItem = false;
-        heldItem.transform.parent = null;
-        heldItem.GetComponent<Rigidbody>().isKinematic = false;
-        if (throwObject)
-        {
-            heldItemScript.ThrowObject();
         }
     }
 }
