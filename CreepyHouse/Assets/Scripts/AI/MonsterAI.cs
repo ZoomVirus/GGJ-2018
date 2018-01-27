@@ -4,17 +4,22 @@ using UnityEngine;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(NavMeshAgent))]
-public class MonsterAI : MonoBehaviour {
+public class MonsterAI : MonoBehaviour
+{
 
-    [SerializeField] float  m_falloffThreshold = 0.05f;
-    [SerializeField] float  m_closeRangeThreshold = 0.1f;
-    [SerializeField] float  m_proximityVolumeTolerance = 0.05f;
-    NavMeshAgent            m_navAgent;
-    SoundObject[]           m_sounds;
-    SoundObject             m_seekingSound;
-    Vector3                 m_seekPosition;
-    STATE                   m_state;
-    float                   m_decisionTimer;
+    [SerializeField]
+    float m_falloffThreshold = 0.01f;
+    [SerializeField]
+    float m_closeRangeThreshold = 0.1f;
+    [SerializeField]
+    float m_proximityVolumeTolerance = 0.05f;
+    NavMeshAgent m_navAgent;
+    SoundObject[] m_sounds;
+    SoundObject m_seekingSound;
+    Vector3 m_seekPosition;
+    STATE m_state;
+    float m_decisionTimer;
+    bool m_repopulate = false;
 
     enum STATE
     {
@@ -34,7 +39,7 @@ public class MonsterAI : MonoBehaviour {
 
     IEnumerator PingForTargets()
     {
-        while(enabled)
+        while (enabled)
         {
             if (m_state == STATE.IDLE)
             {
@@ -42,50 +47,61 @@ public class MonsterAI : MonoBehaviour {
                 m_seekingSound = GetMostProminentSound();
                 if (m_seekingSound != null)
                 {
-                    m_seekPosition = m_seekingSound.transform.position;
+                    SetDestination(m_seekingSound.transform.position);
                 }
             }
             else if (m_state == STATE.HUNTING)
             {
+                if (m_seekingSound == null)
+                {
+                    SetIdle();
+                    break;
+                }
+
                 // We want to emulate a focus, so won't always choose the loudest target if hunting. 
                 // We also want to do this quickly, so a comparison of distance and sound level should do the trick...
-                SoundObject sound = GetMostProminentSound();
-                bool overwrite = false;
-
-                // If new sound is closer
-                if ((sound.transform.position - transform.position).sqrMagnitude < (m_seekPosition - transform.position).sqrMagnitude)
+                SoundObject sound = null;
+                if ((sound = GetMostProminentSound(m_seekingSound)) != null)
                 {
-                    // Louder
-                    if (sound.GetVolume() > m_seekingSound.GetVolume())
+                    bool overwrite = false;
+
+                    // If new sound is closer
+                    if ((sound.transform.position - transform.position).sqrMagnitude < (m_seekPosition - transform.position).sqrMagnitude)
                     {
-                        // Lets still give it some random...
-                        overwrite = Random.Range(0, 100) > 20;
+                        // Louder
+                        if (sound.GetVolume() > m_seekingSound.GetVolume())
+                        {
+                            // Lets still give it some random...
+                            overwrite = Random.Range(0, 100) > 20;
+                        }
+                        else
+                        {
+                            // Very unlikely. randModifier should be in range 0-10 so the bigger the sound gap, 
+                            // the less likely the new, quieter sound, will distract...
+                            int randModifier = Mathf.CeilToInt((m_seekingSound.GetVolume() - sound.GetVolume()) * 10f);
+                            overwrite = Random.Range(0, 100 - randModifier) > 95;
+                        }
                     }
+                    // Sound is further away. 
                     else
                     {
-                        // Very unlikely. randModifier should be in range 0-10 so the bigger the sound gap, 
-                        // the less likely the new, quieter sound, will distract...
-                        int randModifier = Mathf.CeilToInt((m_seekingSound.GetVolume() - sound.GetVolume()) * 10f);
-                        overwrite = Random.Range(0, 100 - randModifier) > 95;
+                        // Louder
+                        if (sound.GetVolume() >= m_seekingSound.GetVolume())
+                        {
+                            // Less likely than closer sounds, but lets give it some random...
+                            overwrite = Random.Range(0, 100) > 60;
+                        }
+                        // If it's quieter *and* further away then fuck it. 
                     }
-                }
-                // Sound is further away. 
-                else
-                {
-                    // Louder
-                    if (sound.GetVolume() > m_seekingSound.GetVolume())
+                    if (overwrite)
                     {
-                        // Less likely than closer sounds, but lets give it some random...
-                        overwrite = Random.Range(0, 100) > 60;
+                        m_seekingSound = sound;
+                        m_seekPosition = sound.transform.position;
+
+                        SetDestination(m_seekingSound.transform.position);
                     }
-                    // If it's quieter *and* further away then fuck it. 
                 }
 
-                if (overwrite)
-                {
-                    m_seekingSound = sound;
-                    m_seekPosition = sound.transform.position;
-                }
 
                 // We also shouldn't check this as often
                 yield return new WaitForSeconds(2f);
@@ -101,33 +117,52 @@ public class MonsterAI : MonoBehaviour {
         //Get every single sound producer in the scene.
         m_sounds = Object.FindObjectsOfType(typeof(SoundObject)) as SoundObject[];
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update()
+    {
 
         switch (m_state)
         {
             case STATE.IDLE:
-            {
-                UpdateIdle();
-                break;
-            }
+                {
+                    GetComponent<MeshRenderer>().material.color = Color.blue;
+                    UpdateIdle();
+                    break;
+                }
             case STATE.HUNTING:
-            {
-                UpdateHunting();
-                break;
-            }
+                {
+                    GetComponent<MeshRenderer>().material.color = Color.red;
+                    UpdateHunting();
+                    break;
+                }
             case STATE.PROXIMITY:
-            {
-                UpdateProximity();
-                break;
-            }
+                {
+                    GetComponent<MeshRenderer>().material.color = Color.green;
+                    UpdateProximity();
+                    break;
+                }
         }
-	}
+    }
 
     void UpdateIdle()
     {
-        m_state = STATE.HUNTING;
+
+        if (m_seekingSound)
+        {
+            m_state = STATE.HUNTING;
+        }
+
+        else
+        {
+            if (AtDestination())
+            {
+                SetDestination(RandomNavmeshLocation(10f));
+            }
+
+        }
+
+        //TODO Idle wanderings
     }
 
     void UpdateHunting()
@@ -136,9 +171,9 @@ public class MonsterAI : MonoBehaviour {
         {
             if (m_seekPosition != m_navAgent.destination)
             {
-                m_navAgent.SetDestination(m_seekingSound.transform.position);
+                SetDestination(m_seekPosition);
             }
-            else if ((m_seekPosition - m_navAgent.destination).magnitude <= m_closeRangeThreshold)
+            else if (AtDestination())
             {
                 m_state = STATE.PROXIMITY;
                 m_decisionTimer = Random.Range(0.8f, 2.3f);
@@ -157,7 +192,7 @@ public class MonsterAI : MonoBehaviour {
             //Now we check if the actual object is still around (i.e. the player may haver move away or an object may have been thrown and is now destroyed)    
             if (m_seekingSound != null)
             {
-                if ((m_seekingSound.transform.position - m_navAgent.destination).magnitude <= m_closeRangeThreshold)
+                if (AtDestination())
                 {
                     //Dirty way to tell if player.
                     if (m_seekingSound.GetComponent<PlayerSoundObject>())
@@ -198,6 +233,11 @@ public class MonsterAI : MonoBehaviour {
         //Stub. Add kill things code here. check for player/destructable/destroyed/deactivatable
 
         // If a thrown item, this should probably still be the thing to turn it off. Just turn off the pickup element beforehand.
+        if (m_seekingSound)
+        {
+            Destroy(m_seekingSound.gameObject);
+            //Play destruction sound
+        }
         SetIdle();
     }
 
@@ -205,11 +245,17 @@ public class MonsterAI : MonoBehaviour {
     {
         m_seekingSound = null;
         m_state = STATE.IDLE;
+
     }
 
-    SoundObject GetMostProminentSound()
+    SoundObject GetMostProminentSound(SoundObject exclude = null)
     {
-        bool shouldRepopulate = false;
+        if (m_repopulate)
+        {
+            // Shitty GC to keep list free of nulls.
+            PopulateList();
+            m_repopulate = false;
+        }
 
         SoundObject returnObj = null;
         float loudestSound = 0.0f;
@@ -218,7 +264,7 @@ public class MonsterAI : MonoBehaviour {
         {
             foreach (SoundObject soundObject in m_sounds)
             {
-                if (soundObject != null)
+                if (soundObject != null && soundObject != exclude)
                 {
                     float emitterVolume = soundObject.GetVolume();
 
@@ -239,21 +285,41 @@ public class MonsterAI : MonoBehaviour {
                 }
                 else
                 {
-                    shouldRepopulate = true;
+                    m_repopulate = true;
                 }
             }
         }
         else
         {
-            shouldRepopulate = true;
-        }
-
-        if (shouldRepopulate)
-        {
-            // Shitty GC to keep list free of nulls.
-            PopulateList();
+            m_repopulate = true;
         }
 
         return returnObj;
+    }
+
+    bool AtDestination()
+    {
+        return (transform.position - m_navAgent.destination).magnitude <= m_closeRangeThreshold;
+    }
+
+    void SetDestination(Vector3 point)
+    {
+        m_navAgent.destination = point;
+        m_seekPosition = m_navAgent.destination;
+
+        Debug.Log("new destination!");
+    }
+
+    public Vector3 RandomNavmeshLocation(float radius)
+    {
+        Vector3 randomDirection = Random.insideUnitSphere * radius;
+        randomDirection += transform.position;
+        NavMeshHit hit;
+        Vector3 finalPosition = Vector3.zero;
+        if (NavMesh.SamplePosition(randomDirection, out hit, radius, 1))
+        {
+            finalPosition = hit.position;
+        }
+        return finalPosition;
     }
 }
