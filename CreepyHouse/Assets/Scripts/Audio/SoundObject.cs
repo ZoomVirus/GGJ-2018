@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class SoundObject : MonoBehaviour {
 
-    [SerializeField] protected float m_pingsPerSecond;
+    [SerializeField] protected float m_SecondsPerPing;
     [SerializeField] protected float m_pulseSpeed;
     [SerializeField] protected float m_pulseDistance;
     [SerializeField] protected float m_pulseWidth;
@@ -30,7 +30,7 @@ public class SoundObject : MonoBehaviour {
                 {
                     m_loudness = m_source.volume;
                     PingRequest();
-                    yield return new WaitForSeconds(m_pingsPerSecond);
+                    yield return new WaitForSeconds(m_SecondsPerPing);
                 }
                 m_loudness = 0;
             }
