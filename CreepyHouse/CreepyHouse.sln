@@ -11,6 +11,8 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreepyHouse", "Assembly-CSharp.csproj", "{7406D7BF-1FDD-1C13-65C9-723142C1C029}"
 >>>>>>> fa84a4c6f522cb2542f60713ff54c6819bcd38fb
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreepyHouse", "Assembly-CSharp-Editor.csproj", "{309EDE46-354C-DEE0-7A13-016436F420A7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,7 +33,14 @@ Global
 		{7406D7BF-1FDD-1C13-65C9-723142C1C029}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7406D7BF-1FDD-1C13-65C9-723142C1C029}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7406D7BF-1FDD-1C13-65C9-723142C1C029}.Release|Any CPU.Build.0 = Release|Any CPU
+<<<<<<< HEAD
 >>>>>>> fa84a4c6f522cb2542f60713ff54c6819bcd38fb
+=======
+		{309EDE46-354C-DEE0-7A13-016436F420A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{309EDE46-354C-DEE0-7A13-016436F420A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{309EDE46-354C-DEE0-7A13-016436F420A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{309EDE46-354C-DEE0-7A13-016436F420A7}.Release|Any CPU.Build.0 = Release|Any CPU
+>>>>>>> 67abac11c3e5c76534f1454560be66fc776f0f92
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

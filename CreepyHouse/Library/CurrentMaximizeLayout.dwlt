@@ -20,6 +20,7 @@ MonoBehaviour:
     width: 1536
     height: 731
 <<<<<<< HEAD
+<<<<<<< HEAD
   m_MinSize: {x: 581, y: 471}
   m_MaxSize: {x: 14004, y: 14042}
   vertical: 0
@@ -30,6 +31,12 @@ MonoBehaviour:
   vertical: 0
   controlID: 1248
 >>>>>>> fa84a4c6f522cb2542f60713ff54c6819bcd38fb
+=======
+  m_MinSize: {x: 583, y: 442}
+  m_MaxSize: {x: 12008, y: 8042}
+  vertical: 0
+  controlID: 10
+>>>>>>> 67abac11c3e5c76534f1454560be66fc776f0f92
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -128,6 +135,7 @@ MonoBehaviour:
     width: 1536
     height: 731
 <<<<<<< HEAD
+<<<<<<< HEAD
   m_MinSize: {x: 581, y: 471}
   m_MaxSize: {x: 14004, y: 14042}
   vertical: 1
@@ -138,6 +146,12 @@ MonoBehaviour:
   vertical: 1
   controlID: 1249
 >>>>>>> fa84a4c6f522cb2542f60713ff54c6819bcd38fb
+=======
+  m_MinSize: {x: 583, y: 442}
+  m_MaxSize: {x: 12008, y: 8042}
+  vertical: 1
+  controlID: 11
+>>>>>>> 67abac11c3e5c76534f1454560be66fc776f0f92
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -168,8 +182,12 @@ MonoBehaviour:
   m_MinSize: {x: 583, y: 221}
   m_MaxSize: {x: 12008, y: 4021}
   vertical: 0
+<<<<<<< HEAD
   controlID: 1250
 >>>>>>> fa84a4c6f522cb2542f60713ff54c6819bcd38fb
+=======
+  controlID: 12
+>>>>>>> 67abac11c3e5c76534f1454560be66fc776f0f92
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -225,6 +243,7 @@ MonoBehaviour:
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
 <<<<<<< HEAD
+<<<<<<< HEAD
     m_SelectedIDs: 74270000
     m_LastClickedID: 0
     m_ExpandedIDs: 9efbffff00000000
@@ -233,6 +252,11 @@ MonoBehaviour:
     m_LastClickedID: -2518
     m_ExpandedIDs: 2af6ffff78fbffff00000000
 >>>>>>> fa84a4c6f522cb2542f60713ff54c6819bcd38fb
+=======
+    m_SelectedIDs: 
+    m_LastClickedID: 0
+    m_ExpandedIDs: 42f3ffff00000000
+>>>>>>> 67abac11c3e5c76534f1454560be66fc776f0f92
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -252,10 +276,14 @@ MonoBehaviour:
     m_SearchString: 
   m_ExpandedScenes:
 <<<<<<< HEAD
+<<<<<<< HEAD
   - AITestScene
 =======
   - 
 >>>>>>> fa84a4c6f522cb2542f60713ff54c6819bcd38fb
+=======
+  - MouseLookTest
+>>>>>>> 67abac11c3e5c76534f1454560be66fc776f0f92
   m_CurrenRootInstanceID: 0
   m_Locked: 0
   m_CurrentSortingName: TransformSorting
@@ -277,8 +305,8 @@ MonoBehaviour:
     y: 0
     width: 635
     height: 429
-  m_MinSize: {x: 104, y: 121}
-  m_MaxSize: {x: 4004, y: 4021}
+  m_MinSize: {x: 100, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 8}
   m_Panes:
   - {fileID: 8}
@@ -454,8 +482,8 @@ MonoBehaviour:
     y: 0
     width: 556
     height: 429
-  m_MinSize: {x: 277, y: 71}
-  m_MaxSize: {x: 4002, y: 4021}
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 11}
   m_Panes:
   - {fileID: 11}
@@ -490,10 +518,14 @@ MonoBehaviour:
     height: 408
   m_PersistentViewDataDictionary: {fileID: 0}
 <<<<<<< HEAD
+<<<<<<< HEAD
   m_ScrollPosition: {x: 0, y: 0}
 =======
   m_ScrollPosition: {x: 0, y: 223.95508}
 >>>>>>> fa84a4c6f522cb2542f60713ff54c6819bcd38fb
+=======
+  m_ScrollPosition: {x: 0, y: 0}
+>>>>>>> 67abac11c3e5c76534f1454560be66fc776f0f92
   m_InspectorMode: 0
   m_PreviewResizer:
     m_CachedPref: -174
@@ -555,6 +587,7 @@ MonoBehaviour:
     width: 1536
     height: 302
 <<<<<<< HEAD
+<<<<<<< HEAD
   m_MinSize: {x: 434, y: 271}
   m_MaxSize: {x: 14004, y: 10021}
   vertical: 0
@@ -565,6 +598,12 @@ MonoBehaviour:
   vertical: 0
   controlID: 1227
 >>>>>>> fa84a4c6f522cb2542f60713ff54c6819bcd38fb
+=======
+  m_MinSize: {x: 304, y: 221}
+  m_MaxSize: {x: 8004, y: 4021}
+  vertical: 0
+  controlID: 118
+>>>>>>> 67abac11c3e5c76534f1454560be66fc776f0f92
 --- !u!114 &14
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -675,6 +714,7 @@ MonoBehaviour:
     m_SearchArea: 0
     m_Folders:
 <<<<<<< HEAD
+<<<<<<< HEAD
     - Assets/Scripts/Tech
   m_ViewMode: 1
   m_StartGridSize: 64
@@ -690,19 +730,28 @@ MonoBehaviour:
     m_ExpandedIDs: 00000000622700009427000000ca9a3bffffff7f
 =======
     - Assets/Scripts
+=======
+    - Assets
+>>>>>>> 67abac11c3e5c76534f1454560be66fc776f0f92
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scripts
+  - Assets
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\clubs\Documents\GGJ-2018\CreepyHouse
   m_IsLocked: 1
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
+<<<<<<< HEAD
     m_SelectedIDs: b6270000
     m_LastClickedID: 10166
     m_ExpandedIDs: 000000008827000000ca9a3bffffff7f
 >>>>>>> fa84a4c6f522cb2542f60713ff54c6819bcd38fb
+=======
+    m_SelectedIDs: a22c0000
+    m_LastClickedID: 11426
+    m_ExpandedIDs: 00000000a22c000000ca9a3bffffff7f
+>>>>>>> 67abac11c3e5c76534f1454560be66fc776f0f92
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -731,10 +780,14 @@ MonoBehaviour:
     m_SelectedIDs: 
     m_LastClickedID: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
     m_ExpandedIDs: 00000000622700009427000000ca9a3bffffff7f
 =======
     m_ExpandedIDs: 000000008827000000ca9a3bffffff7f
 >>>>>>> fa84a4c6f522cb2542f60713ff54c6819bcd38fb
+=======
+    m_ExpandedIDs: 00000000a22c0000
+>>>>>>> 67abac11c3e5c76534f1454560be66fc776f0f92
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -760,12 +813,17 @@ MonoBehaviour:
       m_ResourceFile: 
   m_ListAreaState:
 <<<<<<< HEAD
+<<<<<<< HEAD
     m_SelectedInstanceIDs: 74270000
     m_LastClickedInstanceID: 10100
 =======
     m_SelectedInstanceIDs: 58010000
     m_LastClickedInstanceID: 344
 >>>>>>> fa84a4c6f522cb2542f60713ff54c6819bcd38fb
+=======
+    m_SelectedInstanceIDs: 
+    m_LastClickedInstanceID: 0
+>>>>>>> 67abac11c3e5c76534f1454560be66fc776f0f92
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: 941600001a320000ba3e0000565e00007a690200
     m_RenameOverlay:
@@ -820,7 +878,7 @@ MonoBehaviour:
   - {fileID: 18}
   - {fileID: 19}
   m_Selected: 0
-  m_LastSelected: 1
+  m_LastSelected: 2
 --- !u!114 &18
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -890,8 +948,12 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: cc1d0000
     m_LastClickedID: 7628
+<<<<<<< HEAD
     m_ExpandedIDs: 000000008827000000ca9a3bffffff7f
 >>>>>>> fa84a4c6f522cb2542f60713ff54c6819bcd38fb
+=======
+    m_ExpandedIDs: 00000000a22c0000
+>>>>>>> 67abac11c3e5c76534f1454560be66fc776f0f92
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -920,10 +982,14 @@ MonoBehaviour:
     m_SelectedIDs: 
     m_LastClickedID: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
     m_ExpandedIDs: 00000000622700009427000000ca9a3bffffff7f
 =======
     m_ExpandedIDs: 000000008827000000ca9a3bffffff7f
 >>>>>>> fa84a4c6f522cb2542f60713ff54c6819bcd38fb
+=======
+    m_ExpandedIDs: 00000000a22c0000
+>>>>>>> 67abac11c3e5c76534f1454560be66fc776f0f92
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
