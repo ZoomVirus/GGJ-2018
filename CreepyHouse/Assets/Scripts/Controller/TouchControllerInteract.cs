@@ -27,7 +27,7 @@ public class TouchControllerInteract : MonoBehaviour
                 sideTrigger = OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger, OVRInput.Controller.LTouch);
                 if (!sideTrigger)
                 {
-                    sideTrigger = Input.GetAxis("xboxTriggers") > 0;
+                    sideTrigger = Input.GetAxis("xboxTriggers") > 0.1;
                     if (!sideTrigger)
                     {
                         sideTrigger = Input.GetMouseButton(0);
@@ -39,7 +39,7 @@ public class TouchControllerInteract : MonoBehaviour
                 sideTrigger = OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger, OVRInput.Controller.RTouch);
                 if (!sideTrigger)
                 {
-                    sideTrigger = Input.GetAxis("xboxTriggers") < 0;
+                    sideTrigger = Input.GetAxis("xboxTriggers") < -0.1;
                     if (!sideTrigger)
                     {
                         sideTrigger = Input.GetMouseButton(1);
@@ -63,7 +63,7 @@ public class TouchControllerInteract : MonoBehaviour
                 {
                     DropItem(true);
                 }
-                else if (Input.GetAxis("xboxBumper") > 0)
+                else if (Input.GetButtonDown("LeftXboxBumper"))
                 {
                     DropItem(true);
                 }
@@ -74,10 +74,34 @@ public class TouchControllerInteract : MonoBehaviour
                 {
                     DropItem(true);
                 }
+                else if ((Input.GetKeyDown("e")))
+                {
+                    DropItem(true);
+                }
+                else if (Input.GetButtonDown("RightsXboxBumper"))
+                {
+                    DropItem(true);
+                }
             }
-
-
         }
+
+        if (OVRInput.Get(OVRInput.RawButton.B, OVRInput.Controller.RTouch))
+        {
+            EmitSound();
+        }
+        else if (OVRInput.Get(OVRInput.RawButton.Y, OVRInput.Controller.LTouch))
+        {
+            EmitSound();
+        }
+        else if ((Input.GetKeyDown("r")))
+        {
+            EmitSound();
+        }
+    }
+
+    void EmitSound()
+    {
+        EmitManager.Instance.Emit(this.transform.position);
     }
 
     void OnTriggerEnter(Collider other)
