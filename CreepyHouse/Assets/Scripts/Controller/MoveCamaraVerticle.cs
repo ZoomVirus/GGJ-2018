@@ -5,16 +5,6 @@ using UnityEngine.XR;
 
 public class MoveCamaraVerticle : MonoBehaviour
 {
-
-    public float translateSpeed;
-    public float rotateHoriSpeed;
-    public float rotateVertSpeed;
-    public bool XboxContoller;
-    public bool RiftContoller;
-    public float xboxControllerToKeyboardRatioTranslation;
-    public float xboxControllerToMouseRatioRotation;
-    public float riftControllerToKeyboardRatioTranslation;
-    Quaternion previousAngles;
     public float upperViewLimit = 0;
     public float lowerViewLimit = 0;
     // Use this for initialization
@@ -27,19 +17,19 @@ public class MoveCamaraVerticle : MonoBehaviour
     void Update()
     {
         float ratioMultiplyer = 1;
-        if (RiftContoller)
+        if (GlobalSettings.RiftContoller)
         {
-         
+
         }
         else
-        if (XboxContoller)
+        if (GlobalSettings.XboxContoller)
         {
-            ratioMultiplyer = xboxControllerToMouseRatioRotation;
-            this.gameObject.transform.Rotate(Vector3.right, Input.GetAxisRaw("VerticalRotation") * ratioMultiplyer * rotateVertSpeed * Time.deltaTime);
+            ratioMultiplyer = GlobalSettings.xboxControllerToMouseRatioRotation;
+            this.gameObject.transform.Rotate(Vector3.right, Input.GetAxisRaw("VerticalRotation") * ratioMultiplyer * GlobalSettings.rotateVertSpeed * Time.deltaTime);
         }
         else
         {
-            this.gameObject.transform.Rotate(Vector3.right, Input.GetAxisRaw("Mouse Y") * ratioMultiplyer * rotateVertSpeed * Time.deltaTime);
+            this.gameObject.transform.Rotate(Vector3.right, Input.GetAxisRaw("Mouse Y") * ratioMultiplyer * GlobalSettings.rotateVertSpeed * Time.deltaTime);
         }
 
         Quaternion q = gameObject.transform.rotation;
