@@ -4,6 +4,7 @@
 	{
 		_MainTex ("Texture", 2D) = "white" {}
 		//_MyVector ("Some Vector", Vector) = (0,0,0,0) 
+		_WidthScale ("WidthScale", float) = 1
 	}
 	SubShader
 	{
@@ -30,11 +31,15 @@
 				float4 vertex : SV_POSITION;
                 float3 worldPos : TEXCOORD1;
 			};
-
-			sampler2D _MainTex;
-			float4 _MainTex_ST;
+			//Globals
 			float4 _EmitLocations[100];
 			float4 _EmitData[100];
+
+			//uniforms
+			sampler2D _MainTex;
+			float4 _MainTex_ST;
+			float _WidthScale;
+
 			//x: Time
 			//y: Speed
 			//z: FallOff
@@ -66,7 +71,7 @@
 				{
 					if(_EmitData[iterator].x == 0)
 						continue;
-					float width = _EmitData[iterator].w;
+					float width = _EmitData[iterator].w * _WidthScale;
 					float speed = _EmitData[iterator].y;
 					float FallOffStartDistance = 0;
 					float FallOffEndDistance = _EmitData[iterator].z;
