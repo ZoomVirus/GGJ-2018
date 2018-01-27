@@ -25,4 +25,9 @@ public class Grabable : Interactable
     {
         StartGrab();
     }
+
+    public void ThrowObject()
+    {
+        this.transform.Translate(new Vector3(0, 0, GlobalSettings.ForceThrowObject));
+    }
 }
