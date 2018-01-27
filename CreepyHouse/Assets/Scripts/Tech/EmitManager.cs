@@ -5,7 +5,7 @@ using UnityEngine;
 public class EmitManager : MonoBehaviour
 {
     static EmitManager m_Instance;
-    static EmitManager Instance
+    public static EmitManager Instance
     {
         get { return m_Instance; }
     }

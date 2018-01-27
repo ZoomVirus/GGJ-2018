@@ -5,7 +5,10 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class SoundObject : MonoBehaviour {
 
-    [SerializeField] private float m_pingsPerSecond;
+    [SerializeField] protected float m_pingsPerSecond;
+    [SerializeField] protected float m_pulseSpeed;
+    [SerializeField] protected float m_pulseDistance;
+    [SerializeField] protected float m_pulseWidth;
 
     private AudioSource m_source;
     protected float m_loudness;
@@ -38,10 +41,16 @@ public class SoundObject : MonoBehaviour {
         }
     }
 
-    void PingRequest()
+    protected void PingRequest()
     {
         // Position and Loudness provided. Need to convert loudness into range somehow. 
         // TODO: Get nick to confirm how he wants to set that info.
+        Vector3 location = transform.position;
+        float speed = m_pulseSpeed;
+        float falloff = m_pulseDistance;
+        float width = m_pulseWidth;
+
+        EmitManager.Instance.Emit(location, speed, falloff, width);
     }
 
     public float GetVolume() { return m_loudness; }
