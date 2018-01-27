@@ -1,16 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR;
 
 public class PlayerMovement : MonoBehaviour
 {
     public float translateSpeed;
     public float rotateHoriSpeed;
     public float rotateVertSpeed;
-    public bool Contoller;
-    public float controllerToKeyboardRatioTranslation;
-    public float controllerToMouseRatioRotation;
-
+    public bool XboxContoller;
+    public bool RiftContoller;
+    public float xboxControllerToKeyboardRatioTranslation;
+    public float xboxControllerToMouseRatioRotation;
+    public float riftControllerToKeyboardRatioTranslation;
+    Quaternion previousAngles;
     // Use this for initialization
     void Start()
     {
@@ -20,31 +23,36 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         float ratioMultiplyer = 1;
-        if (Contoller)
+        if (RiftContoller)
         {
-            ratioMultiplyer = controllerToKeyboardRatioTranslation;
+            ratioMultiplyer = riftControllerToKeyboardRatioTranslation;
         }
-
-        Vector3 translate = new Vector3(controllerToKeyboardRatioTranslation * Input.GetAxisRaw("Horizontal") * translateSpeed * Time.deltaTime, 0, ratioMultiplyer * Input.GetAxisRaw("Forward") * translateSpeed * Time.deltaTime);
+        else if (XboxContoller)
+        {
+            ratioMultiplyer = xboxControllerToKeyboardRatioTranslation;
+        }
+        var x = Input.GetAxisRaw("Horizontal");
+        var y = Input.GetAxisRaw("Forward");
+        Vector3 translate = new Vector3(ratioMultiplyer * Input.GetAxisRaw("Horizontal") * translateSpeed * Time.deltaTime, 0, ratioMultiplyer * Input.GetAxisRaw("Forward") * translateSpeed * Time.deltaTime);
         this.gameObject.transform.Translate(translate);
 
-        if (Contoller)
+        if (RiftContoller)
         {
-
-            ratioMultiplyer = controllerToMouseRatioRotation;
-            this.gameObject.transform.Rotate(Vector3.right, Input.GetAxisRaw("VerticalRotation") * ratioMultiplyer * rotateVertSpeed * Time.deltaTime);
+            ratioMultiplyer = riftControllerToKeyboardRatioTranslation;
+            this.gameObject.transform.Rotate(Vector3.up, Input.GetAxisRaw("HorizontalRotation") * ratioMultiplyer * rotateHoriSpeed * Time.deltaTime);
+        }
+        else if (XboxContoller)
+        {
+            ratioMultiplyer = xboxControllerToMouseRatioRotation;
             this.gameObject.transform.Rotate(Vector3.up, Input.GetAxisRaw("HorizontalRotation") * ratioMultiplyer * rotateHoriSpeed * Time.deltaTime);
         }
         else
         {
-            this.gameObject.transform.Rotate(Vector3.right, Input.GetAxisRaw("Mouse Y") * ratioMultiplyer * rotateVertSpeed * Time.deltaTime);
             this.gameObject.transform.Rotate(Vector3.up, Input.GetAxisRaw("Mouse X") * ratioMultiplyer * rotateHoriSpeed * Time.deltaTime);
         }
-
         Quaternion q = gameObject.transform.rotation;
         q.eulerAngles = new Vector3(q.eulerAngles.x, q.eulerAngles.y, 0);
         gameObject.transform.rotation = q;
-
     }
 }
 

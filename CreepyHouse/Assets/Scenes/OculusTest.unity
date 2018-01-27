@@ -685,6 +685,8 @@ MonoBehaviour:
   translateSpeed: 0.2
   rotateHoriSpeed: 0.01
   rotateVertSpeed: 0.01
-  Contoller: 1
-  controllerToKeyboardRatioTranslation: 50
-  controllerToMouseRatioRotation: 10000
+  XboxContoller: 0
+  RiftContoller: 0
+  xboxControllerToKeyboardRatioTranslation: 50
+  xboxControllerToMouseRatioRotation: 10000
+  riftControllerToKeyboardRatioTranslation: 1000

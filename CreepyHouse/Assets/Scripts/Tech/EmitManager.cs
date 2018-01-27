@@ -13,6 +13,8 @@ public class EmitManager : MonoBehaviour
     void Start()
     {
         m_Instance = this;
+        Shader.SetGlobalVectorArray("_EmitLocations", m_EmitLocations);
+        Shader.SetGlobalVectorArray("_EmitData", m_EmitData);
     }
 
     public Transform m_Location1, m_Location2, m_Location3;
@@ -68,6 +70,5 @@ public class EmitManager : MonoBehaviour
             Emit(m_Location2.position);
         if (Input.GetKeyDown(KeyCode.Alpha3))
             Emit(m_Location3.position);
-
     }
 }
