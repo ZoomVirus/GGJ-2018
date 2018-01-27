@@ -1,36 +1,23 @@
 fileFormatVersion: 2
-guid: 7b92b01a0958f3042818cfb84d537d34
-timeCreated: 1517070724
+guid: 149d9f3437aaae649a9f33abc95cc158
+timeCreated: 1517079685
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: object1
-    100002: object2
-    100004: object3
-    100006: object4
-    100008: //RootNode
-    400000: object1
-    400002: object2
-    400004: object3
-    400006: object4
-    400008: //RootNode
-    2100000: object1Mat
-    2100002: object2Mat
-    2100004: object3Mat
-    2100006: object4Mat
-    2300000: object1
-    2300002: object2
-    2300004: object3
-    2300006: object4
-    3300000: object1
-    3300002: object2
-    3300004: object3
-    3300006: object4
-    4300000: object1
-    4300002: object2
-    4300004: object3
-    4300006: object4
+    100000: //RootNode
+    100002: Door_Asset:pCube5
+    100004: pCube5
+    400000: //RootNode
+    400002: Door_Asset:pCube5
+    400004: pCube5
+    2100000: initialShadingGroup
+    2300000: Door_Asset:pCube5
+    2300002: pCube5
+    3300000: Door_Asset:pCube5
+    3300002: pCube5
+    4300000: Door_Asset:pCube5
+    4300002: pCube5
   externalObjects: {}
   materials:
     importMaterials: 1

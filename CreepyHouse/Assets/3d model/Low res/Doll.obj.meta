@@ -1,36 +1,53 @@
 fileFormatVersion: 2
-guid: 7b92b01a0958f3042818cfb84d537d34
-timeCreated: 1517070724
+guid: 756d8c201ab19004a81fad656bdb4d07
+timeCreated: 1517079685
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: object1
-    100002: object2
-    100004: object3
-    100006: object4
-    100008: //RootNode
-    400000: object1
-    400002: object2
-    400004: object3
-    400006: object4
-    400008: //RootNode
-    2100000: object1Mat
-    2100002: object2Mat
-    2100004: object3Mat
-    2100006: object4Mat
-    2300000: object1
-    2300002: object2
-    2300004: object3
-    2300006: object4
-    3300000: object1
-    3300002: object2
-    3300004: object3
-    3300006: object4
-    4300000: object1
-    4300002: object2
-    4300004: object3
-    4300006: object4
+    100000: //RootNode
+    100002: group_pasted__pCone2
+    100004: pasted__pCube3_group
+    100006: pCube3
+    100008: pCube6
+    100010: pCube7
+    100012: pCube8
+    100014: pPipe1
+    100016: pSphere1
+    400000: //RootNode
+    400002: group_pasted__pCone2
+    400004: pasted__pCube3_group
+    400006: pCube3
+    400008: pCube6
+    400010: pCube7
+    400012: pCube8
+    400014: pPipe1
+    400016: pSphere1
+    2100000: initialShadingGroup
+    2300000: group_pasted__pCone2
+    2300002: pasted__pCube3_group
+    2300004: pCube3
+    2300006: pCube6
+    2300008: pCube7
+    2300010: pCube8
+    2300012: pPipe1
+    2300014: pSphere1
+    3300000: group_pasted__pCone2
+    3300002: pasted__pCube3_group
+    3300004: pCube3
+    3300006: pCube6
+    3300008: pCube7
+    3300010: pCube8
+    3300012: pPipe1
+    3300014: pSphere1
+    4300000: group_pasted__pCone2
+    4300002: pasted__pCube3_group
+    4300004: pCube3
+    4300006: pCube6
+    4300008: pCube7
+    4300010: pCube8
+    4300012: pPipe1
+    4300014: pSphere1
   externalObjects: {}
   materials:
     importMaterials: 1

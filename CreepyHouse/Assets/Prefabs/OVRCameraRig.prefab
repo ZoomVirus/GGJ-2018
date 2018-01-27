@@ -122,6 +122,8 @@ GameObject:
   - component: {fileID: 114763089217214498}
   - component: {fileID: 114025668810342826}
   - component: {fileID: 114563707827109342}
+  - component: {fileID: 65154167527406080}
+  - component: {fileID: 114753028599235240}
   m_Layer: 0
   m_Name: OVRCameraRig
   m_TagString: Untagged
@@ -199,7 +201,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1967878246920850}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.5, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4503916543553676}
@@ -226,7 +228,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1723748184225516}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.5, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4538371904502780}
@@ -258,14 +260,14 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1720945059353068}
-  m_LocalRotation: {x: -0.073976636, y: -0.03319141, z: 0.019824862, w: 0.9965103}
+  m_LocalRotation: {x: -0.073237196, y: 0.0016453577, z: 0.022400133, w: 0.9970616}
   m_LocalPosition: {x: 0.06908416, y: -8.646121, z: 0.013148546}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4370490850529736}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -8.402, y: -4.004, z: 2.5740001}
+  m_LocalEulerAnglesHint: {x: -8.402, y: 0, z: 2.5740001}
 --- !u!4 &4503350344208026
 Transform:
   m_ObjectHideFlags: 1
@@ -538,6 +540,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &65154167527406080
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1720945059353068}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!65 &65743937823326852
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -629,6 +643,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HoldingItem: 0
   LeftHand: 1
+  RayCastValuesForPick: {x: 0, y: 0, z: 0}
 --- !u!114 &114087720930564008
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -640,14 +655,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8551f24797dc27c4ab893e151c89bba3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  translateSpeed: 0
-  rotateHoriSpeed: 10
-  rotateVertSpeed: 10
-  XboxContoller: 0
-  RiftContoller: 1
-  xboxControllerToKeyboardRatioTranslation: 0
-  xboxControllerToMouseRatioRotation: 0
-  riftControllerToKeyboardRatioTranslation: 0
   upperViewLimit: 0
   lowerViewLimit: 0
 --- !u!114 &114563707827109342
@@ -661,14 +668,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58a91ad4bba884c419d2652d45d10f46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  translateSpeed: 1
-  rotateHoriSpeed: 10
-  rotateVertSpeed: 0
-  XboxContoller: 0
-  RiftContoller: 1
-  xboxControllerToKeyboardRatioTranslation: 50
-  xboxControllerToMouseRatioRotation: 10000
-  riftControllerToKeyboardRatioTranslation: 1
+--- !u!114 &114753028599235240
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1720945059353068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b820f916d1dd794aac3e7dddfe5a192, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114763089217214498
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -695,3 +705,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HoldingItem: 0
   LeftHand: 0
+  RayCastValuesForPick: {x: 0, y: 0, z: 0}

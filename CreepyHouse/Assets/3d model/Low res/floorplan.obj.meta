@@ -1,36 +1,17 @@
 fileFormatVersion: 2
-guid: 7b92b01a0958f3042818cfb84d537d34
-timeCreated: 1517070724
-licenseType: Free
+guid: a092432d886aa4043ba43173583fbc57
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: object1
-    100002: object2
-    100004: object3
-    100006: object4
-    100008: //RootNode
-    400000: object1
-    400002: object2
-    400004: object3
-    400006: object4
-    400008: //RootNode
-    2100000: object1Mat
-    2100002: object2Mat
-    2100004: object3Mat
-    2100006: object4Mat
-    2300000: object1
-    2300002: object2
-    2300004: object3
-    2300006: object4
-    3300000: object1
-    3300002: object2
-    3300004: object3
-    3300006: object4
-    4300000: object1
-    4300002: object2
-    4300004: object3
-    4300006: object4
+    100000: default
+    100002: //RootNode
+    400000: default
+    400002: //RootNode
+    2100000: defaultMat
+    2300000: default
+    3300000: default
+    4300000: default
+    9500000: //RootNode
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -105,7 +86,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

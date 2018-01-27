@@ -6,11 +6,14 @@ public class TouchControllerInteract : MonoBehaviour
 {
     public bool HoldingItem = false;
     public bool LeftHand = true;
-
+    public Vector3 RayCastValuesForPick;
     // Use this for initialization
     void Start()
     {
-
+        if (!GlobalSettings.RiftContoller)
+        {
+            this.gameObject.GetComponent<Renderer>().enabled = false;
+        }
     }
 
     // Update is called once per frame
@@ -65,16 +68,11 @@ public class TouchControllerInteract : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
-                Vector3 fwd = new Vector3(20, 20, 20);
-
                 RaycastHit hit;
-                Debug.Log("before");
-                if (Physics.Raycast(transform.position, fwd, out hit))
+                if (Physics.Raycast(transform.position, RayCastValuesForPick, out hit))
                 {
-                    Debug.Log("in");
                     PickUpItem(hit.collider);
                 }
-                Debug.Log("after");
             }
         }
     }
