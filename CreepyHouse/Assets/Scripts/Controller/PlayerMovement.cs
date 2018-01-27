@@ -20,8 +20,14 @@ public class PlayerMovement : MonoBehaviour
         Debug.Log(translate.x + "," + translate.y + "," + translate.z);
         this.gameObject.transform.Translate(translate);
 
-              this.gameObject.transform.Rotate(Vector3.right, Input.GetAxisRaw("VerticalRotation") * rotateSpeed * Time.deltaTime);
-              this.gameObject.transform.Rotate(Vector3.up, Input.GetAxisRaw("HorizontalRotation") * rotateSpeed * Time.deltaTime);
+        this.gameObject.transform.Rotate(Vector3.right, Input.GetAxisRaw("VerticalRotation") * rotateSpeed * Time.deltaTime);
+        this.gameObject.transform.Rotate(Vector3.up, Input.GetAxisRaw("HorizontalRotation") * rotateSpeed * Time.deltaTime);
+
+        //reset to not tilt over
+        if (this.gameObject.transform.rotation.z != 0)
+        {
+            this.gameObject.transform.rotation = new Quaternion(this.gameObject.transform.rotation.x,  this.gameObject.transform.rotation.y, 0, this.gameObject.transform.rotation.w);
+        }
     }
 }
 
