@@ -52,7 +52,7 @@ public class MicInput : MonoBehaviour
     void Update()
     {
         MicAverage = (MicAverage + MicLoudness) / 2;
-        MicAverageTimer = Time.deltaTime;
+        MicAverageTimer += Time.deltaTime;
         if (MicAverageTimer > 2) // Refresh average every 2 seconds
         {
             MicAverage = MicLoudness;

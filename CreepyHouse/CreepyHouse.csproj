@@ -330,7 +330,9 @@
     <Compile Include="Assets\OVR\Scripts\Util\OVRScreenFade.cs" />
     <Compile Include="Assets\OVR\Scripts\Util\OVRTrackedRemote.cs" />
     <Compile Include="Assets\OVR\Scripts\Util\OVRWaitCursor.cs" />
+    <Compile Include="Assets\Scripts\AI\MonsterAI.cs" />
     <Compile Include="Assets\Scripts\Debug\MicIndicator.cs" />
+    <Compile Include="Assets\Scripts\SoundObject.cs" />
     <Compile Include="Assets\Scripts\Tech\MicInput.cs" />
   </ItemGroup>
   <ItemGroup>
