@@ -75,10 +75,14 @@
 				float iterator = 0;
 				float ran = 0;
 
-				ran += tan(frac((i.worldPos.y + 0.0115234)*52112.452+ (i.worldPos.z + 0.347518)*34321.52127 + frac(_Time.y) * 14320.23451));
-				ran += tan(frac((i.worldPos.x + 0.124112)*12324.1309+(i.worldPos.y + 0.123689)*54221.21231 + frac(_Time.y) * 35134.12342));
+				ran += tan(frac((i.worldPos.y + 0.0115234)*52112.452+ (i.worldPos.z + 0.347518)*34321.52127 + frac(_Time.y ) * 14320.23451)+ _ScreenParams.z);
+				ran += tan(frac((i.worldPos.x + 0.124112)*12324.1309+(i.worldPos.y + 0.123689)*54221.21231 + frac(_Time.y) * 35134.12342)+ _ScreenParams.w);
 				ran += tan(frac((i.worldPos.z + 0.129397)*823591.1378+(i.worldPos.x + 0.348761)*14231.12435 + frac(_Time.y) * 723419.25121));
 				ran = frac(ran);
+				ran += cos(_ScreenParams.w*3.141*100000/59);
+				ran += sin(_ScreenParams.z * 3.141*100000/57);
+				ran = frac(ran);
+				float binomialRan = abs(pow((ran - 0.5), 2))*sign(ran-0.5) + 0.5;// meant to fall on roughly a binomial distribution
 
 
 
@@ -93,7 +97,7 @@
 					float FallOffStartDistance = 0;
 					float FallOffEndDistance = _EmitData[iterator].z;
 					float dis = distance(_EmitLocations[iterator] , i.worldPos);
-					dis = lerp(dis-0.2,dis+0.2, ran);
+					dis = lerp(dis,dis+0.2, ran);
 
 					float fallOffScale = 1;
 					if(dis> FallOffStartDistance)
@@ -114,11 +118,13 @@
 					if(tempval < 0)
 						tempval = 0;
 
-					val = val + lerp(tempval*0.6,tempval , ran);
+					//val = val + lerp(tempval*0.8,tempval , ran);
+					val += tempval;
 				}
 				//if(/*_Discard0 == 1.0 &&*/ val < 0.01)
 				//	discard;
-				return float4(val,val,val,val);
+				val = lerp(val-0.1,min(val+0.1,1),binomialRan);
+				return float4(binomialRan,val,val,val);
 			}
 			ENDCG
 		}
