@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Grabable : Interactable
 {
+    Vector3 m_initialPosition;
+    float m_timer;
 
     bool heldInLeft = false;
     bool heldInRight = false;
@@ -27,6 +29,8 @@ public class Grabable : Interactable
     // Use this for initialization
     void Start()
     {
+        m_initialPosition = transform.position;
+
         m_Renderer = GetComponent<Renderer>();
         if (m_Renderer == null)
         {
@@ -35,7 +39,19 @@ public class Grabable : Interactable
         m_RigidBody = GetComponent<Rigidbody>();
         m_Renderer.material = MaterialManager.Instance.m_GrabableDefault;
     }
-    
+
+    void Update()
+    {
+        if ((m_initialPosition - transform.position).magnitude > 0.1f)
+        {
+            if (!heldInLeft && heldInRight && (m_timer -= Time.deltaTime) <= 0)
+            {
+                transform.position = m_initialPosition;
+                m_timer = 30f;
+            }
+        }
+    }
+
     void SetGrabState()
     {
         if (heldInLeft || heldInRight)
@@ -48,7 +64,7 @@ public class Grabable : Interactable
             m_Renderer.material = MaterialManager.Instance.m_GrabableDefault;
             m_RigidBody.isKinematic = false;
         }
-
+        m_timer = 30f;
     }
 
     public override void Interact()
@@ -59,5 +75,6 @@ public class Grabable : Interactable
     public void ThrowObject()
     {
         this.transform.Translate(new Vector3(0, 0, GlobalSettings.ForceThrowObject));
+        m_timer = 30f;
     }
 }
