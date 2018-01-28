@@ -13,7 +13,7 @@ Shader "Custom/Outline"
      
          Tags { /*"Queue"="Geometry" "IgnoreProjector"="True"*/ "RenderType"="Opaque" }
          //Blend SrcAlpha OneMinusSrcAlpha
-         Cull Back
+         Cull Off
          //ZTest always
          Pass
          {
@@ -54,6 +54,7 @@ Shader "Custom/Outline"
 			//sampler2D _MainTex;
 			//float4 _MainTex_ST;
 			float _WidthScale;
+			//float _Discard0;
  
              v2g vert(appdata_base v)
              {
@@ -106,6 +107,9 @@ Shader "Custom/Outline"
 
 					val = val + tempval;
 				}
+				
+				//if(_Discard0 == 1.0 && val < 0.01)
+				//	discard;
 				return float4(val,val,val,1);
 			}
             ENDCG

@@ -28,7 +28,7 @@ public class EmitManager : MonoBehaviour
     {
         while(true)
         {
-            yield return new WaitForSeconds(Random.Range(0f, 3f));
+            yield return new WaitForSeconds(Random.Range(1f, 6f));
             Emit(location.position);
         }
     }
@@ -51,6 +51,13 @@ public class EmitManager : MonoBehaviour
 
     public void Emit(Vector3 location, float speed = 3, float fallOff = 10, float width = 5)
     {
+        if(speed <= 0 || fallOff <= 0 || width <= 0)
+        {
+            Debug.LogError("Cannot Emit if any of the speed/fallOff/width values are <= 0");
+
+            return;
+        }
+
         float lowestTime = float.MaxValue;
         int id = -1;
         for (int i = 0; i < m_EmitData.Length; i++)
@@ -88,4 +95,18 @@ public class EmitManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha3))
             Emit(m_Location3.position);
     }
+
+
+    private void OnEnable()
+    {
+        Shader.SetGlobalFloat("_Discard0", 1f);
+    }
+
+    private void OnDestroy()
+    {
+        Shader.SetGlobalFloat("_Discard0", 0f);
+        Shader.SetGlobalVectorArray("_EmitLocations", new Vector4[100]);
+        Shader.SetGlobalVectorArray("_EmitData", new Vector4[100]);
+    }
 }
+

@@ -4,84 +4,104 @@ using UnityEngine;
 
 public class RayCastGrab : MonoBehaviour
 {
-    public bool LeftHand;
-    public bool HoldingItem;
+    //public bool LeftHand;
+    Grabable CurrentlyHeldItem;
     //public Vector3 RayCastValuesForPick;
     // Use this for initialization
     void Start()
     {
 
     }
-
+    float CurrentxboxTriggers = 0, PreviousxboxTriggers = 0;
+    bool Prompt = false;
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        Prompt = false;
+        CurrentxboxTriggers = Input.GetAxis("xboxTriggers");
+        if (CurrentlyHeldItem == null)
         {
+
             RaycastHit hit;
-            if (Physics.Raycast(transform.position, transform.forward, out hit))
+            if (Physics.Raycast(transform.position, transform.forward, out hit, 2f))
             {
-                PickUpItem(hit.collider);
+
+                var InteractableItem = hit.collider.gameObject.GetComponent<Interactable>();
+                if (InteractableItem != null)
+                {
+                    Prompt = true;
+                    if (Input.GetMouseButtonDown(0) || (CurrentxboxTriggers > 0 && PreviousxboxTriggers <= 0) || Input.GetKeyDown("f"))
+                    {
+                        Interact(InteractableItem);
+                    }
+                }
             }
         }
+        else
+        {
+            if (Input.GetMouseButtonDown(0) || (CurrentxboxTriggers < -0.1f && PreviousxboxTriggers >= -0.1f) || Input.GetKeyDown("f"))
+            {
+                DropItem(false);
+            }
+            else if (Input.GetMouseButtonDown(1) || Input.GetButtonDown("LeftXboxBumper") || Input.GetKeyDown("q"))
+            {
+                if (CurrentlyHeldItem != null)
+                    DropItem(true);
+            }
+        }
+        PreviousxboxTriggers = CurrentxboxTriggers;
+
+        if (InteractionPrompt.Instance != null)
+            InteractionPrompt.Instance.PromptActive = Prompt;
     }
 
-    void PickUpItem(Collider other)
+    void DropItem(bool Throw)
     {
-        var GrabAbleScript = other.gameObject.GetComponent("Grabable");
-        if (GrabAbleScript != null)
-        {
+        CurrentlyHeldItem.transform.parent = null;
+        CurrentlyHeldItem.HeldInLeft = false;
+        if (Throw)
+            CurrentlyHeldItem.ThrowObject();
+        CurrentlyHeldItem = null;
+    }
 
-            Debug.Log("1");
-            if (!HoldingItem)
+    void Interact(Interactable InteractableItem)
+    {
+        //var GrabAbleScript = other.gameObject.GetComponent("Grabable");
+        {
+            InteractableItem.Interact();
+            if (InteractableItem is Grabable)
             {
-                Debug.Log("2");
-                bool sideTrigger = false;
-                if (LeftHand)
+                if (CurrentlyHeldItem == null)
                 {
-                    sideTrigger = OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger, OVRInput.Controller.LTouch);
-                    if (!sideTrigger)
-                    {
+                    //bool sideTrigger = false;
+                    //sideTrigger = OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger, OVRInput.Controller.LTouch);
+                    //if (!sideTrigger)
+                    /*{
                         sideTrigger = Input.GetAxis("xboxTriggers") > 0;
                         if (!sideTrigger)
                         {
                             sideTrigger = Input.GetMouseButtonDown(0);
                         }
                     }
-                }
-                else
-                {
-                    sideTrigger = OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger, OVRInput.Controller.RTouch);
-                    if (!sideTrigger)
-                    {
-                        sideTrigger = Input.GetAxis("xboxTriggers") < 0;
-                        if (!sideTrigger)
-                        {
-                            sideTrigger = Input.GetMouseButtonDown(1);
-                        }
-                    }
-                }
 
-                if (sideTrigger)
-                {
-                    var InteractableItem = GrabAbleScript as Interactable;
-                    InteractableItem.Interact();
-                    if (InteractableItem is Grabable)
+                    if (sideTrigger)*/
                     {
+
                         var holdableItem = InteractableItem as Grabable;
                         //if (!holdableItem.heldInRight && !holdableItem.heldInLeft)
                         {
-                            if (LeftHand)
+                            //if (LeftHand)
                             {
-                                holdableItem.heldInLeft = true;
+                                holdableItem.HeldInLeft = true;
                             }
-                            else
-                            {
-                                holdableItem.heldInRight = true;
-                            }
-                            HoldingItem = true;
-                            other.gameObject.transform.SetParent(gameObject.transform);
+                            //else
+                            // {
+                            //     holdableItem.HeldInRight = true;
+                            // }
+                            CurrentlyHeldItem = holdableItem;
+                            InteractableItem.transform.SetParent(gameObject.transform);
                         }
+
                     }
                 }
             }

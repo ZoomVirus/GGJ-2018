@@ -10,7 +10,7 @@
 	{
 		Tags { "RenderType"="Opaque" }
 		LOD 100
-
+		Cull Off
 		Pass
 		{
 			CGPROGRAM
@@ -39,6 +39,7 @@
 			sampler2D _MainTex;
 			float4 _MainTex_ST;
 			float _WidthScale;
+			float _Discard0;
 
 			//x: Time
 			//y: Speed
@@ -98,6 +99,8 @@
 
 					val = val + tempval;
 				}
+				if(_Discard0 == 1.0 && val < 0.01)
+					discard;
 				return float4(val,val,val,val);
 			}
 			ENDCG
