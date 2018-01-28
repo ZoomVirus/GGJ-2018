@@ -1,23 +1,18 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
-guid: 0c0c5d5fe69474d4fbb8fc0509b7aa45
-timeCreated: 1517146676
-=======
-guid: 193ce510f3b7d614c9d316fd59afdf68
+guid: 1998bbf934f270d4b86b4e16ed9cd3e2
 timeCreated: 1517147502
->>>>>>> 090538b287b0e0bc5080d407104883e1d3122750
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: default
-    100002: //RootNode
-    400000: default
-    400002: //RootNode
+    100000: //RootNode
+    100002: pCube10
+    400000: //RootNode
+    400002: pCube10
     2100000: initialShadingGroup
-    2300000: default
-    3300000: default
-    4300000: default
+    2300000: pCube10
+    3300000: pCube10
+    4300000: pCube10
   externalObjects: {}
   materials:
     importMaterials: 1
