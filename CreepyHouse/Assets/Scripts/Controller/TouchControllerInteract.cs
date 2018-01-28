@@ -113,7 +113,6 @@ public class TouchControllerInteract : MonoBehaviour
             {
 
                 if (OVRInput.Get(OVRInput.Button.PrimaryHandTrigger, OVRInput.Controller.LTouch))
-
                 {
 
                     DropItem(true);

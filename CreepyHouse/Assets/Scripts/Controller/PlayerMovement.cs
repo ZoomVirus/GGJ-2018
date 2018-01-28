@@ -7,6 +7,8 @@ public class PlayerMovement : MonoBehaviour
 {
     //with oculus still need all these inouts due to users hardware options
     // Use this for initialization
+    public float rayCastSize;
+
     void Start()
     {
     }
@@ -32,7 +34,7 @@ public class PlayerMovement : MonoBehaviour
         bool noCollison = true;
         if (Input.GetAxisRaw("Forward") > 0)
         {
-            if (Physics.Raycast(transform.position, wall, out hit, 1))
+            if (Physics.Raycast(transform.position, wall, out hit, rayCastSize))
             {
                 if (!hit.collider.gameObject.GetComponent("TouchControllerInteract"))
                 {
@@ -42,7 +44,7 @@ public class PlayerMovement : MonoBehaviour
         }
         if (Input.GetAxisRaw("Forward") < 0)
         {
-            if (Physics.Raycast(transform.position, wall * -1, out hit, 1))
+            if (Physics.Raycast(transform.position, wall * -1, out hit, rayCastSize))
             {
                 if (!hit.collider.gameObject.GetComponent("TouchControllerInteract"))
                 {
@@ -54,7 +56,7 @@ public class PlayerMovement : MonoBehaviour
         wall.y = 0;
         if (Input.GetAxisRaw("Horizontal") > 0)
         {
-            if (Physics.Raycast(transform.position, wall, out hit, 1))
+            if (Physics.Raycast(transform.position, wall, out hit, rayCastSize))
             {
                 if (!hit.collider.gameObject.GetComponent("TouchControllerInteract"))
                 {
@@ -64,7 +66,7 @@ public class PlayerMovement : MonoBehaviour
         }
         if (Input.GetAxisRaw("Horizontal") < 0)
         {
-            if (Physics.Raycast(transform.position, wall * -1, out hit, 1))
+            if (Physics.Raycast(transform.position, wall * -1, out hit, rayCastSize))
             {
                 if (!hit.collider.gameObject.GetComponent("TouchControllerInteract"))
                 {
@@ -80,7 +82,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (GlobalSettings.RiftContoller)
         {
-            ratioMultiplyer = GlobalSettings.riftControllerToKeyboardRatioTranslation;
+            ratioMultiplyer = GlobalSettings.riftControllerToMouseRatioTranslation;
             this.gameObject.transform.Rotate(Vector3.up, Input.GetAxisRaw("HorizontalRotation") * ratioMultiplyer * GlobalSettings.rotateHoriSpeed * Time.deltaTime);
         }
         else if (GlobalSettings.XboxContoller)
