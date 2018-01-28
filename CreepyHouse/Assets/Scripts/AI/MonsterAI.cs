@@ -6,6 +6,8 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class MonsterAI : MonoBehaviour
 {
+    [SerializeField]
+    bool debug = false;
 
     [SerializeField]
     float m_falloffThreshold = 0.01f;
@@ -21,6 +23,9 @@ public class MonsterAI : MonoBehaviour
     float m_decisionTimer;
     bool m_repopulate = false;
 
+    static private MonsterAI m_instance;
+    static public MonsterAI Get() { return m_instance; }
+
     enum STATE
     {
         IDLE,
@@ -31,6 +36,8 @@ public class MonsterAI : MonoBehaviour
 
     void Start()
     {
+        m_instance = this;
+         
         PopulateList();
         m_navAgent = GetComponent<NavMeshAgent>();
         m_state = STATE.IDLE;
@@ -292,6 +299,11 @@ public class MonsterAI : MonoBehaviour
         }
 
         return returnObj;
+    }
+
+    public void SoundEmitted(Vector3 pos, float volume)
+    {
+
     }
 
     bool AtDestination()
