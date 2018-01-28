@@ -15,6 +15,7 @@ public class TouchControllerInteract : MonoBehaviour
     public bool LeftHand = true;
 
     public Vector3 RayCastValuesForPick;
+    public Transform Camera;
 
     // Use this for initialization
 
@@ -362,8 +363,8 @@ public class TouchControllerInteract : MonoBehaviour
         if (throwObject)
 
         {
-
-            heldItemScript.ThrowObject();
+            if(Camera != null)
+                heldItemScript.ThrowObject(Camera.forward);
 
         }
         if (GlobalSettings.RiftContoller)

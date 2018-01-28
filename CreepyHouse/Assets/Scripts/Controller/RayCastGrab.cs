@@ -90,7 +90,7 @@ public class RayCastGrab : MonoBehaviour
         //CurrentlyHeldItem.HeldInLeft = false;
         CurrentlyHeldItem.Held = false;
         if (Throw)
-            CurrentlyHeldItem.ThrowObject();
+            CurrentlyHeldItem.ThrowObject(transform.forward);
         CurrentlyHeldItem = null;
     }
 
@@ -111,8 +111,7 @@ public class RayCastGrab : MonoBehaviour
             }
             else
             {
-
-                Debug.Log(2);
+                
                 CurrentlyHeldItem.transform.localPosition = Vector3.zero;
             }
         }
