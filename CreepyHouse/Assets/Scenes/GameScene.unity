@@ -7755,6 +7755,66 @@ Prefab:
       propertyPath: m_Name
       value: OVRCameraRig (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 20836217517379956, guid: e8203a27820c8ac4a8f6b3a222a749c9,
+        type: 2}
+      propertyPath: m_ClearFlags
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 20836217517379956, guid: e8203a27820c8ac4a8f6b3a222a749c9,
+        type: 2}
+      propertyPath: m_BackGroundColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 20836217517379956, guid: e8203a27820c8ac4a8f6b3a222a749c9,
+        type: 2}
+      propertyPath: m_BackGroundColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 20836217517379956, guid: e8203a27820c8ac4a8f6b3a222a749c9,
+        type: 2}
+      propertyPath: m_BackGroundColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 20849728809130284, guid: e8203a27820c8ac4a8f6b3a222a749c9,
+        type: 2}
+      propertyPath: m_ClearFlags
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 20849728809130284, guid: e8203a27820c8ac4a8f6b3a222a749c9,
+        type: 2}
+      propertyPath: m_BackGroundColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 20849728809130284, guid: e8203a27820c8ac4a8f6b3a222a749c9,
+        type: 2}
+      propertyPath: m_BackGroundColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 20849728809130284, guid: e8203a27820c8ac4a8f6b3a222a749c9,
+        type: 2}
+      propertyPath: m_BackGroundColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 20116066956522000, guid: e8203a27820c8ac4a8f6b3a222a749c9,
+        type: 2}
+      propertyPath: m_ClearFlags
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 20116066956522000, guid: e8203a27820c8ac4a8f6b3a222a749c9,
+        type: 2}
+      propertyPath: m_BackGroundColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 20116066956522000, guid: e8203a27820c8ac4a8f6b3a222a749c9,
+        type: 2}
+      propertyPath: m_BackGroundColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 20116066956522000, guid: e8203a27820c8ac4a8f6b3a222a749c9,
+        type: 2}
+      propertyPath: m_BackGroundColor.b
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e8203a27820c8ac4a8f6b3a222a749c9, type: 2}
   m_IsPrefabParent: 0
