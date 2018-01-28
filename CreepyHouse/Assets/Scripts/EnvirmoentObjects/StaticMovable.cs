@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))] 
 public class StaticMovable : Interactable {
 	Vector3 initalPos;
 	Vector3 initalRot;
@@ -12,6 +13,12 @@ public class StaticMovable : Interactable {
 	public interpolationFunc function;
 	public bool state;
 	public float time;
+
+    //Should use this for editor variables you don't want to access anywhere else in code :)
+    [SerializeField] private AudioClip m_clip;
+
+    bool m_soundPlayed = false;
+    bool m_moving = false;
 
 	float key = 0f;
 
@@ -24,11 +31,29 @@ public class StaticMovable : Interactable {
 	
 	// Update is called once per frame
 	void Update () {
-		if (state) {
+		if (state && key < 1)
+        {
 			key = Mathf.Clamp01 (key + Time.deltaTime / time);
-		} else {
-			key = Mathf.Clamp01 (key - Time.deltaTime / time);
+            m_moving = true;
 		}
+        else if (!state && key > 0)
+        {
+			key = Mathf.Clamp01 (key - Time.deltaTime / time);
+            m_moving = true;
+        }
+        else
+        {
+            m_moving = false;
+            m_soundPlayed = false;
+        }
+
+        if (m_moving && !m_soundPlayed)
+        {
+            GetComponent<AudioSource>().PlayOneShot(m_clip);
+            m_soundPlayed = true;
+        }
+
+
 
 
 		float keyPostFunc = key;
