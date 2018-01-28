@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BreakLookAway : MonoBehaviour
 {
+    public Renderer mesh;
+
     GameObject intact;
     GameObject broken;
     Camera cam;
@@ -25,7 +27,11 @@ public class BreakLookAway : MonoBehaviour
     void Update()
     {
         timeSinceStart += Time.deltaTime;
-        if (lookingAwayAngle < Vector3.Angle(cam.transform.forward, this.transform.position - cam.transform.position))
+        //if (lookingAwayAngle < Vector3.Angle(cam.transform.forward, this.transform.position - cam.transform.position))
+        //{
+        //    lookingAwayTime += Time.deltaTime;
+        //}
+        if (!mesh.isVisible)
         {
             lookingAwayTime += Time.deltaTime;
         }

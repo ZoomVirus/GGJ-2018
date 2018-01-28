@@ -2541,9 +2541,19 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 51.554
       objectReference: {fileID: 0}
+    - target: {fileID: 114794223812879018, guid: 9571ec5569ba4424a9b74aa257904eff,
+        type: 2}
+      propertyPath: mesh
+      value: 
+      objectReference: {fileID: 370545731}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9571ec5569ba4424a9b74aa257904eff, type: 2}
   m_IsPrefabParent: 0
+--- !u!23 &370545731 stripped
+MeshRenderer:
+  m_PrefabParentObject: {fileID: 23730626306238598, guid: 9571ec5569ba4424a9b74aa257904eff,
+    type: 2}
+  m_PrefabInternal: {fileID: 370545730}
 --- !u!1001 &389994014
 Prefab:
   m_ObjectHideFlags: 0
@@ -3639,7 +3649,7 @@ RectTransform:
   m_Children:
   - {fileID: 639660219}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -5049,7 +5059,7 @@ RectTransform:
   - {fileID: 126151186}
   - {fileID: 647774732}
   m_Father: {fileID: 0}
-  m_RootOrder: 95
+  m_RootOrder: 96
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -5435,7 +5445,7 @@ Transform:
   - {fileID: 476099137}
   - {fileID: 902846861}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &930934731
 Prefab:
@@ -10911,7 +10921,7 @@ Transform:
   - {fileID: 943173797}
   - {fileID: 446129613}
   m_Father: {fileID: 0}
-  m_RootOrder: 98
+  m_RootOrder: 99
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2082942943
 Prefab:
@@ -11284,5 +11294,5 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 92
+  m_RootOrder: 93
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
