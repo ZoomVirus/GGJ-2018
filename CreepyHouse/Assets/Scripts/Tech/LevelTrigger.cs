@@ -9,8 +9,7 @@ public class LevelTrigger : MonoBehaviour {
     {
         if (other.transform.parent == null)
         {
-            Key key = null;
-            if ((key = other.gameObject.GetComponent<Key>()) != null)
+            if ( other.gameObject.GetComponent<PlayerSoundObject>() != null)
             {
                 GetComponent<LevelLoader>().LoadLevel("EndGameScene");
             }
