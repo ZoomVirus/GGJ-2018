@@ -12,9 +12,8 @@ public class PlayerMovement : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-
         float ratioMultiplyer = 1;
         if (GlobalSettings.RiftContoller)
         {
@@ -24,9 +23,60 @@ public class PlayerMovement : MonoBehaviour
         {
             ratioMultiplyer = GlobalSettings.xboxControllerToKeyboardRatioTranslation;
         }
-
         Vector3 translate = new Vector3(ratioMultiplyer * Input.GetAxisRaw("Horizontal") * GlobalSettings.translateSpeed * Time.deltaTime, 0, ratioMultiplyer * Input.GetAxisRaw("Forward") * GlobalSettings.translateSpeed * Time.deltaTime);
-        this.gameObject.transform.Translate(translate);
+        RaycastHit hit;
+        Vector3 wall = transform.forward;
+        wall.y = 0;
+        Debug.Log("X::" + Input.GetAxisRaw("Horizontal"));
+        Debug.Log("Z::" + Input.GetAxisRaw("Forward"));
+        bool noCollison = true;
+        if (Input.GetAxisRaw("Forward") > 0)
+        {
+            if (Physics.Raycast(transform.position, wall, out hit, 1))
+            {
+                if (!hit.collider.gameObject.GetComponent("TouchControllerInteract"))
+                {
+                    noCollison = false;
+                }
+            }
+        }
+        if (Input.GetAxisRaw("Forward") < 0)
+        {
+            if (Physics.Raycast(transform.position, wall * -1, out hit, 1))
+            {
+                if (!hit.collider.gameObject.GetComponent("TouchControllerInteract"))
+                {
+                    noCollison = false;
+                }
+            }
+        }
+        wall = transform.right;
+        wall.y = 0;
+        if (Input.GetAxisRaw("Horizontal") > 0)
+        {
+            if (Physics.Raycast(transform.position, wall, out hit, 1))
+            {
+                if (!hit.collider.gameObject.GetComponent("TouchControllerInteract"))
+                {
+                    noCollison = false;
+                }
+            }
+        }
+        if (Input.GetAxisRaw("Horizontal") < 0)
+        {
+            if (Physics.Raycast(transform.position, wall * -1, out hit, 1))
+            {
+                if (!hit.collider.gameObject.GetComponent("TouchControllerInteract"))
+                {
+                    noCollison = false;
+                }
+            }
+        }
+        if (noCollison)
+        {
+            this.transform.Translate(translate);
+        }
+
 
         if (GlobalSettings.RiftContoller)
         {
@@ -49,6 +99,12 @@ public class PlayerMovement : MonoBehaviour
         v = new Vector3(v.x, 0.8f, v.z);
         gameObject.transform.position = v;
 
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        //   this.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        Debug.Log("wdhush");
     }
 }
 

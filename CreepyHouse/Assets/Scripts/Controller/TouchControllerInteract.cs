@@ -239,31 +239,20 @@ public class TouchControllerInteract : MonoBehaviour
 
 
     void Interact(Collider other)
-
     {
-
         var InteractableScript = other.gameObject.GetComponent<Interactable>();
-
         if (InteractableScript != null)
-
         {
             InteractableScript.Interact();
             if (InteractableScript is Grabable && !HoldingItem)
-
             {
-
                 bool sideTrigger = false;
 
                 if (LeftHand)
-
                 {
-
                     sideTrigger = OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger, OVRInput.Controller.LTouch);
-
                     if (!sideTrigger)
-
                     {
-
                         sideTrigger = Input.GetAxis("xboxTriggers") > 0;
 
                         if (!sideTrigger)
@@ -273,15 +262,10 @@ public class TouchControllerInteract : MonoBehaviour
                             sideTrigger = Input.GetMouseButtonDown(0);
 
                         }
-
                     }
-
                 }
-
                 else
-
                 {
-
                     sideTrigger = OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger, OVRInput.Controller.RTouch);
 
                     if (!sideTrigger)

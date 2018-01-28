@@ -261,7 +261,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1720945059353068}
   m_LocalRotation: {x: -0.073237196, y: 0.0016453577, z: 0.022400133, w: 0.9970616}
-  m_LocalPosition: {x: 0.06908416, y: -8.646121, z: 0.013148546}
+  m_LocalPosition: {x: 0.06908416, y: 0, z: 0.013148546}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4370490850529736}
@@ -643,7 +643,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HoldingItem: 0
   LeftHand: 1
-  RayCastValuesForPick: {x: 0, y: 0, z: 0}
+  RayCastValuesForPick: {x: 0, y: 0, z: 100}
 --- !u!114 &114087720930564008
 MonoBehaviour:
   m_ObjectHideFlags: 1
