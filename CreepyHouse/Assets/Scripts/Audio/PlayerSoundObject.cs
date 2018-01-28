@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerSoundObject : SoundObject {
 
@@ -31,6 +32,7 @@ public class PlayerSoundObject : SoundObject {
     override public void Attacked()
     {
         Debug.Log("Attacked");
+        SceneManager.LoadScene("GameOverScene");
     }
 
     protected virtual IEnumerator UpdateLoopTest()
@@ -102,5 +104,5 @@ public class PlayerSoundObject : SoundObject {
         }
     }
 
-    public float GetLoudness() { return m_loudness > m_tolerance + loud2 ? m_loudness + loud2 : 0f; }
+    public override float GetLoudness() { return m_loudness + loud2 > m_tolerance ? m_loudness + loud2 : 0f; }
 }

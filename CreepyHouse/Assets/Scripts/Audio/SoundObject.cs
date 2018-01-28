@@ -53,7 +53,7 @@ public class SoundObject : MonoBehaviour {
         // TODO: Get nick to confirm how he wants to set that info.
         Vector3 location = transform.position;
         float speed = m_pulseSpeed;
-        float falloff = m_pulseDistance * m_loudness;
+        float falloff = m_pulseDistance * GetLoudness();
         float width = m_pulseWidth;
 
         EmitManager.Instance.Emit(location, speed, falloff, width);
@@ -95,4 +95,6 @@ public class SoundObject : MonoBehaviour {
 
     public float GetVolume() { return m_loudness; }
     public Vector3 GetPosition() { return transform.position; }
+    public virtual float GetLoudness() { return m_loudness; }
+
 }

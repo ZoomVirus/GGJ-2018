@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -290,7 +290,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: EndGameScene
+          m_StringArgument: GameScene
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -527,6 +527,7 @@ GameObject:
   - component: {fileID: 738140764}
   - component: {fileID: 738140763}
   - component: {fileID: 738140762}
+  - component: {fileID: 738140765}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -546,7 +547,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
+  m_VerticalAxis: Forward
   m_SubmitButton: Submit
   m_CancelButton: Cancel
   m_InputActionsPerSecond: 10
@@ -579,6 +580,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &738140765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 738140761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b532dcabe356d245a101bec2579712a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Buttons:
+  - {fileID: 142996988}
+  - {fileID: 1996478706}
 --- !u!1 &1101558930
 GameObject:
   m_ObjectHideFlags: 0
@@ -686,9 +701,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a07ee2caf088544dbbe8183a20f55b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Location1: {fileID: 0}
-  m_Location2: {fileID: 0}
-  m_Location3: {fileID: 0}
+  m_Location1: {fileID: 1615420771}
+  m_Location2: {fileID: 1615420771}
+  m_Location3: {fileID: 1615420771}
   m_Auto: 0
 --- !u!1001 &1116031838
 Prefab:

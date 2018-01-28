@@ -14,6 +14,9 @@ public class MenuController : MonoBehaviour
     }
     private void Update()
     {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
         if (m_EventSystem.currentSelectedGameObject == null)
         {
             float forward = Input.GetAxis("Forward");

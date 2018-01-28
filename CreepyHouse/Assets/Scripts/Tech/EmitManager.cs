@@ -69,7 +69,7 @@ public class EmitManager : MonoBehaviour
             }
         }
         m_EmitLocations[id] = location;
-        m_EmitData[id].x = Time.time;
+        m_EmitData[id].x = Time.timeSinceLevelLoad;
         m_EmitData[id].y = speed;
         m_EmitData[id].z = fallOff;
         m_EmitData[id].w = width;
