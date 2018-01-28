@@ -34,14 +34,20 @@ public class PlayerMovement : MonoBehaviour
         {
             if (Physics.Raycast(transform.position, wall, out hit, 1))
             {
-                noCollison = false;
+                if (!hit.collider.gameObject.GetComponent("TouchControllerInteract"))
+                {
+                    noCollison = false;
+                }
             }
         }
         if (Input.GetAxisRaw("Forward") < 0)
         {
             if (Physics.Raycast(transform.position, wall * -1, out hit, 1))
             {
-                noCollison = false;
+                if (!hit.collider.gameObject.GetComponent("TouchControllerInteract"))
+                {
+                    noCollison = false;
+                }
             }
         }
         wall = transform.right;
@@ -50,14 +56,20 @@ public class PlayerMovement : MonoBehaviour
         {
             if (Physics.Raycast(transform.position, wall, out hit, 1))
             {
-                noCollison = false;
+                if (!hit.collider.gameObject.GetComponent("TouchControllerInteract"))
+                {
+                    noCollison = false;
+                }
             }
         }
         if (Input.GetAxisRaw("Horizontal") < 0)
         {
             if (Physics.Raycast(transform.position, wall * -1, out hit, 1))
             {
-                noCollison = false;
+                if (!hit.collider.gameObject.GetComponent("TouchControllerInteract"))
+                {
+                    noCollison = false;
+                }
             }
         }
         if (noCollison)
