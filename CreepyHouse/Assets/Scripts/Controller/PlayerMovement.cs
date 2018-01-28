@@ -130,6 +130,13 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
+    void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        Rigidbody body = hit.collider.attachedRigidbody;
+        if (body != null && !body.isKinematic)
+            body.velocity += hit.controller.velocity;
+    }
+
     void OnTriggerEnter(Collider other)
     {
         Debug.Log("wdhush");
