@@ -28,6 +28,10 @@ public class Grabable : Interactable
     void Start()
     {
         m_Renderer = GetComponent<Renderer>();
+        if (m_Renderer == null)
+        {
+            m_Renderer = GetComponentInChildren<Renderer>(true);
+        }
         m_RigidBody = GetComponent<Rigidbody>();
         m_Renderer.material = MaterialManager.Instance.m_GrabableDefault;
     }
