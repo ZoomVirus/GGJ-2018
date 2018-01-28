@@ -899,11 +899,6 @@ Prefab:
       propertyPath: m_lookObject
       value: 
       objectReference: {fileID: 1776172661}
-    - target: {fileID: 65544443916215174, guid: a7478743b65636b4d8a2292bb2f29259,
-        type: 2}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a7478743b65636b4d8a2292bb2f29259, type: 2}
   m_IsPrefabParent: 0
