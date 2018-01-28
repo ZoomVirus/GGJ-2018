@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StaticMovable : MonoBehaviour {
+public class StaticMovable : Interactable {
 	Vector3 initalPos;
 	Vector3 initalRot;
 	public enum interpolationFunc {linear, sin, sinSquared};
@@ -48,4 +48,9 @@ public class StaticMovable : MonoBehaviour {
 		this.transform.rotation = Quaternion.Euler(Vector3.Lerp(initalRot, initalRot + secondRot, keyPostFunc));
 		
 	}
+
+    public override void Interact()
+    {
+        state = !state;
+    }
 }

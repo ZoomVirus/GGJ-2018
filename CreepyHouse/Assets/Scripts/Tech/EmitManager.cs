@@ -15,9 +15,26 @@ public class EmitManager : MonoBehaviour
         m_Instance = this;
         Shader.SetGlobalVectorArray("_EmitLocations", m_EmitLocations);
         Shader.SetGlobalVectorArray("_EmitData", m_EmitData);
+        if (m_Auto)
+        {
+            StartCoroutine(AutoEmit(m_Location1));
+            StartCoroutine(AutoEmit(m_Location2));
+            StartCoroutine(AutoEmit(m_Location3));
+        }
+
+    }
+
+    IEnumerator AutoEmit(Transform location)
+    {
+        while(true)
+        {
+            yield return new WaitForSeconds(Random.Range(1f, 6f));
+            Emit(location.position);
+        }
     }
 
     public Transform m_Location1, m_Location2, m_Location3;
+    public bool m_Auto = false;
 
     Vector4[] m_EmitLocations = new Vector4[100];
     Vector4[] m_EmitData = new Vector4[100];
@@ -32,8 +49,15 @@ public class EmitManager : MonoBehaviour
     //location
 
 
-    public void Emit(Vector3 location, float speed = 3, float fallOff = 5, float width = 2)
+    public void Emit(Vector3 location, float speed = 3, float fallOff = 10, float width = 5)
     {
+        if(speed <= 0 || fallOff <= 0 || width <= 0)
+        {
+            Debug.LogError("Cannot Emit if any of the speed/fallOff/width values are <= 0");
+
+            return;
+        }
+
         float lowestTime = float.MaxValue;
         int id = -1;
         for (int i = 0; i < m_EmitData.Length; i++)
@@ -71,4 +95,18 @@ public class EmitManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha3))
             Emit(m_Location3.position);
     }
+
+
+    private void OnEnable()
+    {
+        Shader.SetGlobalFloat("_Discard0", 1f);
+    }
+
+    private void OnDestroy()
+    {
+        Shader.SetGlobalFloat("_Discard0", 0f);
+        Shader.SetGlobalVectorArray("_EmitLocations", new Vector4[100]);
+        Shader.SetGlobalVectorArray("_EmitData", new Vector4[100]);
+    }
 }
+
