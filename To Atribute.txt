@@ -1,6 +1,0 @@
-freesound.org:
-S: drip5.wav by PhreaKsAccount | License: Attribution
-S: drip4.wav by PhreaKsAccount | License: Attribution
-S: drip3.wav by PhreaKsAccount | License: Attribution
-S: drip2.wav by PhreaKsAccount | License: Attribution
-S: drip1.wav by PhreaKsAccount | License: Attribution
