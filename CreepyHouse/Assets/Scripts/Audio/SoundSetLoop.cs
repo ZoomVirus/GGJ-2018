@@ -13,8 +13,10 @@ public class SoundSetLoop : SoundObject {
 	int lastPlayed = 1;
 
 	// Use this for initialization
-	void Start () {
-		source = this.GetComponent<AudioSource> ();
+	void Start ()
+    {
+        m_source = GetComponent<AudioSource>();
+        source = this.GetComponent<AudioSource> ();
 		source.spatialize = true;
         m_loudness = source.volume;
 	}

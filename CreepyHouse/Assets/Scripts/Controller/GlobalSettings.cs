@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class GlobalSettings : MonoBehaviour
 {
-    public static float translateSpeed = 20;
-    public static float rotateHoriSpeed = 30.0f;
+    public static float translateSpeed = 10;
+    public static float rotateHoriSpeed = 10.0f;
     public static float rotateVertSpeed = -10.0f;
     public static bool XboxContoller = false;
     public static bool RiftContoller = false;
@@ -18,7 +18,16 @@ public class GlobalSettings : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        var vrscript = this.gameObject.GetComponent<OVRCameraRig>();
 
+        if (RiftContoller && vrscript == null)
+        {
+            this.gameObject.active = false;
+        }
+        if (!RiftContoller && vrscript != null)
+        {
+            this.gameObject.active = false;
+        }
     }
 
     // Update is called once per frame
