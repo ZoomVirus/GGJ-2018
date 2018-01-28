@@ -14,6 +14,7 @@ public class GlobalSettings : MonoBehaviour
     public static float riftControllerToKeyboardRatioTranslation = 0.1f;
     public static float riftControllerToMouseRatioTranslation = 1f;
     public static float ForceThrowObject = 2;
+    public static bool AllowedToMove = false;
     // Use this for initialization
     void Start()
     {
