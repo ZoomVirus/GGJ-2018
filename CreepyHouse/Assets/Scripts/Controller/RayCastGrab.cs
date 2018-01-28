@@ -5,13 +5,15 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class RayCastGrab : MonoBehaviour
 {
-    //public bool LeftHand;
     Grabable CurrentlyHeldItem;
+<<<<<<< HEAD
 
     [SerializeField] private AudioClip[] m_clips;
 
     //public Vector3 RayCastValuesForPick;
     // Use this for initialization
+=======
+>>>>>>> c52910e9a5df3dffee87edd563e8c6b1a48f70f0
     void Start()
     {
 
@@ -81,7 +83,7 @@ public class RayCastGrab : MonoBehaviour
     void DropItem(bool Throw)
     {
         CurrentlyHeldItem.transform.parent = null;
-        CurrentlyHeldItem.HeldInLeft = false;
+        CurrentlyHeldItem.Held = false;
         if (Throw)
             CurrentlyHeldItem.ThrowObject();
         CurrentlyHeldItem = null;
@@ -89,43 +91,16 @@ public class RayCastGrab : MonoBehaviour
 
     void Interact(Interactable InteractableItem)
     {
-        //var GrabAbleScript = other.gameObject.GetComponent("Grabable");
+        InteractableItem.Interact();
+        if (InteractableItem is Grabable)
         {
-            InteractableItem.Interact();
-            if (InteractableItem is Grabable)
+            if (CurrentlyHeldItem == null)
             {
-                if (CurrentlyHeldItem == null)
+                var holdableItem = InteractableItem as Grabable;
                 {
-                    //bool sideTrigger = false;
-                    //sideTrigger = OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger, OVRInput.Controller.LTouch);
-                    //if (!sideTrigger)
-                    /*{
-                        sideTrigger = Input.GetAxis("xboxTriggers") > 0;
-                        if (!sideTrigger)
-                        {
-                            sideTrigger = Input.GetMouseButtonDown(0);
-                        }
-                    }
-
-                    if (sideTrigger)*/
-                    {
-
-                        var holdableItem = InteractableItem as Grabable;
-                        //if (!holdableItem.heldInRight && !holdableItem.heldInLeft)
-                        {
-                            //if (LeftHand)
-                            {
-                                holdableItem.HeldInLeft = true;
-                            }
-                            //else
-                            // {
-                            //     holdableItem.HeldInRight = true;
-                            // }
-                            CurrentlyHeldItem = holdableItem;
-                            InteractableItem.transform.SetParent(gameObject.transform);
-                        }
-
-                    }
+                    holdableItem.Held = true;
+                    CurrentlyHeldItem = holdableItem;
+                    InteractableItem.transform.SetParent(gameObject.transform);
                 }
             }
         }
