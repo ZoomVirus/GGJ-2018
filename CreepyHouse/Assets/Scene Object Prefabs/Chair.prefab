@@ -240,5 +240,5 @@ MonoBehaviour:
   m_pulseDistance: 2
   m_pulseWidth: 0.7
   m_destroyOnAttacked: 1
-  m_DestroyedSound: {fileID: 8300000, guid: 97809699dafdba04aaa58c45c70146c0, type: 3}
+  m_DestroyedSound: {fileID: 8300000, guid: 03cb722da9338b246a82c434d55bfb27, type: 3}
   timeBetweenEmits: 0.5
