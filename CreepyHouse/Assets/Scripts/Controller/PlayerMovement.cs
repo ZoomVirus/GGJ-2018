@@ -33,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
         }
         Vector3 translate = new Vector3(ratioMultiplyer * Input.GetAxisRaw("Horizontal") * GlobalSettings.translateSpeed * Time.deltaTime, 0, ratioMultiplyer * Input.GetAxisRaw("Forward") * GlobalSettings.translateSpeed * Time.deltaTime);
         RaycastHit hit;
-        if (translate != new Vector3(0, 0, 0))
+        if (translate != new Vector3(0, 0, 0) && GlobalSettings.AllowedToMove)
         {
             previousStepWas0 = false;
             if (lastAudioPlay.Add(WalkingFoortStepsTiming) < DateTime.Now)
