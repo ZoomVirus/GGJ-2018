@@ -52,11 +52,13 @@ public class Grabable : Interactable
     {
         if (held)
         {
+            gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
             m_Renderer.material = MaterialManager.Instance.m_GrabableGrabbed;
             m_RigidBody.isKinematic = true;
         }
         else
         {
+            gameObject.layer = LayerMask.NameToLayer("Default");
             m_Renderer.material = MaterialManager.Instance.m_GrabableDefault;
             m_RigidBody.isKinematic = false;
         }

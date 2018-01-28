@@ -1,24 +1,18 @@
 fileFormatVersion: 2
-guid: 50af77b8af948d6458d3e60b2758e193
+guid: 725ed938fcb957847afdbfa33e0f6e04
 timeCreated: 1517143179
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
-    100002: pCylinder2
-    100004: default
+    100002: default
     400000: //RootNode
-    400002: pCylinder2
-    400004: default
-    2100000: initialShadingGroup
-    2100002: defaultMat
-    2300000: pCylinder2
-    2300002: default
-    3300000: pCylinder2
-    3300002: default
-    4300000: pCylinder2
-    4300002: default
+    400002: default
+    2100000: defaultMat
+    2300000: default
+    3300000: default
+    4300000: default
   externalObjects: {}
   materials:
     importMaterials: 1

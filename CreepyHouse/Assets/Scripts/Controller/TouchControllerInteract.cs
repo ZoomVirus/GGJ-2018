@@ -26,13 +26,11 @@ public class TouchControllerInteract : MonoBehaviour
 
         {
 
-            //   this.gameObject.GetComponent<Renderer>().enabled = false;           
+            this.gameObject.GetComponent<Renderer>().enabled = false;
 
         }
 
     }
-
-
 
     // Update is called once per frame
 
@@ -199,28 +197,20 @@ public class TouchControllerInteract : MonoBehaviour
 
     }
 
-
-
     void EmitSound()
     {
         EmitManager.Instance.Emit(this.transform.position);
     }
-
-
 
     void OnTriggerEnter(Collider other)
     {
         Interact(other);
     }
 
-
-
     private void OnTriggerStay(Collider other)
     {
         Interact(other);
     }
-
-
 
     void Interact(Collider other)
     {
@@ -282,7 +272,10 @@ public class TouchControllerInteract : MonoBehaviour
                         //holdableItem.GetComponent<Rigidbody>().isKinematic = true;
 
                         other.gameObject.transform.SetParent(gameObject.transform);
-
+                        if (GlobalSettings.RiftContoller)
+                        {
+                            this.gameObject.GetComponent<Renderer>().enabled = false;
+                        }
                         //       interactableScript.Action();
 
                     }
@@ -294,8 +287,6 @@ public class TouchControllerInteract : MonoBehaviour
         }
 
     }
-
-
 
     void Interacte(Collider other)
 
@@ -375,7 +366,10 @@ public class TouchControllerInteract : MonoBehaviour
             heldItemScript.ThrowObject();
 
         }
-
+        if (GlobalSettings.RiftContoller)
+        {
+            this.gameObject.GetComponent<Renderer>().enabled = true;
+        }
     }
 }
 
