@@ -253,6 +253,7 @@ MonoBehaviour:
   m_pulseDistance: 2
   m_pulseWidth: 0.7
   m_destroyOnAttacked: 1
+  m_DestroyedSound: {fileID: 8300000, guid: 9ec256811aa0c0148a130d1adb619e0b, type: 3}
   delay: 1.8
   sounds:
   - {fileID: 8300000, guid: 366a51542e6e4e4419b4747dfd553d33, type: 3}
