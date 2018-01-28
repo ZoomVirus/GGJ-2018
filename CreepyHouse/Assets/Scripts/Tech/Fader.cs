@@ -13,6 +13,7 @@ public class Fader : MonoBehaviour {
     private void Start()
     {
         m_image = GetComponent<Image>();
+        m_image.enabled = true;
         FadeIn();
     }
 

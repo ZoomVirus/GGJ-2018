@@ -42,9 +42,10 @@ public class Grabable : Interactable
 
     void Update()
     {
-        if ((m_initialPosition - transform.position).magnitude > 0.1f)
+
+        if (GetXZDistanceBetween(m_initialPosition, transform.position) > 0.2f)
         {
-            if (!heldInLeft && heldInRight && (m_timer -= Time.deltaTime) <= 0)
+            if (!heldInLeft && !heldInRight && (m_timer -= Time.deltaTime) <= 0)
             {
                 transform.position = m_initialPosition;
                 m_timer = 30f;
@@ -76,5 +77,12 @@ public class Grabable : Interactable
     {
         this.transform.Translate(new Vector3(0, 0, GlobalSettings.ForceThrowObject));
         m_timer = 30f;
+    }
+
+    float GetXZDistanceBetween(Vector3 a, Vector3 b)
+    {
+        a.y = 0;
+        b.y = 0;
+        return (a - b).magnitude;
     }
 }
