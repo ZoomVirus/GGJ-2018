@@ -31,12 +31,12 @@ public class StaticMovable : Interactable {
 	
 	// Update is called once per frame
 	void Update () {
-		if (state && time < 1)
+		if (state && key < 1)
         {
 			key = Mathf.Clamp01 (key + Time.deltaTime / time);
             m_moving = true;
 		}
-        else if (!state && time > 0)
+        else if (!state && key > 0)
         {
 			key = Mathf.Clamp01 (key - Time.deltaTime / time);
             m_moving = true;
