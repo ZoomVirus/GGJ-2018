@@ -1496,6 +1496,11 @@ Prefab:
       propertyPath: m_clips.Array.size
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114734937281642246, guid: 43819246943965a4c9798845afe3d4e4,
+        type: 2}
+      propertyPath: m_yellClips.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4719134438439708, guid: 43819246943965a4c9798845afe3d4e4, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0.251
@@ -1567,7 +1572,23 @@ Prefab:
       propertyPath: m_Volume
       value: 0.2
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 114734937281642246, guid: 43819246943965a4c9798845afe3d4e4,
+        type: 2}
+      propertyPath: m_micIndicator
+      value: 
+      objectReference: {fileID: 580787094}
+    - target: {fileID: 114734937281642246, guid: 43819246943965a4c9798845afe3d4e4,
+        type: 2}
+      propertyPath: m_yellClips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: c4b11d0a4c1bf9e459f48f07c5e55f67, type: 3}
+    - target: {fileID: 114734937281642246, guid: 43819246943965a4c9798845afe3d4e4,
+        type: 2}
+      propertyPath: m_pulseSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 114821956283379710, guid: 43819246943965a4c9798845afe3d4e4, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 43819246943965a4c9798845afe3d4e4, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1395059412 stripped
@@ -1688,29 +1709,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c02d3f25f941d242a967518ee2fcbe9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1744970090 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1298079150489306, guid: 43819246943965a4c9798845afe3d4e4,
-    type: 2}
-  m_PrefabInternal: {fileID: 1367215753}
---- !u!114 &1744970091
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1744970090}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58993aea891353247b299e22b01350ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SecondsPerPing: 0.2
-  m_pulseSpeed: 1
-  m_pulseDistance: 5
-  m_pulseWidth: 0.7
-  m_destroyOnAttacked: 1
-  m_micIndicator: {fileID: 580787094}
-  m_tolerance: 0.1
 --- !u!1 &1748533553
 GameObject:
   m_ObjectHideFlags: 0

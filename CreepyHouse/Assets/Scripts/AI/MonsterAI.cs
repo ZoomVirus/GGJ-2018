@@ -301,9 +301,48 @@ public class MonsterAI : MonoBehaviour
         return returnObj;
     }
 
-    public void SoundEmitted(Vector3 pos, float volume)
+    public void SoundEmitted(SoundObject sound)
     {
+        if (sound)
+        { 
+            bool overwrite = false;
 
+            // If new sound is closer
+            if ((sound.transform.position - transform.position).sqrMagnitude < (m_seekPosition - transform.position).sqrMagnitude)
+            {
+                // Louder
+                if (sound.GetVolume() > m_seekingSound.GetVolume())
+                {
+                    // Lets still give it some random...
+                    overwrite = Random.Range(0, 100) > 20;
+                }
+                else
+                {
+                    // Very unlikely. randModifier should be in range 0-10 so the bigger the sound gap, 
+                    // the less likely the new, quieter sound, will distract...
+                    int randModifier = Mathf.CeilToInt((m_seekingSound.GetVolume() - sound.GetVolume()) * 10f);
+                    overwrite = Random.Range(0, 100 - randModifier) > 95;
+                }
+            }
+            // Sound is further away. 
+            else
+            {
+                // Louder
+                if (sound.GetVolume() >= m_seekingSound.GetVolume())
+                {
+                    // Less likely than closer sounds, but lets give it some random...
+                    overwrite = Random.Range(0, 100) > 60;
+                }
+                // If it's quieter *and* further away then fuck it. 
+            }
+            if (overwrite)
+            {
+                m_seekingSound = sound;
+                m_seekPosition = sound.transform.position;
+
+                SetDestination(m_seekingSound.transform.position);
+            }
+        }
     }
 
     bool AtDestination()

@@ -47,6 +47,7 @@ public class SoundObject : MonoBehaviour {
 
     protected void PingRequest()
     {
+        Debug.Log("Ping");
         // Position and Loudness provided. Need to convert loudness into range somehow. 
         // TODO: Get nick to confirm how he wants to set that info.
         Vector3 location = transform.position;
@@ -55,14 +56,23 @@ public class SoundObject : MonoBehaviour {
         float width = m_pulseWidth;
 
         EmitManager.Instance.Emit(location, speed, falloff, width);
+
+        if (MonsterAI.Get() != null)
+        {
+            MonsterAI.Get().SoundEmitted(this);
+        }
     }
 
-    public void Attacked()
+    public virtual void Attacked()
     {
         if (m_destroyOnAttacked)
         {
-
             GameObject.Destroy(gameObject);
+        }
+            
+        else
+        {
+            m_source.Stop();
         }
     }
 
