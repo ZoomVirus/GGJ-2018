@@ -5,7 +5,7 @@ using UnityEngine;
 public class FaceTowards : MonoBehaviour {
 
     [SerializeField]
-    private GameObject m_lookObject;
+    private GameObject[] m_lookObject;
 
 	// Use this for initialization
 	void Start () {
@@ -14,11 +14,15 @@ public class FaceTowards : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (m_lookObject != null)
+        foreach (GameObject obj in m_lookObject)
         {
-            Vector3 pos = m_lookObject.transform.position;
-            pos.y = transform.position.y;
-            transform.forward = (pos - transform.position).normalized;
+            if (obj.activeInHierarchy)
+            {
+                Vector3 pos = obj.transform.position;
+                pos.y = transform.position.y;
+                transform.forward = (pos - transform.position).normalized;
+                break;
+            }
         } 
 	}
 }
