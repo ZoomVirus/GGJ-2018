@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -284,7 +284,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4454461616194882, guid: c39ce0148cb60fb4ca560d4e137f84c7, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -1.1
+      value: -1.05
       objectReference: {fileID: 0}
     - target: {fileID: 4454461616194882, guid: c39ce0148cb60fb4ca560d4e137f84c7, type: 2}
       propertyPath: m_LocalPosition.y
@@ -874,6 +874,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6606b1007246e7b429e3f6b49686f947, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_SecondsPerPing: 1
+  m_pulseSpeed: 2
+  m_pulseDistance: 2
+  m_pulseWidth: 0.7
+  m_destroyOnAttacked: 1
   timeBetweenEmits: 0.5
 --- !u!82 &448667714
 AudioSource:
@@ -1255,6 +1260,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6606b1007246e7b429e3f6b49686f947, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_SecondsPerPing: 1
+  m_pulseSpeed: 2
+  m_pulseDistance: 2
+  m_pulseWidth: 0.7
+  m_destroyOnAttacked: 1
   timeBetweenEmits: 0.5
 --- !u!82 &519250193
 AudioSource:
@@ -1470,6 +1480,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6606b1007246e7b429e3f6b49686f947, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_SecondsPerPing: 1
+  m_pulseSpeed: 2
+  m_pulseDistance: 2
+  m_pulseWidth: 0.7
+  m_destroyOnAttacked: 1
   timeBetweenEmits: 0.5
 --- !u!82 &557083526
 AudioSource:
@@ -2025,6 +2040,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6606b1007246e7b429e3f6b49686f947, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_SecondsPerPing: 1
+  m_pulseSpeed: 2
+  m_pulseDistance: 2
+  m_pulseWidth: 0.7
+  m_destroyOnAttacked: 1
   timeBetweenEmits: 0.5
 --- !u!82 &792162354
 AudioSource:
@@ -2364,6 +2384,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6606b1007246e7b429e3f6b49686f947, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_SecondsPerPing: 1
+  m_pulseSpeed: 2
+  m_pulseDistance: 2
+  m_pulseWidth: 0.7
+  m_destroyOnAttacked: 1
   timeBetweenEmits: 0.5
 --- !u!82 &859126458
 AudioSource:
@@ -2683,6 +2708,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6606b1007246e7b429e3f6b49686f947, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_SecondsPerPing: 1
+  m_pulseSpeed: 2
+  m_pulseDistance: 2
+  m_pulseWidth: 0.7
+  m_destroyOnAttacked: 1
   timeBetweenEmits: 0.5
 --- !u!82 &901365061
 AudioSource:
@@ -3060,6 +3090,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6606b1007246e7b429e3f6b49686f947, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_SecondsPerPing: 1
+  m_pulseSpeed: 2
+  m_pulseDistance: 2
+  m_pulseWidth: 0.7
+  m_destroyOnAttacked: 1
   timeBetweenEmits: 0.5
 --- !u!82 &1003361995
 AudioSource:
@@ -3317,6 +3352,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6606b1007246e7b429e3f6b49686f947, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_SecondsPerPing: 1
+  m_pulseSpeed: 2
+  m_pulseDistance: 2
+  m_pulseWidth: 0.7
+  m_destroyOnAttacked: 1
   timeBetweenEmits: 0.5
 --- !u!82 &1139140691
 AudioSource:
@@ -3536,6 +3576,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6606b1007246e7b429e3f6b49686f947, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_SecondsPerPing: 1
+  m_pulseSpeed: 2
+  m_pulseDistance: 2
+  m_pulseWidth: 0.7
+  m_destroyOnAttacked: 1
   timeBetweenEmits: 0.5
 --- !u!82 &1142506124
 AudioSource:
@@ -4705,6 +4750,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6606b1007246e7b429e3f6b49686f947, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_SecondsPerPing: 1
+  m_pulseSpeed: 2
+  m_pulseDistance: 2
+  m_pulseWidth: 0.7
+  m_destroyOnAttacked: 1
   timeBetweenEmits: 0.5
 --- !u!82 &1974492529
 AudioSource:
