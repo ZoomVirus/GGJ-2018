@@ -30,7 +30,7 @@ public class RayCastGrab : MonoBehaviour
                 if (InteractableItem != null)
                 {
                     Prompt = true;
-                    if (Input.GetMouseButtonDown(0) || (CurrentxboxTriggers > 0 && PreviousxboxTriggers <= 0) || Input.GetKeyDown("f"))
+                    if (Input.GetMouseButtonDown(0) || (CurrentxboxTriggers > 0 && PreviousxboxTriggers <= 0) || Input.GetKeyDown("e"))
                     {
                         Interact(InteractableItem);
                     }
@@ -53,6 +53,20 @@ public class RayCastGrab : MonoBehaviour
 
         if (InteractionPrompt.Instance != null)
             InteractionPrompt.Instance.PromptActive = Prompt;
+
+        if ((Input.GetKeyDown("r")))
+        {
+            EmitSound();
+        }
+        else if (Input.GetButtonDown("BYXbox EmitSound"))
+        {
+            EmitSound();
+        }
+    }
+
+    void EmitSound()
+    {
+        EmitManager.Instance.Emit(this.transform.position);
     }
 
     void DropItem(bool Throw)
