@@ -1,9 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class LevelLoader : MonoBehaviour {
+
+    public Text mic;
 
     bool m_levelLoadRequested = false;
     Fader m_fader;
@@ -34,6 +37,13 @@ public class LevelLoader : MonoBehaviour {
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    public void ToggleMic()
+    {
+        MicInput.On = !MicInput.On;
+
+        mic.text = "Mic: " + (MicInput.On ? "On" : "Off");
     }
 
 }

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class MicInput : MonoBehaviour
 {
+
+    public static bool On = true;
     public static float MicLoudness;
     public static float MicAverage;
     private static float MicAverageTimer;
@@ -68,6 +70,12 @@ public class MicInput : MonoBehaviour
 
     void Update()
     {
+        if (!On)
+        {
+            MicLoudness = 0;
+            return;
+        }
+
         //MicAverage = (MicAverage + MicLoudness) / 2;
         //MicAverageTimer += Time.deltaTime;
         //if (MicAverageTimer > 0.2) // Refresh average every 2 seconds

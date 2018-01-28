@@ -72,6 +72,7 @@ public class PlayerSoundObject : SoundObject {
 
         m_loudness = m_micIndicator.SoundLevel;
         loud2 -= Time.deltaTime;
+        loud2 = Mathf.Clamp01(loud2);
 
         if ((Input.GetKeyDown("r")))
         {
@@ -104,5 +105,5 @@ public class PlayerSoundObject : SoundObject {
         }
     }
 
-    public override float GetLoudness() { return m_loudness + loud2 > m_tolerance ? m_loudness + loud2 : 0f; }
+    public override float GetLoudness() { return ((m_loudness + loud2) > m_tolerance ? (m_loudness + loud2) : 0f); }
 }

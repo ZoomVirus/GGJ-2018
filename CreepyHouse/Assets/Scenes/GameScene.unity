@@ -793,6 +793,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 602a0572376f27a499a095149b280154, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mic: {fileID: 0}
 --- !u!1 &126151185
 GameObject:
   m_ObjectHideFlags: 0
@@ -8658,11 +8659,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 114227660810034140, guid: a7478743b65636b4d8a2292bb2f29259,
-        type: 2}
-      propertyPath: m_lookObject.Array.size
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 4241460557580728, guid: a7478743b65636b4d8a2292bb2f29259, type: 2}
       propertyPath: m_LocalPosition.x
       value: -6.10709
@@ -8694,11 +8690,6 @@ Prefab:
     - target: {fileID: 4241460557580728, guid: a7478743b65636b4d8a2292bb2f29259, type: 2}
       propertyPath: m_RootOrder
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114227660810034140, guid: a7478743b65636b4d8a2292bb2f29259,
-        type: 2}
-      propertyPath: m_lookObject
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 114227660810034140, guid: a7478743b65636b4d8a2292bb2f29259,
         type: 2}
