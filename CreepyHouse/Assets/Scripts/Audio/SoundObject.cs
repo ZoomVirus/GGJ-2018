@@ -10,8 +10,10 @@ public class SoundObject : MonoBehaviour {
     [SerializeField] protected float m_pulseDistance = 2f;
     [SerializeField] protected float m_pulseWidth = 0.7f;
     [SerializeField] private   bool  m_destroyOnAttacked = true;
+    [SerializeField] private AudioClip m_DestroyedSound;
 
-    private AudioSource m_source;
+
+    protected AudioSource m_source;
     protected float m_loudness;
 
 	// Use this for initialization
@@ -45,7 +47,7 @@ public class SoundObject : MonoBehaviour {
         }
     }
 
-    protected void PingRequest()
+    protected void PingRequest(bool NotifyMonster = true)
     {
         // Position and Loudness provided. Need to convert loudness into range somehow. 
         // TODO: Get nick to confirm how he wants to set that info.
@@ -56,7 +58,7 @@ public class SoundObject : MonoBehaviour {
 
         EmitManager.Instance.Emit(location, speed, falloff, width);
 
-        if (MonsterAI.Get() != null)
+        if (NotifyMonster && MonsterAI.Get() != null)
         {
             MonsterAI.Get().SoundEmitted(this);
         }
@@ -66,7 +68,23 @@ public class SoundObject : MonoBehaviour {
     {
         if (m_destroyOnAttacked)
         {
-            GameObject.Destroy(gameObject);
+            Renderer[] renderers = GetComponentsInChildren<Renderer>();
+            for(int i = 0; i < renderers.Length; i++)
+            {
+                renderers[i].enabled = false;
+            }
+            if (m_DestroyedSound != null)
+            {
+                m_source.clip = m_DestroyedSound;
+                m_source.Play();
+
+                PingRequest(false);
+
+                GameObject.Destroy(gameObject, m_DestroyedSound.length);
+            }
+            else
+                GameObject.Destroy(gameObject);
+
         }
             
         else

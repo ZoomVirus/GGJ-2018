@@ -9,8 +9,10 @@ public class PlayerSoundObject : SoundObject {
     [SerializeField] private AudioClip[] m_yellClips;
 
     // Use this for initialization
-    protected override void Start () {
-		m_micIndicator = Object.FindObjectOfType<MicIndicator>() as MicIndicator;
+    protected override void Start ()
+    {
+        m_source = GetComponent<AudioSource>();
+        m_micIndicator = Object.FindObjectOfType<MicIndicator>() as MicIndicator;
         //StartCoroutine(UpdateLoop());
         StartCoroutine(UpdateLoopTest());
     }
