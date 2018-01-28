@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class RayCastGrab : MonoBehaviour
 {
+    public Transform m_GrabHoldPosition;
+    public Transform m_GrabRayCastPosition;
     //public bool LeftHand;
     Grabable CurrentlyHeldItem;
     //public Vector3 RayCastValuesForPick;
     // Use this for initialization
-    void Start()
-    {
-
-    }
+    
     float CurrentxboxTriggers = 0, PreviousxboxTriggers = 0;
     bool Prompt = false;
     // Update is called once per frame
+
     void Update()
     {
         Prompt = false;
@@ -30,7 +30,7 @@ public class RayCastGrab : MonoBehaviour
                 if (InteractableItem != null)
                 {
                     Prompt = true;
-                    if (Input.GetMouseButtonDown(0) || (CurrentxboxTriggers > 0 && PreviousxboxTriggers <= 0) || Input.GetKeyDown("e"))
+                    if (/*Input.GetMouseButtonDown(0) ||*/ (CurrentxboxTriggers > 0 && PreviousxboxTriggers <= 0) || Input.GetKeyDown("e"))
                     {
                         Interact(InteractableItem);
                     }
@@ -39,11 +39,11 @@ public class RayCastGrab : MonoBehaviour
         }
         else
         {
-            if (Input.GetMouseButtonDown(0) || (CurrentxboxTriggers < -0.1f && PreviousxboxTriggers >= -0.1f) || Input.GetKeyDown("e"))
+            if (/*Input.GetMouseButtonDown(0) ||*/ (CurrentxboxTriggers < -0.1f && PreviousxboxTriggers >= -0.1f) || Input.GetKeyDown("e"))
             {
                 DropItem(false);
             }
-            else if (Input.GetMouseButtonDown(1) || Input.GetButtonDown("LeftXboxBumper") || Input.GetKeyDown("q"))
+            else if (/*Input.GetMouseButtonDown(1) ||*/ Input.GetButtonDown("LeftXboxBumper") || Input.GetKeyDown("q"))
             {
                 if (CurrentlyHeldItem != null)
                     DropItem(true);
@@ -72,10 +72,36 @@ public class RayCastGrab : MonoBehaviour
     void DropItem(bool Throw)
     {
         CurrentlyHeldItem.transform.parent = null;
+        
         CurrentlyHeldItem.HeldInLeft = false;
         if (Throw)
             CurrentlyHeldItem.ThrowObject();
         CurrentlyHeldItem = null;
+    }
+
+    private void FixedUpdate()
+    {
+        if (CurrentlyHeldItem != null)
+        {
+            RaycastHit hit;
+            Vector3 Dif = (m_GrabHoldPosition.position - m_GrabRayCastPosition.position);
+            if (Physics.Raycast(m_GrabRayCastPosition.position, Dif.normalized, out hit, Dif.magnitude))
+            {
+                CurrentlyHeldItem.transform.position = m_GrabRayCastPosition.position + (Dif.normalized * (hit.distance - 0.05f));
+                /*Debug.Log(Dif.magnitude + " " +
+                    hit.distance.ToString("0.00") + " " +
+                    CurrentlyHeldItem.transform.position.x.ToString("0.00") + " " +
+                    CurrentlyHeldItem.transform.position.y.ToString("0.00") + " " +
+                    CurrentlyHeldItem.transform.position.z.ToString("0.00"));*/
+            }
+            else
+            {
+
+                Debug.Log(2);
+                CurrentlyHeldItem.transform.localPosition = Vector3.zero;
+            }
+        }
+
     }
 
     void Interact(Interactable InteractableItem)
@@ -113,7 +139,8 @@ public class RayCastGrab : MonoBehaviour
                             //     holdableItem.HeldInRight = true;
                             // }
                             CurrentlyHeldItem = holdableItem;
-                            InteractableItem.transform.SetParent(gameObject.transform);
+                            InteractableItem.transform.SetParent(m_GrabHoldPosition);
+                            InteractableItem.transform.localPosition = Vector3.zero;
                         }
 
                     }
