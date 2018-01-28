@@ -10,7 +10,7 @@ public class TouchControllerInteract : MonoBehaviour
 
 {
 
-    public bool HoldingItem = false;
+    public static bool HoldingItem = false;
 
     public bool LeftHand = true;
 
@@ -167,40 +167,6 @@ public class TouchControllerInteract : MonoBehaviour
             }
 
         }
-
-
-
-        if (OVRInput.Get(OVRInput.RawButton.B, OVRInput.Controller.RTouch))
-        {
-            EmitSound();
-        }
-
-        else if (OVRInput.Get(OVRInput.RawButton.Y, OVRInput.Controller.LTouch))
-        {
-            EmitSound();
-        }
-
-        else if ((Input.GetKeyDown("r")))
-
-        {
-
-            EmitSound();
-
-        }
-
-        else if (Input.GetButtonDown("BYXbox EmitSound"))
-
-        {
-
-            EmitSound();
-
-        }
-
-    }
-
-    void EmitSound()
-    {
-        EmitManager.Instance.Emit(this.transform.position);
     }
 
     void OnTriggerEnter(Collider other)
@@ -363,7 +329,7 @@ public class TouchControllerInteract : MonoBehaviour
         if (throwObject)
 
         {
-            if(Camera != null)
+            if (Camera != null)
                 heldItemScript.ThrowObject(Camera.forward);
 
         }

@@ -52,10 +52,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4503916543553676}
   - component: {fileID: 33479166670160154}
-  - component: {fileID: 65743937823326852}
   - component: {fileID: 23523702259056636}
   - component: {fileID: 114917877226394172}
   - component: {fileID: 54893995406922464}
+  - component: {fileID: 65565352269087480}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -156,10 +156,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4538371904502780}
   - component: {fileID: 33862242940603262}
-  - component: {fileID: 65889596249336508}
   - component: {fileID: 23277103839307574}
   - component: {fileID: 114037091919119538}
   - component: {fileID: 54652523574032192}
+  - component: {fileID: 65819665119965936}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -289,8 +289,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1296623533827112}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalPosition: {x: 0, y: -1.3, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4116517820326636}
   m_RootOrder: 0
@@ -302,8 +302,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1776094079379942}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalPosition: {x: 0, y: -1.3, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4196701684726804}
   m_RootOrder: 0
@@ -503,14 +503,14 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1296623533827112}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 4300000, guid: 29c6f862fff03774380766b8006fd75b, type: 3}
 --- !u!33 &33862242940603262
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1776094079379942}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 4300000, guid: 62371840bd911cc4fbb4dac0a6d867bd, type: 3}
 --- !u!54 &54652523574032192
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -522,7 +522,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -537,7 +537,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -553,7 +553,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!65 &65743937823326852
+--- !u!65 &65565352269087480
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -563,9 +563,9 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!65 &65889596249336508
+  m_Size: {x: 0.10464874, y: 0.20906818, z: 0.15481064}
+  m_Center: {x: 0.3290143, y: 0.99297506, z: 0.1352912}
+--- !u!65 &65819665119965936
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -575,8 +575,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.10464874, y: 0.20906818, z: 0.15481064}
+  m_Center: {x: -0.3290143, y: 0.99297506, z: 0.1352912}
 --- !u!81 &81544136114862114
 AudioListener:
   m_ObjectHideFlags: 1
@@ -722,9 +722,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9adca2e9c9dade4c8e5b3f3d34dcc09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HoldingItem: 0
   LeftHand: 1
   RayCastValuesForPick: {x: 0, y: 0, z: 0.1}
+  Camera: {fileID: 0}
 --- !u!114 &114087720930564008
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -777,7 +777,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df9f338034892c44ebb62d97894772f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  riftDistanceHandsMultiplyer: 0.1
+  riftDistanceHandsMultiplyer: 0.05
   usePerEyeCameras: 0
   useFixedUpdateForTracking: 0
 --- !u!114 &114917877226394172
@@ -791,6 +791,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9adca2e9c9dade4c8e5b3f3d34dcc09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HoldingItem: 0
   LeftHand: 0
   RayCastValuesForPick: {x: 0, y: 0, z: 0.1}
+  Camera: {fileID: 0}

@@ -6,9 +6,10 @@ public class PlayerSoundObject : SoundObject {
 
     [SerializeField] private MicIndicator m_micIndicator;
     [SerializeField] private float m_tolerance = 0.1f;
+    [SerializeField] private AudioClip[] m_yellClips;
 
-	// Use this for initialization
-	protected override void Start () {
+    // Use this for initialization
+    protected override void Start () {
 		m_micIndicator = Object.FindObjectOfType<MicIndicator>() as MicIndicator;
         //StartCoroutine(UpdateLoop());
         StartCoroutine(UpdateLoopTest());
@@ -60,5 +61,36 @@ public class PlayerSoundObject : SoundObject {
 
         m_loudness = m_micIndicator.SoundLevel;
 
-	}
+        if ((Input.GetKeyDown("r")))
+        {
+            Yell();
+        }
+        else if (Input.GetButtonDown("BYXbox EmitSound"))
+        {
+            Yell();
+        }
+
+        else if (OVRInput.Get(OVRInput.RawButton.B, OVRInput.Controller.RTouch))
+        {
+            Yell();
+        }
+
+        else if (OVRInput.Get(OVRInput.RawButton.Y, OVRInput.Controller.LTouch))
+        {
+            Yell();
+        }
+
+        m_loudness = 0f;
+    }
+
+    void Yell()
+    {
+        m_loudness = 1f;
+        PingRequest();
+
+        if (m_yellClips.Length > 0)
+        {
+            GetComponent<AudioSource>().PlayOneShot(m_yellClips[Random.Range(0, m_yellClips.Length)]);
+        }
+    }
 }
