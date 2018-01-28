@@ -66,7 +66,7 @@
 			fixed4 frag (v2f i) : SV_Target
 			{
 				if(_Discard0 < 1)
-					return float4(i.normal,1);
+					return float4(abs(i.normal.x), abs(i.normal.y),abs(i.normal.z),1);
 					
 				float MaxColWidth = 0;
 

@@ -72,7 +72,7 @@ Shader "Custom/Outline"
 			 {
 			 
 				if(_Discard0 < 1)
-					return float4(i.normals,1);
+					return float4(abs(i.normals.x), abs(i.normals.y),abs(i.normals.z),1);
 				float MaxColWidth = 0;
 
 				
