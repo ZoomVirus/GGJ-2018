@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 81955094363478704}
   - component: {fileID: 124371437885500132}
   - component: {fileID: 114307292472034900}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: FirstPersonCharacter
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -42,7 +42,8 @@ GameObject:
   - component: {fileID: 114489281317388628}
   - component: {fileID: 54579147928072016}
   - component: {fileID: 82076269349771940}
-  m_Layer: 0
+  - component: {fileID: 114734937281642246}
+  m_Layer: 2
   m_Name: NonVRPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60,7 +61,7 @@ GameObject:
   - component: {fileID: 23767064671183788}
   - component: {fileID: 102335510364744784}
   - component: {fileID: 114514045335369992}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Prompt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,8 +102,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1298079150489306}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.656322, y: 0.979, z: 0.15172647}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 4490503594357268}
   m_Father: {fileID: 0}
@@ -287,7 +288,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1631086186946048}
-  m_Text: F
+  m_Text: E
   m_OffsetZ: 0
   m_CharacterSize: 0.06
   m_LineSpacing: 1
@@ -410,8 +411,10 @@ MonoBehaviour:
     BobAmount: 0.1
   m_StepInterval: 5
   m_FootstepSounds:
-  - {fileID: 8300000, guid: 42e65e088b3f4374e851b8dbd38f3df9, type: 3}
-  - {fileID: 8300000, guid: 8bc94ec6ed537e743b481638bdcd503d, type: 3}
+  - {fileID: 8300000, guid: 451bb1137a35d6440b058dd39c86f15b, type: 3}
+  - {fileID: 8300000, guid: 682f3c3b14f243a4583f864154514a48, type: 3}
+  - {fileID: 8300000, guid: 1ca90653b6e834b418513d67e86e5fd6, type: 3}
+  - {fileID: 8300000, guid: 6befe01fbdfb24644b9da5d725057ed1, type: 3}
   m_JumpSound: {fileID: 8300000, guid: 5897aeed9b676024fbb8c694b421a861, type: 3}
   m_LandSound: {fileID: 8300000, guid: 3b09d59f4499d45428baa7a21e954296, type: 3}
 --- !u!114 &114514045335369992
@@ -425,6 +428,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d75aefafca9e4d4abb5e6972f5d9fca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114734937281642246
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1298079150489306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58993aea891353247b299e22b01350ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SecondsPerPing: 0.2
+  m_pulseSpeed: 1
+  m_pulseDistance: 5
+  m_pulseWidth: 0.7
+  m_destroyOnAttacked: 1
+  m_micIndicator: {fileID: 0}
+  m_tolerance: 0.1
 --- !u!124 &124371437885500132
 Behaviour:
   m_ObjectHideFlags: 1
