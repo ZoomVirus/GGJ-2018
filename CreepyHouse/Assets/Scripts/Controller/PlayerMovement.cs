@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
     //with oculus still need all these inouts due to users hardware options
     // Use this for initialization
     public float rayCastSize;
-
+    public
     void Start()
     {
     }
@@ -74,6 +74,7 @@ public class PlayerMovement : MonoBehaviour
                 }
             }
         }
+
         if (noCollison)
         {
             this.transform.Translate(translate);
@@ -105,7 +106,6 @@ public class PlayerMovement : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        //   this.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
         Debug.Log("wdhush");
     }
 }

@@ -643,7 +643,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HoldingItem: 0
   LeftHand: 1
-  RayCastValuesForPick: {x: 0, y: 0, z: 100}
+  RayCastValuesForPick: {x: 0, y: 0, z: 0.1}
 --- !u!114 &114087720930564008
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -668,6 +668,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58a91ad4bba884c419d2652d45d10f46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rayCastSize: 0.3
 --- !u!114 &114753028599235240
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -690,6 +691,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df9f338034892c44ebb62d97894772f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  riftDistanceHandsMultiplyer: 0.5
   usePerEyeCameras: 0
   useFixedUpdateForTracking: 0
 --- !u!114 &114917877226394172
@@ -705,4 +707,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HoldingItem: 0
   LeftHand: 0
-  RayCastValuesForPick: {x: 0, y: 0, z: 0}
+  RayCastValuesForPick: {x: 0, y: 0, z: 0.1}
