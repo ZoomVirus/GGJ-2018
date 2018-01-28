@@ -73,8 +73,19 @@
 				
 				float val = 0;
 				float iterator = 0;
+				float ran = 0;
+
+				ran += tan(frac((i.worldPos.y + 0.0115234)*52112.452+ (i.worldPos.z + 0.347518)*34321.52127 + frac(_Time.y) * 14320.23451));
+				ran += tan(frac((i.worldPos.x + 0.124112)*12324.1309+(i.worldPos.y + 0.123689)*54221.21231 + frac(_Time.y) * 35134.12342));
+				ran += tan(frac((i.worldPos.z + 0.129397)*823591.1378+(i.worldPos.x + 0.348761)*14231.12435 + frac(_Time.y) * 723419.25121));
+				ran = frac(ran);
+
+
+
+
 				for(iterator = 0; iterator < 100; iterator++)
 				{
+
 					if(_EmitData[iterator].x == 0)
 						continue;
 					float width = _EmitData[iterator].w * _WidthScale;
@@ -82,9 +93,10 @@
 					float FallOffStartDistance = 0;
 					float FallOffEndDistance = _EmitData[iterator].z;
 					float dis = distance(_EmitLocations[iterator] , i.worldPos);
+					dis = lerp(dis-0.2,dis+0.2, ran);
 
 					float fallOffScale = 1;
-					if(dis > FallOffStartDistance)
+					if(dis> FallOffStartDistance)
 						fallOffScale = ((FallOffEndDistance - FallOffStartDistance)- (dis - FallOffStartDistance))/
 						(FallOffEndDistance - FallOffStartDistance);
 				
@@ -98,11 +110,11 @@
 						tempval =  1;
 					else if(dis < fademaxdis && dis > fademindis)
 						tempval =  1 - ((width - (dis - fademindis))/width);
-					tempval = tempval * fallOffScale;
+					tempval = tempval * fallOffScale ;
 					if(tempval < 0)
 						tempval = 0;
 
-					val = val + tempval;
+					val = val + lerp(tempval*0.6,tempval , ran);
 				}
 				//if(/*_Discard0 == 1.0 &&*/ val < 0.01)
 				//	discard;

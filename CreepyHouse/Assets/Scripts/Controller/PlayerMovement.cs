@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     // Use this for initialization
     public float rayCastSize;
     [SerializeField] private AudioClip[] m_FootstepSounds;    // an array of footstep sounds that will be randomly selected from.
+    [SerializeField] private float m_rigidbodyCollisionVelocityMultiplier = 1f;    
     private AudioSource m_AudioSource;
     public DateTime lastAudioPlay;
     public TimeSpan WalkingFoortStepsTiming = new TimeSpan(0, 0, 0, 0, 500);
@@ -134,7 +135,7 @@ public class PlayerMovement : MonoBehaviour
     {
         Rigidbody body = hit.collider.attachedRigidbody;
         if (body != null && !body.isKinematic)
-            body.velocity += hit.controller.velocity;
+            body.velocity += hit.controller.velocity * m_rigidbodyCollisionVelocityMultiplier;
     }
 
     void OnTriggerEnter(Collider other)

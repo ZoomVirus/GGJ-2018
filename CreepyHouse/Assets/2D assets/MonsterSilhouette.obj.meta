@@ -1,5 +1,7 @@
 fileFormatVersion: 2
-guid: 7dae98673eb46e541acf06348401e903
+guid: 1a066eabeff10814196988dded370ced
+timeCreated: 1517146399
+licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
@@ -181,7 +183,6 @@ ModelImporter:
     4300064: polySurface7
     4300066: polySurface8
     4300068: polySurface9
-    9500000: //RootNode
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -256,7 +257,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

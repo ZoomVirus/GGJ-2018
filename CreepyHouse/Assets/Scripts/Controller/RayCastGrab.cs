@@ -10,8 +10,6 @@ public class RayCastGrab : MonoBehaviour
     //public bool LeftHand;
     Grabable CurrentlyHeldItem;
 
-    [SerializeField] private AudioClip[] m_clips;
-
     //public Vector3 RayCastValuesForPick;
     // Use this for initialization
     
@@ -63,24 +61,6 @@ public class RayCastGrab : MonoBehaviour
         if (InteractionPrompt.Instance != null)
             InteractionPrompt.Instance.PromptActive = Prompt;
 
-        if ((Input.GetKeyDown("r")))
-        {
-            EmitSound();
-        }
-        else if (Input.GetButtonDown("BYXbox EmitSound"))
-        {
-            EmitSound();
-        }
-    }
-
-    void EmitSound()
-    {
-        EmitManager.Instance.Emit(this.transform.position);
-
-        if (m_clips.Length > 0)
-        {
-            GetComponent<AudioSource>().PlayOneShot(m_clips[Random.Range(0, m_clips.Length)]);
-        }
     }
 
     void DropItem(bool Throw)
