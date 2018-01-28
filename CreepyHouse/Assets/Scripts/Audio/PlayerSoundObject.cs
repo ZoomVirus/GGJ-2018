@@ -8,6 +8,8 @@ public class PlayerSoundObject : SoundObject {
     [SerializeField] private float m_tolerance = 0.1f;
     [SerializeField] private AudioClip[] m_yellClips;
 
+    private float loud2;
+
     // Use this for initialization
     protected override void Start () {
 		m_micIndicator = Object.FindObjectOfType<MicIndicator>() as MicIndicator;
@@ -22,6 +24,11 @@ public class PlayerSoundObject : SoundObject {
         {
             PingRequest();
         }
+    }
+
+    override public void Attacked()
+    {
+        Debug.Log("Attacked");
     }
 
     protected virtual IEnumerator UpdateLoopTest()
@@ -60,6 +67,7 @@ public class PlayerSoundObject : SoundObject {
     void Update () {
 
         m_loudness = m_micIndicator.SoundLevel;
+        loud2 -= Time.deltaTime;
 
         if ((Input.GetKeyDown("r")))
         {
@@ -79,13 +87,11 @@ public class PlayerSoundObject : SoundObject {
         {
             Yell();
         }
-
-        m_loudness = 0f;
     }
 
     void Yell()
     {
-        m_loudness = 1f;
+        loud2 = 1f;
         PingRequest();
 
         if (m_yellClips.Length > 0)
@@ -93,4 +99,6 @@ public class PlayerSoundObject : SoundObject {
             GetComponent<AudioSource>().PlayOneShot(m_yellClips[Random.Range(0, m_yellClips.Length)]);
         }
     }
+
+    public float GetLoudness() { return m_loudness > m_tolerance + loud2 ? m_loudness + loud2 : 0f; }
 }
