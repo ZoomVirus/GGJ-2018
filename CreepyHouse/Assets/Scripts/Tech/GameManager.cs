@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour {
         do
         {
             int key = Random.Range(0, m_keys.Length);
-            if (m_keys[key] && m_keys[key].gameObject.activeInHierarchy)
+            if (m_keys[key] && !m_keys[key].gameObject.activeInHierarchy)
             {
                 m_keys[key].gameObject.SetActive(true);
                 ++count;
