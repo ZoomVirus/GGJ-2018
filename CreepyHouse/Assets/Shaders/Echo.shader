@@ -104,8 +104,8 @@
 
 					val = val + tempval;
 				}
-				if(/*_Discard0 == 1.0 &&*/ val < 0.01)
-					discard;
+				//if(/*_Discard0 == 1.0 &&*/ val < 0.01)
+				//	discard;
 				return float4(val,val,val,val);
 			}
 			ENDCG
