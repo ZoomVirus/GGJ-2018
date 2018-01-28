@@ -1,12 +1,5 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
 guid: b8f91ee79c14fdc489a72dfc2a6e80cf
-timeCreated: 1517078900
-=======
-guid: 149d9f3437aaae649a9f33abc95cc158
-timeCreated: 1517079685
->>>>>>> 3f64b771d01749646b9df4ba7a71755dd117b5e3
-licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
@@ -23,6 +16,7 @@ ModelImporter:
     3300002: pCube5
     4300000: Door_Asset:pCube5
     4300002: pCube5
+    9500000: //RootNode
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -97,7 +91,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
