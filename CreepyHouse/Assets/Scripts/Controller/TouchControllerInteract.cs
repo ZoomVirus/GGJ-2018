@@ -10,7 +10,7 @@ public class TouchControllerInteract : MonoBehaviour
 
 {
 
-    public bool HoldingItem = false;
+    public static bool HoldingItem = false;
 
     public bool LeftHand = true;
 
@@ -329,7 +329,7 @@ public class TouchControllerInteract : MonoBehaviour
         if (throwObject)
 
         {
-            if(Camera != null)
+            if (Camera != null)
                 heldItemScript.ThrowObject(Camera.forward);
 
         }
