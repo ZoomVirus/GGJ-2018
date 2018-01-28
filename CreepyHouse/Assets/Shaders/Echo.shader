@@ -124,7 +124,7 @@
 				//if(/*_Discard0 == 1.0 &&*/ val < 0.01)
 				//	discard;
 				val = lerp(val-0.1,min(val+0.1,1),binomialRan);
-				return float4(binomialRan,val,val,val);
+				return float4(val,val,val,val);
 			}
 			ENDCG
 		}
