@@ -294,7 +294,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1362371514784976, guid: a0bf52d793fc1534bac8ae32a81d4da5, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a0bf52d793fc1534bac8ae32a81d4da5, type: 2}
@@ -351,19 +351,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1362371514784976, guid: a0bf52d793fc1534bac8ae32a81d4da5, type: 2}
       propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4237323565579648, guid: a0bf52d793fc1534bac8ae32a81d4da5, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4237323565579648, guid: a0bf52d793fc1534bac8ae32a81d4da5, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4237323565579648, guid: a0bf52d793fc1534bac8ae32a81d4da5, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a0bf52d793fc1534bac8ae32a81d4da5, type: 2}
@@ -542,7 +530,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1362371514784976, guid: a0bf52d793fc1534bac8ae32a81d4da5, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a0bf52d793fc1534bac8ae32a81d4da5, type: 2}
@@ -601,8 +589,7 @@ Prefab:
       propertyPath: m_Name
       value: exit
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 65451009353742462, guid: 311ace826d32403469a71977cc7cf360, type: 2}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 311ace826d32403469a71977cc7cf360, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &831742784
@@ -746,7 +733,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1362371514784976, guid: a0bf52d793fc1534bac8ae32a81d4da5, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a0bf52d793fc1534bac8ae32a81d4da5, type: 2}
@@ -1073,7 +1060,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1362371514784976, guid: a0bf52d793fc1534bac8ae32a81d4da5, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a0bf52d793fc1534bac8ae32a81d4da5, type: 2}
@@ -1196,6 +1183,23 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1298079150489306, guid: 43819246943965a4c9798845afe3d4e4, type: 2}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1255592315937980, guid: 43819246943965a4c9798845afe3d4e4, type: 2}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1631086186946048, guid: 43819246943965a4c9798845afe3d4e4, type: 2}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 102335510364744784, guid: 43819246943965a4c9798845afe3d4e4,
+        type: 2}
+      propertyPath: m_Text
+      value: E
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 43819246943965a4c9798845afe3d4e4, type: 2}
   m_IsPrefabParent: 0
@@ -1288,7 +1292,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2c3a03237971c04cbf4ba61e37e85e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_GrabableDefault: {fileID: 2100000, guid: 5ce694732ea041443bccc5f8e3cf41a4, type: 2}
+  m_GrabableDefault: {fileID: 2100000, guid: f6ccc53b9bcfb114996e76ee88ce6948, type: 2}
   m_GrabableGrabbed: {fileID: 2100000, guid: 8009926e285fa074283989855c38190b, type: 2}
 --- !u!114 &1552473504
 MonoBehaviour:
@@ -1449,7 +1453,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1362371514784976, guid: a0bf52d793fc1534bac8ae32a81d4da5, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a0bf52d793fc1534bac8ae32a81d4da5, type: 2}
