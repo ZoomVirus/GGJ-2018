@@ -81,7 +81,7 @@ public class RayCastGrab : MonoBehaviour
     void DropItem(bool Throw)
     {
         CurrentlyHeldItem.transform.parent = null;
-        CurrentlyHeldItem.HeldInLeft = false;
+        CurrentlyHeldItem.Held = false;
         if (Throw)
             CurrentlyHeldItem.ThrowObject();
         CurrentlyHeldItem = null;
@@ -115,7 +115,7 @@ public class RayCastGrab : MonoBehaviour
                         {
                             //if (LeftHand)
                             {
-                                holdableItem.HeldInLeft = true;
+                                holdableItem.Held = true;
                             }
                             //else
                             // {
