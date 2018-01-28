@@ -2,15 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class RayCastGrab : MonoBehaviour
 {
     public Transform m_GrabHoldPosition;
     public Transform m_GrabRayCastPosition;
     //public bool LeftHand;
     Grabable CurrentlyHeldItem;
+
+    [SerializeField] private AudioClip[] m_clips;
+
     //public Vector3 RayCastValuesForPick;
     // Use this for initialization
     
+    // Use this for initialization4
+    void Start()
+    {
+
+    }
     float CurrentxboxTriggers = 0, PreviousxboxTriggers = 0;
     bool Prompt = false;
     // Update is called once per frame
@@ -67,13 +76,19 @@ public class RayCastGrab : MonoBehaviour
     void EmitSound()
     {
         EmitManager.Instance.Emit(this.transform.position);
+
+        if (m_clips.Length > 0)
+        {
+            GetComponent<AudioSource>().PlayOneShot(m_clips[Random.Range(0, m_clips.Length)]);
+        }
     }
 
     void DropItem(bool Throw)
     {
         CurrentlyHeldItem.transform.parent = null;
         
-        CurrentlyHeldItem.HeldInLeft = false;
+        //CurrentlyHeldItem.HeldInLeft = false;
+        CurrentlyHeldItem.Held = false;
         if (Throw)
             CurrentlyHeldItem.ThrowObject();
         CurrentlyHeldItem = null;
@@ -132,7 +147,7 @@ public class RayCastGrab : MonoBehaviour
                         {
                             //if (LeftHand)
                             {
-                                holdableItem.HeldInLeft = true;
+                                holdableItem.Held = true;
                             }
                             //else
                             // {

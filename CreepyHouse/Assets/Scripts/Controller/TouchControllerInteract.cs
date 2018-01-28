@@ -26,13 +26,11 @@ public class TouchControllerInteract : MonoBehaviour
 
         {
 
-            //   this.gameObject.GetComponent<Renderer>().enabled = false;           
+            this.gameObject.GetComponent<Renderer>().enabled = false;
 
         }
 
     }
-
-
 
     // Update is called once per frame
 
@@ -113,7 +111,6 @@ public class TouchControllerInteract : MonoBehaviour
             {
 
                 if (OVRInput.Get(OVRInput.Button.PrimaryHandTrigger, OVRInput.Controller.LTouch))
-
                 {
 
                     DropItem(true);
@@ -173,19 +170,13 @@ public class TouchControllerInteract : MonoBehaviour
 
 
         if (OVRInput.Get(OVRInput.RawButton.B, OVRInput.Controller.RTouch))
-
         {
-
             EmitSound();
-
         }
 
         else if (OVRInput.Get(OVRInput.RawButton.Y, OVRInput.Controller.LTouch))
-
         {
-
             EmitSound();
-
         }
 
         else if ((Input.GetKeyDown("r")))
@@ -206,37 +197,20 @@ public class TouchControllerInteract : MonoBehaviour
 
     }
 
-
-
     void EmitSound()
-
     {
-
         EmitManager.Instance.Emit(this.transform.position);
-
     }
-
-
 
     void OnTriggerEnter(Collider other)
-
     {
-
         Interact(other);
-
     }
-
-
 
     private void OnTriggerStay(Collider other)
-
     {
-
         Interact(other);
-
     }
-
-
 
     void Interact(Collider other)
     {
@@ -281,45 +255,27 @@ public class TouchControllerInteract : MonoBehaviour
                             sideTrigger = Input.GetMouseButtonDown(1);
 
                         }
-
                     }
-
                 }
 
-
-
                 if (sideTrigger)
-
                 {
-
                     var holdableItem = InteractableScript as Grabable;
-
-                    if (!holdableItem.HeldInRight && !holdableItem.HeldInLeft)
-
+                    if (!holdableItem.Held)
                     {
 
-                        if (LeftHand)
+                        holdableItem.Held = true;
 
-                        {
-
-                            holdableItem.HeldInLeft = true;
-
-                        }
-
-                        else
-
-                        {
-
-                            holdableItem.HeldInRight = true;
-
-                        }
 
                         HoldingItem = true;
 
                         //holdableItem.GetComponent<Rigidbody>().isKinematic = true;
 
                         other.gameObject.transform.SetParent(gameObject.transform);
-
+                        if (GlobalSettings.RiftContoller)
+                        {
+                            this.gameObject.GetComponent<Renderer>().enabled = false;
+                        }
                         //       interactableScript.Action();
 
                     }
@@ -331,8 +287,6 @@ public class TouchControllerInteract : MonoBehaviour
         }
 
     }
-
-
 
     void Interacte(Collider other)
 
@@ -398,28 +352,12 @@ public class TouchControllerInteract : MonoBehaviour
 
         var heldItemScript = heldItem.gameObject.GetComponent("Grabable") as Grabable;
 
-        if (LeftHand)
-
-        {
-
-            heldItemScript.HeldInLeft = false;
-
-        }
-
-        else
-
-        {
-
-            heldItemScript.HeldInRight = false;
-
-        }
-
-
+        heldItemScript.Held = false;
 
         HoldingItem = false;
 
         heldItem.transform.parent = null;
-        
+
 
         if (throwObject)
 
@@ -428,7 +366,10 @@ public class TouchControllerInteract : MonoBehaviour
             heldItemScript.ThrowObject();
 
         }
-
+        if (GlobalSettings.RiftContoller)
+        {
+            this.gameObject.GetComponent<Renderer>().enabled = true;
+        }
     }
 }
 

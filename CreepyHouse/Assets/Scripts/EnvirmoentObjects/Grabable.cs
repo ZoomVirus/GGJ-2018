@@ -7,23 +7,18 @@ public class Grabable : Interactable
     Vector3 m_initialPosition;
     float m_timer;
 
-    bool heldInLeft = false;
-    bool heldInRight = false;
+    bool held = false;
 
-    public bool HeldInLeft
+    public bool Held
     {
-        get { return heldInLeft; }
-        set { heldInLeft = value;
+        get { return held; }
+        set
+        {
+            held = value;
             SetGrabState();
         }
     }
-    public bool HeldInRight
-    {
-        get { return heldInRight; }
-        set { heldInRight = value;
-            SetGrabState();
-        }
-    }
+
     Renderer m_Renderer;
     Rigidbody m_RigidBody;
     // Use this for initialization
@@ -42,9 +37,10 @@ public class Grabable : Interactable
 
     void Update()
     {
-        if ((m_initialPosition - transform.position).magnitude > 0.1f)
+
+        if (GetXZDistanceBetween(m_initialPosition, transform.position) > 0.2f)
         {
-            if (!heldInLeft && heldInRight && (m_timer -= Time.deltaTime) <= 0)
+            if (!held&& (m_timer -= Time.deltaTime) <= 0)
             {
                 transform.position = m_initialPosition;
                 m_timer = 30f;
@@ -54,7 +50,7 @@ public class Grabable : Interactable
 
     void SetGrabState()
     {
-        if (heldInLeft || heldInRight)
+        if (held)
         {
             gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
             m_Renderer.material = MaterialManager.Instance.m_GrabableGrabbed;
@@ -78,5 +74,12 @@ public class Grabable : Interactable
     {
         this.transform.Translate(new Vector3(0, 0, GlobalSettings.ForceThrowObject));
         m_timer = 30f;
+    }
+
+    float GetXZDistanceBetween(Vector3 a, Vector3 b)
+    {
+        a.y = 0;
+        b.y = 0;
+        return (a - b).magnitude;
     }
 }

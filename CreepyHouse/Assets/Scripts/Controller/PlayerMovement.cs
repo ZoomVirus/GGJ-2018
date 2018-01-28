@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR;
@@ -7,8 +8,15 @@ public class PlayerMovement : MonoBehaviour
 {
     //with oculus still need all these inouts due to users hardware options
     // Use this for initialization
+    public float rayCastSize;
+    [SerializeField] private AudioClip[] m_FootstepSounds;    // an array of footstep sounds that will be randomly selected from.
+    private AudioSource m_AudioSource;
+    public DateTime lastAudioPlay;
+    public TimeSpan WalkingFoortStepsTiming = new TimeSpan(0, 0, 0, 0, 500);
+    bool previousStepWas0 = false;
     void Start()
     {
+        m_AudioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -25,6 +33,23 @@ public class PlayerMovement : MonoBehaviour
         }
         Vector3 translate = new Vector3(ratioMultiplyer * Input.GetAxisRaw("Horizontal") * GlobalSettings.translateSpeed * Time.deltaTime, 0, ratioMultiplyer * Input.GetAxisRaw("Forward") * GlobalSettings.translateSpeed * Time.deltaTime);
         RaycastHit hit;
+        if (translate != new Vector3(0, 0, 0) && GlobalSettings.AllowedToMove)
+        {
+            previousStepWas0 = false;
+            if (lastAudioPlay.Add(WalkingFoortStepsTiming) < DateTime.Now)
+            {
+                lastAudioPlay = DateTime.Now;
+                EmitfootStep();
+            }
+        }
+        else
+        {
+            if (!previousStepWas0)
+            {
+                previousStepWas0 = true;
+                EmitfootStep();
+            }
+        }
         Vector3 wall = transform.forward;
         wall.y = 0;
         Debug.Log("X::" + Input.GetAxisRaw("Horizontal"));
@@ -32,7 +57,7 @@ public class PlayerMovement : MonoBehaviour
         bool noCollison = true;
         if (Input.GetAxisRaw("Forward") > 0)
         {
-            if (Physics.Raycast(transform.position, wall, out hit, 1))
+            if (Physics.Raycast(transform.position, wall, out hit, rayCastSize))
             {
                 if (!hit.collider.gameObject.GetComponent("TouchControllerInteract"))
                 {
@@ -42,7 +67,7 @@ public class PlayerMovement : MonoBehaviour
         }
         if (Input.GetAxisRaw("Forward") < 0)
         {
-            if (Physics.Raycast(transform.position, wall * -1, out hit, 1))
+            if (Physics.Raycast(transform.position, wall * -1, out hit, rayCastSize))
             {
                 if (!hit.collider.gameObject.GetComponent("TouchControllerInteract"))
                 {
@@ -54,7 +79,7 @@ public class PlayerMovement : MonoBehaviour
         wall.y = 0;
         if (Input.GetAxisRaw("Horizontal") > 0)
         {
-            if (Physics.Raycast(transform.position, wall, out hit, 1))
+            if (Physics.Raycast(transform.position, wall, out hit, rayCastSize))
             {
                 if (!hit.collider.gameObject.GetComponent("TouchControllerInteract"))
                 {
@@ -64,7 +89,7 @@ public class PlayerMovement : MonoBehaviour
         }
         if (Input.GetAxisRaw("Horizontal") < 0)
         {
-            if (Physics.Raycast(transform.position, wall * -1, out hit, 1))
+            if (Physics.Raycast(transform.position, wall * -1, out hit, rayCastSize))
             {
                 if (!hit.collider.gameObject.GetComponent("TouchControllerInteract"))
                 {
@@ -72,15 +97,19 @@ public class PlayerMovement : MonoBehaviour
                 }
             }
         }
+
         if (noCollison)
         {
-            this.transform.Translate(translate);
+            if (GlobalSettings.AllowedToMove)
+            {
+                this.transform.Translate(translate);
+            }
         }
 
 
         if (GlobalSettings.RiftContoller)
         {
-            ratioMultiplyer = GlobalSettings.riftControllerToKeyboardRatioTranslation;
+            ratioMultiplyer = GlobalSettings.riftControllerToMouseRatioTranslation;
             this.gameObject.transform.Rotate(Vector3.up, Input.GetAxisRaw("HorizontalRotation") * ratioMultiplyer * GlobalSettings.rotateHoriSpeed * Time.deltaTime);
         }
         else if (GlobalSettings.XboxContoller)
@@ -103,8 +132,21 @@ public class PlayerMovement : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        //   this.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
         Debug.Log("wdhush");
+    }
+
+
+    void EmitfootStep()
+    {
+
+        int n = UnityEngine.Random.Range(1, m_FootstepSounds.Length);
+        m_AudioSource.clip = m_FootstepSounds[n];
+        m_AudioSource.PlayOneShot(m_AudioSource.clip);
+        m_FootstepSounds[n] = m_FootstepSounds[0];
+        m_FootstepSounds[0] = m_AudioSource.clip;
+
+        EmitManager.Instance.Emit(new Vector3(transform.position.x, 0, transform.position.z),
+            1, 1.5f, 1.5f);
     }
 }
 
