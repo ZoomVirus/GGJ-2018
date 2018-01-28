@@ -6,8 +6,8 @@ using UnityEngine;
 public class SoundObject : MonoBehaviour {
 
     [SerializeField] protected float m_SecondsPerPing = 1f;
-    [SerializeField] protected float m_pulseSpeed = 0.3f;
-    [SerializeField] protected float m_pulseDistance = 0.5f;
+    [SerializeField] protected float m_pulseSpeed = 2f;
+    [SerializeField] protected float m_pulseDistance = 2f;
     [SerializeField] protected float m_pulseWidth = 0.7f;
     [SerializeField] private   bool  m_destroyOnAttacked = true;
 
