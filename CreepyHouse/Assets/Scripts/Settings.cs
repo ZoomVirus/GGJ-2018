@@ -9,6 +9,7 @@ public class Settings : MonoBehaviour
     void Start()
     {
         GlobalSettings.AllowedToMove = false;
+        GlobalSettings.RiftContoller = UnityEngine.XR.XRSettings.enabled;
     }
 
     // Update is called once per frame
