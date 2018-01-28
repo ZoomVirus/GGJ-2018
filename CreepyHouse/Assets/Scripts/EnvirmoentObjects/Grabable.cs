@@ -70,9 +70,10 @@ public class Grabable : Interactable
         //StartGrab();
     }
 
-    public void ThrowObject()
+    public void ThrowObject(Vector3 Direction, float force = 350f)
     {
-        this.transform.Translate(new Vector3(0, 0, GlobalSettings.ForceThrowObject));
+        m_RigidBody.AddForce(Direction * force);
+        //this.transform.Translate(new Vector3(0, 0, GlobalSettings.ForceThrowObject));
         m_timer = 30f;
     }
 
