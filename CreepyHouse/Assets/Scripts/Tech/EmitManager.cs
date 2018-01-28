@@ -51,8 +51,6 @@ public class EmitManager : MonoBehaviour
     public void Emit(Vector3 location, float speed = 3, float fallOff = 10, float width = 5)
     {
 
-        Debug.Log("Emit");
-
         if (speed <= 0 || fallOff <= 0 || width <= 0)
         {
             Debug.LogError("Cannot Emit if any of the speed/fallOff/width values are <= 0");
