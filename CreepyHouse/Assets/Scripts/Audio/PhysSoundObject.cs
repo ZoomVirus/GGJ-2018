@@ -16,6 +16,7 @@ public class PhysSoundObject : SoundObject {
 	protected override void Start() {
 		ownRigidbody = this.GetComponent<Rigidbody> ();
         audioSource = GetComponent<AudioSource>();
+        m_loudness = audioSource.volume;
 	}
 	
 	// Update is called once per frame
