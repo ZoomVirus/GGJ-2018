@@ -174,6 +174,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
             // move picked sound to index 0 so it's not picked next time
             m_FootstepSounds[n] = m_FootstepSounds[0];
             m_FootstepSounds[0] = m_AudioSource.clip;
+
+            EmitManager.Instance.Emit(new Vector3(transform.position.x, 0, transform.position.z),
+                1, 1.5f, 1.5f);
         }
 
 

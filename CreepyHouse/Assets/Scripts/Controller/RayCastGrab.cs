@@ -39,7 +39,7 @@ public class RayCastGrab : MonoBehaviour
         }
         else
         {
-            if (Input.GetMouseButtonDown(0) || (CurrentxboxTriggers < -0.1f && PreviousxboxTriggers >= -0.1f) || Input.GetKeyDown("f"))
+            if (Input.GetMouseButtonDown(0) || (CurrentxboxTriggers < -0.1f && PreviousxboxTriggers >= -0.1f) || Input.GetKeyDown("e"))
             {
                 DropItem(false);
             }

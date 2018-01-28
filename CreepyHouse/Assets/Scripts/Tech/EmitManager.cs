@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class EmitManager : MonoBehaviour
 {
     static EmitManager m_Instance;
@@ -26,7 +25,7 @@ public class EmitManager : MonoBehaviour
 
     IEnumerator AutoEmit(Transform location)
     {
-        while(true)
+        while (true)
         {
             yield return new WaitForSeconds(Random.Range(1f, 6f));
             Emit(location.position);
@@ -51,7 +50,7 @@ public class EmitManager : MonoBehaviour
 
     public void Emit(Vector3 location, float speed = 3, float fallOff = 10, float width = 5)
     {
-        if(speed <= 0 || fallOff <= 0 || width <= 0)
+        if (speed <= 0 || fallOff <= 0 || width <= 0)
         {
             Debug.LogError("Cannot Emit if any of the speed/fallOff/width values are <= 0");
 
@@ -73,7 +72,7 @@ public class EmitManager : MonoBehaviour
         m_EmitData[id].y = speed;
         m_EmitData[id].z = fallOff;
         m_EmitData[id].w = width;
-        
+
         //m_EmitTimes[id] = Time.time;
         //m_EmitSpeeds[id] = speed;
         //m_EmitFallOffs[id] = fallOff;
@@ -86,7 +85,7 @@ public class EmitManager : MonoBehaviour
         //Shader.SetGlobalFloatArray("_EmitWidths", m_EmitWidths);
     }
 
-	void Update ()
+    void Update()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
             Emit(m_Location1.position);

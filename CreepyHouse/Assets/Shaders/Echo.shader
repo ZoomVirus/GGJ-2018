@@ -23,6 +23,7 @@
 			{
 				float4 vertex : POSITION;
 				float2 uv : TEXCOORD0;
+				float3 normal : NORMAL;
 			};
 
 			struct v2f
@@ -30,6 +31,7 @@
 				float2 uv : TEXCOORD0;
 				float4 vertex : SV_POSITION;
                 float3 worldPos : TEXCOORD1;
+                float3 normal : TEXCOORD2;
 			};
 			//Globals
 			float4 _EmitLocations[100];
@@ -57,12 +59,15 @@
                 o.worldPos = mul (unity_ObjectToWorld, v.vertex);
 				o.vertex = UnityObjectToClipPos(v.vertex);
 				o.uv = TRANSFORM_TEX(v.uv, _MainTex);
+				o.normal = v.normal;
 				return o;
 			}
 			
 			fixed4 frag (v2f i) : SV_Target
 			{
-
+				if(_Discard0 < 1)
+					return float4(abs(i.normal.x), abs(i.normal.y),abs(i.normal.z),1);
+					
 				float MaxColWidth = 0;
 
 				
@@ -99,7 +104,7 @@
 
 					val = val + tempval;
 				}
-				if(_Discard0 == 1.0 && val < 0.01)
+				if(/*_Discard0 == 1.0 &&*/ val < 0.01)
 					discard;
 				return float4(val,val,val,val);
 			}

@@ -54,7 +54,7 @@ Shader "Custom/Outline"
 			//sampler2D _MainTex;
 			//float4 _MainTex_ST;
 			float _WidthScale;
-			//float _Discard0;
+			float _Discard0;
  
              v2g vert(appdata_base v)
              {
@@ -70,7 +70,9 @@ Shader "Custom/Outline"
              }
              fixed4 frag (g2f i) : SV_Target
 			 {
-
+			 
+				if(_Discard0 < 1)
+					return float4(abs(i.normals.x), abs(i.normals.y),abs(i.normals.z),1);
 				float MaxColWidth = 0;
 
 				
