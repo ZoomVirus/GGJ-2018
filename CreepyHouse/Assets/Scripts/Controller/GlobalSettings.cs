@@ -6,8 +6,8 @@ public class GlobalSettings : MonoBehaviour
 {
     public static float translateSpeed = 20;
     public static float rotateHoriSpeed = 10.0f;
-    public static float rotateVertSpeed = 1.0f;
-    public static bool XboxContoller = true;
+    public static float rotateVertSpeed = -10.0f;
+    public static bool XboxContoller = false;
     public static bool RiftContoller = false;
     public static float xboxControllerToKeyboardRatioTranslation = 10;
     public static float xboxControllerToMouseRatioRotation = 20;
