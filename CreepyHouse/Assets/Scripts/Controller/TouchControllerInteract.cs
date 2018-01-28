@@ -271,16 +271,11 @@ public class TouchControllerInteract : MonoBehaviour
                 if (sideTrigger)
                 {
                     var holdableItem = InteractableScript as Grabable;
-                    if (!holdableItem.HeldInRight && !holdableItem.HeldInLeft)
+                    if (!holdableItem.Held)
                     {
-                        if (LeftHand)
-                        {
-                            holdableItem.HeldInLeft = true;
-                        }
-                        else
-                        {
-                            holdableItem.HeldInRight = true;
-                        }
+
+                        holdableItem.Held = true;
+
 
                         HoldingItem = true;
 
@@ -366,23 +361,7 @@ public class TouchControllerInteract : MonoBehaviour
 
         var heldItemScript = heldItem.gameObject.GetComponent("Grabable") as Grabable;
 
-        if (LeftHand)
-
-        {
-
-            heldItemScript.HeldInLeft = false;
-
-        }
-
-        else
-
-        {
-
-            heldItemScript.HeldInRight = false;
-
-        }
-
-
+        heldItemScript.Held = false;
 
         HoldingItem = false;
 
