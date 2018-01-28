@@ -47,7 +47,6 @@ public class SoundObject : MonoBehaviour {
 
     protected void PingRequest()
     {
-        Debug.Log("Ping");
         // Position and Loudness provided. Need to convert loudness into range somehow. 
         // TODO: Get nick to confirm how he wants to set that info.
         Vector3 location = transform.position;
