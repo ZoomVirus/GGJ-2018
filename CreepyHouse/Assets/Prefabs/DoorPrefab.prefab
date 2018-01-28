@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4329506094877682}
   - component: {fileID: 114437006676461386}
+  - component: {fileID: 65451009353742462}
   m_Layer: 0
   m_Name: DoorPrefab
   m_TagString: Untagged
@@ -37,6 +38,7 @@ GameObject:
   - component: {fileID: 4951240440432938}
   - component: {fileID: 33337416995574506}
   - component: {fileID: 23517551422875802}
+  - component: {fileID: 64833755206668134}
   m_Layer: 0
   m_Name: pCube5
   m_TagString: Untagged
@@ -83,7 +85,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1181273561056538}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8.02, y: 0.001, z: 5.255}
+  m_LocalPosition: {x: -8.026643, y: 0.020999908, z: 5.2619996}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4392244113128910}
@@ -213,6 +215,32 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1419130609343302}
   m_Mesh: {fileID: 4300002, guid: b8f91ee79c14fdc489a72dfc2a6e80cf, type: 3}
+--- !u!64 &64833755206668134
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1419130609343302}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300002, guid: b8f91ee79c14fdc489a72dfc2a6e80cf, type: 3}
+--- !u!65 &65451009353742462
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1181273561056538}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: -0.2, y: 1.64, z: 0.72}
+  m_Center: {x: -0.03, y: 0.79, z: 0.4}
 --- !u!114 &114437006676461386
 MonoBehaviour:
   m_ObjectHideFlags: 1
