@@ -521,6 +521,10 @@ MonoBehaviour:
   m_destroyOnAttacked: 1
   m_DestroyedSound: {fileID: 0}
   timeBetweenEmits: 0.5
+  minSpeed: 2
+  maxSpeed: 10
+  minDistance: 1
+  maxDistance: 3
 --- !u!82 &75360820
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1395,6 +1399,10 @@ MonoBehaviour:
   m_destroyOnAttacked: 1
   m_DestroyedSound: {fileID: 0}
   timeBetweenEmits: 0.5
+  minSpeed: 2
+  maxSpeed: 10
+  minDistance: 1
+  maxDistance: 3
 --- !u!82 &167512509
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1563,6 +1571,11 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 106.009
       objectReference: {fileID: 0}
+    - target: {fileID: 114027153922212176, guid: 09d600f7c1132c54c9d853f34d7368bb,
+        type: 2}
+      propertyPath: maxSpeed
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 09d600f7c1132c54c9d853f34d7368bb, type: 2}
   m_IsPrefabParent: 0
@@ -1678,6 +1691,10 @@ MonoBehaviour:
   m_destroyOnAttacked: 1
   m_DestroyedSound: {fileID: 0}
   timeBetweenEmits: 0.5
+  minSpeed: 2
+  maxSpeed: 10
+  minDistance: 1
+  maxDistance: 3
 --- !u!82 &185295849
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2540,6 +2557,11 @@ Prefab:
       propertyPath: minTime
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 114794223812879018, guid: 9571ec5569ba4424a9b74aa257904eff,
+        type: 2}
+      propertyPath: m_breakingSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 97809699dafdba04aaa58c45c70146c0, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9571ec5569ba4424a9b74aa257904eff, type: 2}
   m_IsPrefabParent: 0
@@ -4569,6 +4591,10 @@ MonoBehaviour:
   m_destroyOnAttacked: 1
   m_DestroyedSound: {fileID: 0}
   timeBetweenEmits: 0.5
+  minSpeed: 2
+  maxSpeed: 10
+  minDistance: 1
+  maxDistance: 3
 --- !u!82 &804170758
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5791,6 +5817,10 @@ MonoBehaviour:
   m_destroyOnAttacked: 1
   m_DestroyedSound: {fileID: 0}
   timeBetweenEmits: 0.5
+  minSpeed: 2
+  maxSpeed: 10
+  minDistance: 1
+  maxDistance: 3
 --- !u!82 &1026052716
 AudioSource:
   m_ObjectHideFlags: 0
@@ -6352,6 +6382,10 @@ MonoBehaviour:
   m_destroyOnAttacked: 1
   m_DestroyedSound: {fileID: 0}
   timeBetweenEmits: 0.5
+  minSpeed: 2
+  maxSpeed: 10
+  minDistance: 1
+  maxDistance: 3
 --- !u!82 &1102265766
 AudioSource:
   m_ObjectHideFlags: 0
@@ -7045,6 +7079,11 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.021019036
       objectReference: {fileID: 0}
+    - target: {fileID: 114745629663892128, guid: 2a5560fdeb562de419805f489e49407e,
+        type: 2}
+      propertyPath: state
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2a5560fdeb562de419805f489e49407e, type: 2}
   m_IsPrefabParent: 0
@@ -7713,6 +7752,91 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e2fdc9864810f3844ba2ba9afc915fb6, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1473403442 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1797674831130354, guid: 9571ec5569ba4424a9b74aa257904eff,
+    type: 2}
+  m_PrefabInternal: {fileID: 370545730}
+--- !u!82 &1473403445
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1473403442}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 72d01e6f92c68cc4993baffdb8ca5bda, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 1
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!1001 &1484347833
 Prefab:
   m_ObjectHideFlags: 0
@@ -7755,6 +7879,136 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c39ce0148cb60fb4ca560d4e137f84c7, type: 2}
   m_IsPrefabParent: 0
+--- !u!43 &1486884515
+Mesh:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Cube Instance
+  serializedVersion: 8
+  m_SubMeshes:
+  - serializedVersion: 2
+    firstByte: 0
+    indexCount: 36
+    topology: 0
+    baseVertex: 0
+    firstVertex: 0
+    vertexCount: 24
+    localAABB:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0.5, y: 0.5, z: 0.5}
+  m_Shapes:
+    vertices: []
+    shapes: []
+    channels: []
+    fullWeights: []
+  m_BindPose: []
+  m_BoneNameHashes: 
+  m_RootBoneNameHash: 0
+  m_MeshCompression: 0
+  m_IsReadable: 1
+  m_KeepVertices: 1
+  m_KeepIndices: 1
+  m_IndexFormat: 0
+  m_IndexBuffer: 0000020003000000030001000800040005000800050009000a00060007000a0007000b000c000d000e000c000e000f00100011001200100012001300140015001600140016001700
+  m_Skin: []
+  m_VertexData:
+    m_CurrentChannels: 155
+    m_VertexCount: 24
+    m_Channels:
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 3
+    - stream: 0
+      offset: 12
+      format: 0
+      dimension: 3
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 24
+      format: 0
+      dimension: 2
+    - stream: 0
+      offset: 32
+      format: 0
+      dimension: 2
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 40
+      format: 0
+      dimension: 4
+    m_DataSize: 1344
+    _typelessdata: 0000003f000000bf0000003f00000000000000000000803f00000000000000007ee4303f88bfb13e000080bf0000000000000000000080bf000000bf000000bf0000003f00000000000000000000803f0000803f00000000fc247f3f88bfb13e000080bf0000000000000000000080bf0000003f0000003f0000003f00000000000000000000803f000000000000803f7ee4303f4020273f000080bf0000000000000000000080bf000000bf0000003f0000003f00000000000000000000803f0000803f0000803ffc247f3f4020273f000080bf0000000000000000000080bf0000003f0000003f000000bf000000000000803f00000000000000000000803f94949e3e83bfb13e000080bf0000000000000000000080bf000000bf0000003f000000bf000000000000803f000000000000803f0000803f3ce6843b83bfb13e000080bf0000000000000000000080bf0000003f000000bf000000bf0000000000000000000080bf000000000000803f83bfb13e4020273f000080bf0000000000000000000080bf000000bf000000bf000000bf0000000000000000000080bf0000803f0000803f4020273f4020273f000080bf0000000000000000000080bf0000003f0000003f0000003f000000000000803f00000000000000000000000094949e3e4020273f000080bf0000000000000000000080bf000000bf0000003f0000003f000000000000803f000000000000803f000000003ce6843b4020273f000080bf0000000000000000000080bf0000003f0000003f000000bf0000000000000000000080bf000000000000000083bfb13e83bfb13e000080bf0000000000000000000080bf000000bf0000003f000000bf0000000000000000000080bf0000803f000000004020273f83bfb13e000080bf0000000000000000000080bf0000003f000000bf000000bf00000000000080bf00000000000000000000000083bfb13e3ce6843b000080bf0000000000000000000080bf0000003f000000bf0000003f00000000000080bf00000000000000000000803f83bfb13e94949e3e000080bf0000000000000000000080bf000000bf000000bf0000003f00000000000080bf000000000000803f0000803f4020273f94949e3e000080bf0000000000000000000080bf000000bf000000bf000000bf00000000000080bf000000000000803f000000004020273f3ce6843b000080bf0000000000000000000080bf000000bf000000bf0000003f000080bf00000000000000000000000000000000b8b5303f94949e3e0000000000000000000080bf000080bf000000bf0000003f0000003f000080bf0000000000000000000000000000803f34f67e3f94949e3e0000000000000000000080bf000080bf000000bf0000003f000000bf000080bf00000000000000000000803f0000803f34f67e3f3ce6843b0000000000000000000080bf000080bf000000bf000000bf000000bf000080bf00000000000000000000803f00000000b8b5303f3ce6843b0000000000000000000080bf000080bf0000003f000000bf000000bf0000803f0000000000000000000000000000000094949e3e3ce6843b00000000000000000000803f000080bf0000003f0000003f000000bf0000803f0000000000000000000000000000803f3ce6843b3ce6843b00000000000000000000803f000080bf0000003f0000003f0000003f0000803f00000000000000000000803f0000803f3ce6843b94949e3e00000000000000000000803f000080bf0000003f000000bf0000003f0000803f00000000000000000000803f0000000094949e3e94949e3e00000000000000000000803f000080bf
+  m_CompressedMesh:
+    m_Vertices:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_UV:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Normals:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Tangents:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Weights:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_NormalSigns:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_TangentSigns:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_FloatColors:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_BoneIndices:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Triangles:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_UVInfo: 0
+  m_LocalAABB:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0.5, y: 0.5, z: 0.5}
+  m_MeshUsageFlags: 0
+  m_BakedConvexCollisionMesh: 
+  m_BakedTriangleCollisionMesh: 
+  m_MeshOptimized: 0
 --- !u!1001 &1491534719
 Prefab:
   m_ObjectHideFlags: 0
@@ -8261,6 +8515,10 @@ MonoBehaviour:
   m_destroyOnAttacked: 1
   m_DestroyedSound: {fileID: 0}
   timeBetweenEmits: 0.5
+  minSpeed: 2
+  maxSpeed: 10
+  minDistance: 1
+  maxDistance: 3
 --- !u!82 &1594689083
 AudioSource:
   m_ObjectHideFlags: 0
@@ -8701,6 +8959,11 @@ Prefab:
       propertyPath: m_lookObject.Array.data[1]
       value: 
       objectReference: {fileID: 1375986070}
+    - target: {fileID: 33642674859944642, guid: a7478743b65636b4d8a2292bb2f29259,
+        type: 2}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 1486884515}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a7478743b65636b4d8a2292bb2f29259, type: 2}
   m_IsPrefabParent: 0
@@ -8820,6 +9083,10 @@ MonoBehaviour:
   m_destroyOnAttacked: 1
   m_DestroyedSound: {fileID: 0}
   timeBetweenEmits: 0.5
+  minSpeed: 2
+  maxSpeed: 10
+  minDistance: 1
+  maxDistance: 3
 --- !u!82 &1709228745
 AudioSource:
   m_ObjectHideFlags: 0
@@ -9772,6 +10039,10 @@ MonoBehaviour:
   m_destroyOnAttacked: 1
   m_DestroyedSound: {fileID: 0}
   timeBetweenEmits: 0.5
+  minSpeed: 2
+  maxSpeed: 10
+  minDistance: 1
+  maxDistance: 3
 --- !u!82 &1991811584
 AudioSource:
   m_ObjectHideFlags: 0
@@ -10282,6 +10553,10 @@ MonoBehaviour:
   m_destroyOnAttacked: 1
   m_DestroyedSound: {fileID: 0}
   timeBetweenEmits: 0.5
+  minSpeed: 2
+  maxSpeed: 10
+  minDistance: 1
+  maxDistance: 3
 --- !u!82 &2080192578
 AudioSource:
   m_ObjectHideFlags: 0
@@ -10604,7 +10879,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 8
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2111615612
 Transform:
   m_ObjectHideFlags: 0

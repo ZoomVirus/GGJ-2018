@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class BreakLookAway : MonoBehaviour
 {
     public Renderer mesh;
@@ -14,6 +15,8 @@ public class BreakLookAway : MonoBehaviour
     public float minLookAwayTime;
     float lookingAwayTime;
     public float lookingAwayAngle;
+
+    public AudioClip m_breakingSound;
 
     // Use this for initialization
     void Start()
@@ -48,8 +51,14 @@ public class BreakLookAway : MonoBehaviour
 
     public void SetBroken(bool fix = false)
     {
-        intact.SetActive(fix);
-        broken.SetActive(!fix);
-        GlobalSettings.AllowedToMove = true;
+        if (fix != intact.activeInHierarchy)
+        {
+            intact.SetActive(fix);
+            broken.SetActive(!fix);
+            GlobalSettings.AllowedToMove = true;
+            GetComponent<AudioSource>().loop = false;
+            GetComponent<AudioSource>().clip = m_breakingSound;
+            GetComponent<AudioSource>().Play();
+        }
     }
 }

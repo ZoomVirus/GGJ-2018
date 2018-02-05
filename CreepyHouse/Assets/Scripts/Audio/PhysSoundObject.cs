@@ -12,9 +12,14 @@ public class PhysSoundObject : SoundObject
     float timeSinceEmit = 0f;
 	public float timeBetweenEmits;
 
+    public float minSpeed = 2;
+    public float maxSpeed = 4;
+    public float minDistance = 1;
+    public float maxDistance = 3;
 
-	// Use this for initialization
-	protected override void Start()
+
+    // Use this for initialization
+    protected override void Start()
     {
         m_source = GetComponent<AudioSource>();
         ownRigidbody = this.GetComponent<Rigidbody> ();
@@ -32,8 +37,10 @@ public class PhysSoundObject : SoundObject
 		float velocityMagnitude = colision.relativeVelocity.magnitude;
 		if (velocityMagnitude > 0.5 && timeSinceEmit > timeBetweenEmits) {
 			this.timeSinceEmit = 0f;
-			m_pulseSpeed = Mathf.Clamp (velocityMagnitude * 2f, 4, 12);
-			m_pulseDistance = Mathf.Clamp (velocityMagnitude / 3, 0.5f, 5) ;
+            float speed = Mathf.InverseLerp(0f, 10f, Mathf.Clamp(velocityMagnitude, 0, 10));
+            m_pulseSpeed = Mathf.Lerp(minSpeed, maxSpeed, speed);
+            m_pulseDistance = Mathf.Lerp(minDistance, maxDistance, speed);
+
             PingRequest();
             audioSource.Play();
         }
@@ -43,8 +50,9 @@ public class PhysSoundObject : SoundObject
 		float velocityMagnitude = colision.relativeVelocity.magnitude;
 		if (velocityMagnitude > 0.5 && timeSinceEmit > timeBetweenEmits) {
 			this.timeSinceEmit = 0f;
-            m_pulseSpeed = Mathf.Clamp(velocityMagnitude * 2f, 4, 12);
-            m_pulseDistance = Mathf.Clamp(velocityMagnitude / 3, 0.5f, 5);
+            float speed = Mathf.InverseLerp(0f, 10f, Mathf.Clamp(velocityMagnitude, 0, 10));
+            m_pulseSpeed = Mathf.Lerp(minSpeed, maxSpeed, speed);
+            m_pulseDistance = Mathf.Lerp(minDistance, maxDistance, speed);
             PingRequest();
             audioSource.Play();
         }
