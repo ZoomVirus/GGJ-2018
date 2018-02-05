@@ -24,13 +24,16 @@ public class StaticMovable : Interactable {
 
 
 	// Use this for initialization
-	void Start () {
-		initalPos = this.transform.position;
+	void Start ()
+    {
+        initalPos = this.transform.position;
 		initalRot = this.transform.rotation.eulerAngles;
-	}
+        m_Renderer.material = MaterialManager.Instance.m_StaticMovableDefault;
+    }
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
 		if (state && key < 1)
         {
 			key = Mathf.Clamp01 (key + Time.deltaTime / time);

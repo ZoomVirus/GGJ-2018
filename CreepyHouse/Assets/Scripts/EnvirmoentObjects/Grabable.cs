@@ -19,19 +19,13 @@ public class Grabable : Interactable
             SetGrabState();
         }
     }
-
-    Renderer m_Renderer;
+    
     Rigidbody m_RigidBody;
     // Use this for initialization
     void Start()
     {
         m_initialPosition = transform.position;
-
-        m_Renderer = GetComponent<Renderer>();
-        if (m_Renderer == null)
-        {
-            m_Renderer = GetComponentInChildren<Renderer>(true);
-        }
+        
         m_RigidBody = GetComponent<Rigidbody>();
 
         if (m_ChangeMaterial)

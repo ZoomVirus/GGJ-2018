@@ -123,6 +123,8 @@
 				}
 				//if(/*_Discard0 == 1.0 &&*/ val < 0.01)
 				//	discard;
+				if(val == 0)
+					return float4(0, 0, 0, 0);
 				val = lerp(val-0.1,min(val+0.1,1),binomialRan);
 				return float4(val,val,val,val);
 			}

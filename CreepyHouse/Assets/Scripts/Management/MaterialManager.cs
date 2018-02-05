@@ -15,5 +15,6 @@ public class MaterialManager : MonoBehaviour
     }
     public Material m_GrabableDefault;
     public Material m_GrabableGrabbed;
-    
+    public Material m_StaticMovableDefault;
+
 }
