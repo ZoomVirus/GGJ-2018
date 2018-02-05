@@ -13,7 +13,7 @@ Shader "Custom/Outline"
      
          Tags { /*"Queue"="Geometry" "IgnoreProjector"="True"*/ "RenderType"="Opaque" }
          //Blend SrcAlpha OneMinusSrcAlpha
-         Cull Off
+         Cull Back
          //ZTest always
          Pass
          {
