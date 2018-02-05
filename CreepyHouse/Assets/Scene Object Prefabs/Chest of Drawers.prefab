@@ -136,9 +136,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1329654797314746}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -2.99, y: 0, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: -7.0450416, y: 0, z: 7.28}
+  m_LocalScale: {x: 0.021019036, y: 0.021019036, z: 0.021019036}
   m_Children:
   - {fileID: 4821389383424176}
   - {fileID: 4722251855799540}
@@ -350,7 +350,7 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300006, guid: 156b059cf0349d440a45ad1ec25dbb3d, type: 3}
+  m_Mesh: {fileID: 4300006, guid: 5a912aa59fce96b489d2bbe3b50f2980, type: 3}
 --- !u!64 &64662150584662328
 MeshCollider:
   m_ObjectHideFlags: 1
@@ -364,7 +364,7 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 0
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: 156b059cf0349d440a45ad1ec25dbb3d, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 5a912aa59fce96b489d2bbe3b50f2980, type: 3}
 --- !u!64 &64779742250411114
 MeshCollider:
   m_ObjectHideFlags: 1
@@ -378,7 +378,7 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300002, guid: 156b059cf0349d440a45ad1ec25dbb3d, type: 3}
+  m_Mesh: {fileID: 4300002, guid: 5a912aa59fce96b489d2bbe3b50f2980, type: 3}
 --- !u!64 &64976483090384348
 MeshCollider:
   m_ObjectHideFlags: 1
@@ -392,7 +392,7 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300004, guid: 156b059cf0349d440a45ad1ec25dbb3d, type: 3}
+  m_Mesh: {fileID: 4300004, guid: 5a912aa59fce96b489d2bbe3b50f2980, type: 3}
 --- !u!114 &114015590446673488
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -415,11 +415,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7244ff13ccb082943911cbd463da9bc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  secondPos: {x: 0, y: 0, z: -1.55}
+  secondPos: {x: 0, y: 0, z: 11.9}
   secondRot: {x: 0, y: 0, z: 0}
   function: 2
   state: 0
   time: 1
+  m_clip: {fileID: 0}
 --- !u!114 &114270918683043202
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -431,11 +432,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7244ff13ccb082943911cbd463da9bc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  secondPos: {x: 0, y: 0, z: -1.55}
+  secondPos: {x: 0, y: 0, z: 11.9}
   secondRot: {x: 0, y: 0, z: 0}
   function: 2
   state: 0
   time: 1
+  m_clip: {fileID: 0}
 --- !u!114 &114649182140973060
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -469,8 +471,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7244ff13ccb082943911cbd463da9bc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  secondPos: {x: 0, y: 0, z: -1.55}
+  secondPos: {x: 0, y: 0, z: 11.9}
   secondRot: {x: 0, y: 0, z: 0}
   function: 2
-  state: 1
+  state: 0
   time: 1
+  m_clip: {fileID: 0}

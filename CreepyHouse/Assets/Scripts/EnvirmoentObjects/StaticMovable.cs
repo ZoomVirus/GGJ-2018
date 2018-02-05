@@ -26,7 +26,7 @@ public class StaticMovable : Interactable {
 	// Use this for initialization
 	void Start ()
     {
-        initalPos = this.transform.position;
+        initalPos = this.transform.localPosition;
 		initalRot = this.transform.rotation.eulerAngles;
         m_Renderer.material = MaterialManager.Instance.m_StaticMovableDefault;
     }
@@ -72,7 +72,7 @@ public class StaticMovable : Interactable {
 			break;
 		}
 
-		this.transform.position = Vector3.Lerp (initalPos, initalPos + secondPos, keyPostFunc);
+		this.transform.localPosition = Vector3.Lerp (initalPos, initalPos + secondPos, keyPostFunc);
 		this.transform.rotation = Quaternion.Euler(Vector3.Lerp(initalRot, initalRot + secondRot, keyPostFunc));
 		
 	}
