@@ -141,7 +141,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: fa7f0ccc92f9a4547b326563b762f006, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
@@ -234,7 +234,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6606b1007246e7b429e3f6b49686f947, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_SecondsPerPing: 1
+  m_pulseSpeed: 2
+  m_pulseDistance: 2
+  m_pulseWidth: 0.7
+  m_destroyOnAttacked: 1
+  m_DestroyedSound: {fileID: 0}
   timeBetweenEmits: 0.5
+  minSpeed: 2
+  maxSpeed: 4
+  minDistance: 1
+  maxDistance: 3
 --- !u!136 &136051355848600554
 CapsuleCollider:
   m_ObjectHideFlags: 1

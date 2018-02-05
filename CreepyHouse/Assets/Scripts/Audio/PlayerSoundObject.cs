@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class PlayerSoundObject : SoundObject {
 
     [SerializeField] private MicIndicator m_micIndicator;
-    [SerializeField] private float m_tolerance = 0.1f;
+    [SerializeField] private float m_tolerance = 0.05f;
     [SerializeField] private AudioClip[] m_yellClips;
 
     private float loud2;

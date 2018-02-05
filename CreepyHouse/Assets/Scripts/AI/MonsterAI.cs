@@ -5,7 +5,8 @@ using UnityEngine.AI;
 
 public class MonsterAI : MonoBehaviour
 {
-    static float MAXHEALTH = 2;
+    static float MAXHEALTH = 3;
+    static float RECOVERYRATESECOND = 0.1f;
 
     [SerializeField]
     bool debug = false;
@@ -53,7 +54,6 @@ public class MonsterAI : MonoBehaviour
          
         PopulateList();
         m_state = STATE.IDLE;
-        m_player = Object.FindObjectOfType<PlayerSoundObject>();
         //StartCoroutine(PingForTargets());
     }
 
@@ -91,7 +91,7 @@ public class MonsterAI : MonoBehaviour
         }
 
         m_moveTimer = 10f;
-        m_playerHealth = MAXHEALTH;
+        m_playerHealth /= 2f;
         m_doneAtDestination = false;
     }
 
@@ -126,7 +126,11 @@ public class MonsterAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(AtDestination() && !m_doneAtDestination)
+        if(!m_player)
+        { 
+            m_player = Object.FindObjectOfType<PlayerSoundObject>();
+        }
+        if (AtDestination() && !m_doneAtDestination)
         {
             Attack();
             SetIdle();
@@ -153,10 +157,23 @@ public class MonsterAI : MonoBehaviour
             float loudness = m_player.GetLoudness();
             float distance = (m_player.transform.position - transform.position).magnitude;
 
-            float healthLoss = distance > 0 ? Mathf.Clamp01(loudness / distance) : 0;
-            
-            // Maximum loss is 1 per second
-            m_playerHealth -= healthLoss * Time.deltaTime;
+            if (loudness < 0.1f)
+            {
+                m_playerHealth += Time.deltaTime * RECOVERYRATESECOND;
+                m_playerHealth = Mathf.Clamp(m_playerHealth, 0, MAXHEALTH);
+            }
+            else
+            {
+                float multiplier = Mathf.InverseLerp(0f, 10f, Mathf.Clamp(distance, 0.1f, 10));
+                multiplier = Mathf.Lerp(0.75f, 0.1f, multiplier);
+
+                float healthLoss = distance > 0 ? Mathf.Clamp01(loudness / multiplier) : 0;
+
+                // Maximum loss is 1 per second
+                m_playerHealth -= healthLoss * Time.deltaTime;
+            }
+
+            Debug.Log(m_playerHealth);
 
             if (m_playerHealth <= 0)
             {
@@ -277,10 +294,13 @@ public class MonsterAI : MonoBehaviour
             bool overwrite = false;
 
             // If new sound is closer
-            if ((sound.transform.position - transform.position).sqrMagnitude < (m_seekPosition - transform.position).sqrMagnitude)
+            float newSoundDist = (sound.transform.position - transform.position).sqrMagnitude;
+            float oldSoundDist = (m_seekPosition - transform.position).sqrMagnitude;
+
+            if (newSoundDist < oldSoundDist)
             {
                 // Louder
-                if (sound.GetVolume() > m_seekingSound.GetVolume())
+                if (sound.GetVolume() / newSoundDist  >= m_seekingSound.GetVolume() / oldSoundDist)
                 {
                     // Lets still give it some random...
                     overwrite = Random.Range(0, 100) > 20;
@@ -289,15 +309,15 @@ public class MonsterAI : MonoBehaviour
                 {
                     // Very unlikely. randModifier should be in range 0-10 so the bigger the sound gap, 
                     // the less likely the new, quieter sound, will distract...
-                    int randModifier = Mathf.CeilToInt((m_seekingSound.GetVolume() - sound.GetVolume()) * 10f);
-                    overwrite = Random.Range(0, 100 - randModifier) > 95;
+                    int randModifier = Mathf.CeilToInt((m_seekingSound.GetVolume() - sound.GetVolume()) * 5f);
+                    overwrite = Random.Range(0, 100 - randModifier) > 60;
                 }
             }
             // Sound is further away. 
             else
             {
                 // Louder
-                if (sound.GetVolume() >= m_seekingSound.GetVolume())
+                if (sound.GetVolume() / newSoundDist >= m_seekingSound.GetVolume() / oldSoundDist)
                 {
                     // Less likely than closer sounds, but lets give it some random...
                     overwrite = Random.Range(0, 100) > 60;
@@ -316,7 +336,7 @@ public class MonsterAI : MonoBehaviour
 
     bool AtDestination()
     {
-        return (transform.position - m_seekPosition).magnitude <= m_closeRangeThreshold;
+        return (transform.position - m_seekPosition).magnitude <= m_minMoveRange + m_closeRangeThreshold;
     }
 
     void SetDestination(Vector3 point)
@@ -332,7 +352,7 @@ public class MonsterAI : MonoBehaviour
 
     void SetNextDestination(Vector3 point)
     {
-        Debug.Log("New Target distance" + (point - transform.position).magnitude);
+        //Debug.Log("New Target distance" + (point - transform.position).magnitude);
 
         NavMeshHit hit;
         if (NavMesh.SamplePosition(point, out hit, 10, 1))

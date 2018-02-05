@@ -154,7 +154,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: df5c75ba864585d4aad38a017650134a, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -242,3 +242,7 @@ MonoBehaviour:
   m_destroyOnAttacked: 1
   m_DestroyedSound: {fileID: 8300000, guid: 03cb722da9338b246a82c434d55bfb27, type: 3}
   timeBetweenEmits: 0.5
+  minSpeed: 2
+  maxSpeed: 4
+  minDistance: 1
+  maxDistance: 3

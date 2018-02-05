@@ -53,6 +53,7 @@ public class PhysSoundObject : SoundObject
             float speed = Mathf.InverseLerp(0f, 10f, Mathf.Clamp(velocityMagnitude, 0, 10));
             m_pulseSpeed = Mathf.Lerp(minSpeed, maxSpeed, speed);
             m_pulseDistance = Mathf.Lerp(minDistance, maxDistance, speed);
+
             PingRequest();
             audioSource.Play();
         }
