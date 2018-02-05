@@ -28,6 +28,7 @@ public class MonsterAI : MonoBehaviour
     STATE m_state;
     float m_decisionTimer = 0;
     bool m_repopulate = false;
+    bool m_doneAtDestination = false;
 
     //Scale reference Player Size 0.5f
     [SerializeField] float m_minMoveRange;
@@ -56,84 +57,11 @@ public class MonsterAI : MonoBehaviour
         //StartCoroutine(PingForTargets());
     }
 
-    //IEnumerator PingForTargets()
-    //{
-    //    while (enabled)
-    //    {
-    //        if (m_state == STATE.IDLE)
-    //        {
-    //            yield return new WaitForSeconds(0.5f);
-    //            m_seekingSound = GetMostProminentSound();
-    //            if (m_seekingSound != null)
-    //            {
-    //                SetDestination(m_seekingSound.transform.position);
-    //            }
-    //        }
-    //        else if (m_state == STATE.HUNTING)
-    //        {
-    //            if (m_seekingSound == null)
-    //            {
-    //                SetIdle();
-    //                break;
-    //            }
 
-    //            // We want to emulate a focus, so won't always choose the loudest target if hunting. 
-    //            // We also want to do this quickly, so a comparison of distance and sound level should do the trick...
-    //            SoundObject sound = null;
-    //            if ((sound = GetMostProminentSound(m_seekingSound)) != null)
-    //            {
-    //                bool overwrite = false;
-
-    //                // If new sound is closer
-    //                if ((sound.transform.position - transform.position).sqrMagnitude < (m_seekPosition - transform.position).sqrMagnitude)
-    //                {
-    //                    // Louder
-    //                    if (sound.GetVolume() > m_seekingSound.GetVolume())
-    //                    {
-    //                        // Lets still give it some random...
-    //                        overwrite = Random.Range(0, 100) > 20;
-    //                    }
-    //                    else
-    //                    {
-    //                        // Very unlikely. randModifier should be in range 0-10 so the bigger the sound gap, 
-    //                        // the less likely the new, quieter sound, will distract...
-    //                        int randModifier = Mathf.CeilToInt((m_seekingSound.GetVolume() - sound.GetVolume()) * 10f);
-    //                        overwrite = Random.Range(0, 100 - randModifier) > 95;
-    //                    }
-    //                }
-    //                // Sound is further away. 
-    //                else
-    //                {
-    //                    // Louder
-    //                    if (sound.GetVolume() >= m_seekingSound.GetVolume())
-    //                    {
-    //                        // Less likely than closer sounds, but lets give it some random...
-    //                        overwrite = Random.Range(0, 100) > 60;
-    //                    }
-    //                    // If it's quieter *and* further away then fuck it. 
-    //                }
-    //                if (overwrite)
-    //                {
-    //                    m_seekingSound = sound;
-    //                    m_seekPosition = sound.transform.position;
-
-    //                    SetDestination(m_seekingSound.transform.position);
-    //                }
-    //            }
-
-
-    //            // We also shouldn't check this as often
-    //            yield return new WaitForSeconds(2f);
-
-    //        }
-
-    //        yield return null;
-    //    }
-    //}
-
+    // If the monster isn't being looked at, and hasn't moved for a while then it can move again
     bool CanMove()
     {
-        if (!m_meshRenderer.isVisible)
+        if (!m_meshRenderer.isVisible || debug)
         {
             if (m_moveTimer <= 0)
             {
@@ -143,8 +71,10 @@ public class MonsterAI : MonoBehaviour
         return false;
     }
 
+    // Actually move
     void Move()
     {
+        // If there's a sound it's tracking, home in on that!
         if (m_seekingSound != null)
         {
             Vector3 direction = m_seekingSound.transform.position - transform.position;
@@ -153,6 +83,7 @@ public class MonsterAI : MonoBehaviour
             SetNextDestination(direction.normalized * mag);
             transform.position = m_nextPosition;
         }
+        // Otherwise get another destination
         else
         {
             GetNewDestination();
@@ -161,10 +92,12 @@ public class MonsterAI : MonoBehaviour
 
         m_moveTimer = 10f;
         m_playerHealth = MAXHEALTH;
+        m_doneAtDestination = false;
     }
 
     void GetNewDestination()
     {
+        // If we can seek to a sound, seek to it
         SoundObject newTarget = GetMostProminentSound();
         if (newTarget != null)
         {
@@ -193,7 +126,7 @@ public class MonsterAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(AtDestination())
+        if(AtDestination() && !m_doneAtDestination)
         {
             Attack();
             SetIdle();
@@ -201,6 +134,10 @@ public class MonsterAI : MonoBehaviour
             if(CanMove())
             {
                 Move();
+            }
+            else
+            {
+                m_doneAtDestination = true;
             }
         }
         else
@@ -216,11 +153,10 @@ public class MonsterAI : MonoBehaviour
             float loudness = m_player.GetLoudness();
             float distance = (m_player.transform.position - transform.position).magnitude;
 
-            float healthLoss = Mathf.Clamp01(loudness / distance);
-
-            m_playerHealth -= healthLoss;
-
-            Debug.Log("PlayerDamaged: " + healthLoss);
+            float healthLoss = distance > 0 ? Mathf.Clamp01(loudness / distance) : 0;
+            
+            // Maximum loss is 1 per second
+            m_playerHealth -= healthLoss * Time.deltaTime;
 
             if (m_playerHealth <= 0)
             {
@@ -232,116 +168,22 @@ public class MonsterAI : MonoBehaviour
             m_player = Object.FindObjectOfType<PlayerSoundObject>();
         }
 
-        //switch (m_state)
-        //{
-        //    case STATE.IDLE:
-        //        {
-        //            GetComponent<MeshRenderer>().material.color = Color.blue;
-        //            UpdateIdle();
-        //            break;
-        //        }
-        //    case STATE.HUNTING:
-        //        {
-        //            GetComponent<MeshRenderer>().material.color = Color.red;
-        //            UpdateHunting();
-        //            break;
-        //        }
-        //    case STATE.PROXIMITY:
-        //        {
-        //            GetComponent<MeshRenderer>().material.color = Color.green;
-        //            UpdateProximity();
-        //            break;
-        //        }
-        //}
-
         m_moveTimer -= Mathf.Max(Time.deltaTime, 0f);
+
     }
 
-    //void UpdateIdle()
-    //{
+    void OnDrawGizmos()
+    {
+        if (debug)
+        {
+            if (m_seekingSound)
+            {
+                Gizmos.DrawWireSphere(m_seekingSound.transform.position, 0.5f);
+            }
 
-    //    if (m_seekingSound)
-    //    {
-    //        m_state = STATE.HUNTING;
-    //    }
-
-    //    else
-    //    {
-    //        if (AtDestination())
-    //        {
-    //            SetDestination(RandomNavmeshLocation(10f));
-    //        }
-
-    //    }
-
-    //    //TODO Idle wanderings
-    //}
-
-    //void UpdateHunting()
-    //{
-    //    if (m_seekingSound != null)
-    //    {
-    //        if (m_seekPosition != m_navAgent.destination)
-    //        {
-    //            SetDestination(m_seekPosition);
-    //        }
-    //        else if (AtDestination())
-    //        {
-    //            if (CanMove())
-    //            {
-    //                Move();
-    //            }
-    //            m_state = STATE.PROXIMITY;
-    //            m_decisionTimer = Random.Range(0.8f, 2.3f);
-    //        }
-    //    }
-    //    else
-    //    {
-    //        SetIdle();
-    //    }
-    //}
-
-    //void UpdateProximity()
-    //{
-    //    if (m_decisionTimer < 0)
-    //    {
-    //        //Now we check if the actual object is still around (i.e. the player may haver move away or an object may have been thrown and is now destroyed)    
-    //        if (m_seekingSound != null)
-    //        {
-    //            if (AtDestination())
-    //            {
-    //                //Dirty way to tell if player.
-    //                if (m_seekingSound.GetComponent<PlayerSoundObject>())
-    //                {
-    //                    if (Random.Range(0f, 1f) + Random.Range(0f, 1f) > 1.5f)
-    //                    {
-    //                        Attack();
-    //                    }
-    //                    else
-    //                    {
-    //                        SetIdle();
-    //                    }
-    //                }
-    //                else
-    //                {
-    //                    Attack();
-    //                }
-    //            }
-    //        }
-    //        else
-    //        {
-    //            SetIdle();
-    //        }
-    //    }
-    //    else if (m_seekingSound != null)
-    //    {
-    //        if (m_seekingSound.GetVolume() > m_proximityVolumeTolerance)
-    //        {
-    //            Attack();
-    //        }
-    //    }
-    //    m_decisionTimer -= Time.deltaTime;
-    //}
+            Gizmos.DrawWireCube(transform.position, Vector3.one * 0.5f);
+        }
+    }
 
     // Kill, Turn off, Destroy. Do it all!
     void Attack()
