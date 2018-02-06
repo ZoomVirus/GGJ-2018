@@ -9,7 +9,7 @@ public class BreakLookAway : MonoBehaviour
 
     GameObject intact;
     GameObject broken;
-    Camera cam;
+
     float timeSinceStart = 0f;
     public float minTime;
     public float minLookAwayTime;
@@ -23,7 +23,6 @@ public class BreakLookAway : MonoBehaviour
     {
         intact = this.transform.Find("Intact").gameObject;
         broken = this.transform.Find("Broken").gameObject;
-        cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>(); ;
     }
 
     // Update is called once per frame

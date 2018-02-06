@@ -13,7 +13,7 @@ public class SoundSetLoop : SoundObject {
 	int lastPlayed = 1;
 
 	// Use this for initialization
-	void Start ()
+	override protected void Start ()
     {
         m_source = GetComponent<AudioSource>();
         source = this.GetComponent<AudioSource> ();

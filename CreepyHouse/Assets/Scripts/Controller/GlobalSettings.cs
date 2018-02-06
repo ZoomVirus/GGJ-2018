@@ -22,11 +22,11 @@ public class GlobalSettings : MonoBehaviour
 
         if (RiftContoller && vrscript == null)
         {
-            this.gameObject.active = false;
+            this.gameObject.SetActive(false);
         }
         if (!RiftContoller && vrscript != null)
         {
-            this.gameObject.active = false;
+            this.gameObject.SetActive(false);
         }
     }
 

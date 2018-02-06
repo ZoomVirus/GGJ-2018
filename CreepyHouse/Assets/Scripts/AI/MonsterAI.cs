@@ -20,14 +20,10 @@ public class MonsterAI : MonoBehaviour
     float m_falloffThreshold = 0.01f;
     [SerializeField]
     float m_closeRangeThreshold = 0.5f;
-    [SerializeField]
-    float m_proximityVolumeTolerance = 0.05f;
     SoundObject[] m_sounds;
     SoundObject m_seekingSound;
     Vector3 m_seekPosition;
     Vector3 m_nextPosition;
-    STATE m_state;
-    float m_decisionTimer = 0;
     bool m_repopulate = false;
     bool m_doneAtDestination = false;
 
@@ -51,9 +47,8 @@ public class MonsterAI : MonoBehaviour
     void Start()
     {
         m_instance = this;
-         
+        m_meshRenderer = GetComponent<MeshRenderer>();
         PopulateList();
-        m_state = STATE.IDLE;
         //StartCoroutine(PingForTargets());
     }
 
@@ -91,7 +86,7 @@ public class MonsterAI : MonoBehaviour
         }
 
         m_moveTimer = 10f;
-        m_playerHealth /= 2f;
+        m_playerHealth += (MAXHEALTH - m_playerHealth)/2;
         m_doneAtDestination = false;
     }
 
@@ -219,8 +214,6 @@ public class MonsterAI : MonoBehaviour
     void SetIdle()
     {
         m_seekingSound = null;
-        m_state = STATE.IDLE;
-
     }
 
     private void OnTriggerStay(Collider other)

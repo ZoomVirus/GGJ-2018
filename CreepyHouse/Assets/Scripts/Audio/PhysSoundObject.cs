@@ -7,7 +7,6 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class PhysSoundObject : SoundObject
 {
-	Rigidbody ownRigidbody;
 	AudioSource audioSource;
     float timeSinceEmit = 0f;
 	public float timeBetweenEmits;
@@ -22,7 +21,6 @@ public class PhysSoundObject : SoundObject
     protected override void Start()
     {
         m_source = GetComponent<AudioSource>();
-        ownRigidbody = this.GetComponent<Rigidbody> ();
         audioSource = GetComponent<AudioSource>();
         m_loudness = audioSource.volume;
 	}
